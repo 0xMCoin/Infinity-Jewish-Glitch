@@ -74,14 +74,20 @@ export function GalleryGrid({ videos, className }: GalleryGridProps) {
     }
   };
 
-  const togglePlay = () => {
-    if (videoRef.current) {
+  const togglePlay = async () => {
+    if (!videoRef.current) return;
+    
+    try {
       if (isPlaying) {
         videoRef.current.pause();
+        setIsPlaying(false);
       } else {
-        videoRef.current.play();
+        await videoRef.current.play();
+        setIsPlaying(true);
       }
-      setIsPlaying(!isPlaying);
+    } catch (error) {
+      console.log("Error in togglePlay:", error);
+      setIsPlaying(false);
     }
   };
 
@@ -96,24 +102,31 @@ export function GalleryGrid({ videos, className }: GalleryGridProps) {
     setVolume(newVolume);
     if (videoRef.current) {
       videoRef.current.volume = newVolume;
+      // If volume is set to 0, mute the video
       if (newVolume === 0) {
         setIsMuted(true);
         videoRef.current.muted = true;
-      } else if (isMuted) {
-        setIsMuted(false);
-        videoRef.current.muted = false;
+      } else {
+        // If volume is increased from 0, unmute
+        if (isMuted) {
+          setIsMuted(false);
+          videoRef.current.muted = false;
+        }
       }
     }
   };
 
   const handleMuteToggle = () => {
     if (videoRef.current) {
-      if (isMuted) {
-        videoRef.current.muted = false;
-        setIsMuted(false);
-      } else {
-        videoRef.current.muted = true;
-        setIsMuted(true);
+      const newMutedState = !isMuted;
+      setIsMuted(newMutedState);
+      videoRef.current.muted = newMutedState;
+      
+      // If unmuting and volume was 0, set it to a reasonable level
+      if (!newMutedState && volume === 0) {
+        const newVolume = 0.5;
+        setVolume(newVolume);
+        videoRef.current.volume = newVolume;
       }
     }
   };

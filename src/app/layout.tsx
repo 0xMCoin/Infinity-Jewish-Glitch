@@ -7,8 +7,9 @@ import { ThemeProvider } from "@/contexts/theme-context";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Dancing Rat - Meme Coin",
-  description: "The next big thing in crypto - Dancing Rat is here to rule the meme world!",
+  title: "Rodolfo The Rat - Meme Coin",
+  description:
+    "The next big thing in crypto - Rodolfo The Rat is here to rule the meme world!",
 };
 
 export default function RootLayout({
@@ -18,17 +19,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/images/logo.png" sizes="64x64" />
+      </head>
       <body className={inter.className}>
         <ThemeProvider>
           {children}
-          <Toaster 
+          <Toaster
             position="top-center"
             toastOptions={{
               duration: 4000,
               style: {
-                background: '#000',
-                color: '#fff',
-                border: '2px solid #fbbf24',
+                background: "#000",
+                color: "#fff",
+                border: "2px solid #fbbf24",
               },
             }}
           />

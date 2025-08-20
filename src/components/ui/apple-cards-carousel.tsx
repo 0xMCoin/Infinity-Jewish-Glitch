@@ -30,7 +30,7 @@ export function AppleCardsCarousel({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [volume, setVolume] = useState(0.5);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
@@ -100,60 +100,62 @@ export function AppleCardsCarousel({
       // Small delay to ensure video element is updated
       const timer = setTimeout(() => {
         if (videoRef.current) {
-          // Check if video is actually playing
-          const isVideoPlaying = !videoRef.current.paused && !videoRef.current.ended;
-          console.log("Video changed, syncing state:", { 
-            isVideoPlaying, 
-            paused: videoRef.current.paused, 
-            ended: videoRef.current.ended 
-          });
-          setIsPlaying(isVideoPlaying);
+          // Reset playing state when video changes
+          setIsPlaying(false);
           
           // Set volume for new video
           videoRef.current.volume = volume;
+          
+          // Ensure mute state is consistent
+          videoRef.current.muted = isMuted;
+          
+          console.log("Video changed, state reset:", { 
+            isPlaying: false, 
+            isMuted, 
+            volume 
+          });
         }
       }, 100);
 
       return () => clearTimeout(timer);
     }
-  }, [currentIndex, volume]);
+  }, [currentIndex, volume, isMuted]);
 
-  const togglePlay = () => {
-    console.log("togglePlay called, current state:", { isPlaying, videoRef: !!videoRef.current });
-    if (videoRef.current) {
-      try {
-        if (isPlaying) {
-          videoRef.current.pause();
-          setIsPlaying(false);
-          console.log("Video paused");
+  const togglePlay = async () => {
+    if (!videoRef.current) return;
+    
+    try {
+      if (isPlaying) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+        console.log("Video paused");
+      } else {
+        // Ensure video is ready before playing
+        if (videoRef.current.readyState >= 2) {
+          await videoRef.current.play();
+          setIsPlaying(true);
+          console.log("Video playing successfully");
         } else {
-          // Ensure video is ready before playing
-          if (videoRef.current.readyState >= 2) { // HAVE_CURRENT_DATA
-            videoRef.current.play().then(() => {
-              setIsPlaying(true);
-              console.log("Video playing successfully");
-            }).catch((error) => {
-              console.log("Playback failed:", error);
-              setIsPlaying(false);
-            });
-          } else {
-            console.log("Video not ready yet");
-            // Wait for video to be ready
-            videoRef.current.addEventListener('canplay', () => {
-              videoRef.current?.play().then(() => {
+          console.log("Video not ready, waiting...");
+          // Wait for video to be ready
+          const playWhenReady = () => {
+            if (videoRef.current) {
+              videoRef.current.play().then(() => {
                 setIsPlaying(true);
                 console.log("Video playing after ready");
               }).catch((error) => {
-                console.log("Playback failed after ready:", error);
+                console.log("Playback failed:", error);
                 setIsPlaying(false);
               });
-            }, { once: true });
-          }
+            }
+          };
+          
+          videoRef.current.addEventListener('canplay', playWhenReady, { once: true });
         }
-      } catch (error) {
-        console.log("Error in togglePlay:", error);
-        setIsPlaying(false);
       }
+    } catch (error) {
+      console.log("Error in togglePlay:", error);
+      setIsPlaying(false);
     }
   };
 
@@ -161,24 +163,31 @@ export function AppleCardsCarousel({
     setVolume(newVolume);
     if (videoRef.current) {
       videoRef.current.volume = newVolume;
+      // If volume is set to 0, mute the video
       if (newVolume === 0) {
         setIsMuted(true);
         videoRef.current.muted = true;
-      } else if (isMuted) {
-        setIsMuted(false);
-        videoRef.current.muted = false;
+      } else {
+        // If volume is increased from 0, unmute
+        if (isMuted) {
+          setIsMuted(false);
+          videoRef.current.muted = false;
+        }
       }
     }
   };
 
   const handleMuteToggle = () => {
     if (videoRef.current) {
-      if (isMuted) {
-        videoRef.current.muted = false;
-        setIsMuted(false);
-      } else {
-        videoRef.current.muted = true;
-        setIsMuted(true);
+      const newMutedState = !isMuted;
+      setIsMuted(newMutedState);
+      videoRef.current.muted = newMutedState;
+      
+      // If unmuting and volume was 0, set it to a reasonable level
+      if (!newMutedState && volume === 0) {
+        const newVolume = 0.5;
+        setVolume(newVolume);
+        videoRef.current.volume = newVolume;
       }
     }
   };
@@ -239,8 +248,10 @@ export function AppleCardsCarousel({
                   });
                   if (videoRef.current) {
                     videoRef.current.volume = volume;
-                    // Sync playing state
-                    setIsPlaying(!videoRef.current.paused && !videoRef.current.ended);
+                    // Ensure mute state is consistent
+                    videoRef.current.muted = isMuted;
+                    // Start paused
+                    setIsPlaying(false);
                   }
                 }}
                 onLoadedMetadata={() => {

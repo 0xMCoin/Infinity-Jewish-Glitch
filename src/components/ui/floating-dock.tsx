@@ -21,7 +21,6 @@ import {
 } from "react-icons/fa";
 import { SiSolana } from "react-icons/si";
 
-// Componente Footer minimalista usando Floating Dock
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -54,9 +53,8 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative py-8 overflow-hidden">
+    <footer className="relative py-8 pt-16 overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4">
-        {/* Floating Dock */}
         <div className="flex justify-center mb-8">
           <FloatingDock
             items={dockItems}
@@ -69,6 +67,20 @@ export function Footer() {
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
             © {currentYear} Rodolfo The Rat. All rights reserved.
           </p>
+          <div className="text-xs text-gray-400 dark:text-gray-500 max-w-2xl mx-auto">
+            <p className="mb-1">
+              <strong>DISCLAIMER:</strong> This is a meme coin created for
+              entertainment purposes only.
+            </p>
+            <p className="mb-1">
+              Cryptocurrency investments carry significant risks. Never invest
+              more than you can afford to lose.
+            </p>
+            <p>
+              This project is not financial advice. DYOR (Do Your Own Research)
+              and trade responsibly.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

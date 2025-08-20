@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   FaBars,
   FaInstagram,
@@ -25,12 +25,14 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [ethAmount, setEthAmount] = useState("0.003");
   const [tokenAmount, setTokenAmount] = useState("66,420.00");
-  const [leftVideoMuted, setLeftVideoMuted] = useState(true);
-  const [rightVideoMuted, setRightVideoMuted] = useState(true);
+  const [leftVideoMuted, setLeftVideoMuted] = useState(true); // Ambos mutados inicialmente
+  const [rightVideoMuted, setRightVideoMuted] = useState(true); // Ambos mutados inicialmente
   const [leftVideoVolume, setLeftVideoVolume] = useState(0.5);
-  const [rightVideoVolume, setRightVideoVolume] = useState(0.5);
-  const [leftVideoPlaying, setLeftVideoPlaying] = useState(false);
-  const [rightVideoPlaying, setRightVideoPlaying] = useState(false);
+  const [rightVideoVolume, setRightVideoVolume] = useState(0.7);
+  const [leftVideoPlaying, setLeftVideoPlaying] = useState(false); // Ambos pausados inicialmente
+  const [rightVideoPlaying, setRightVideoPlaying] = useState(false); // Ambos pausados inicialmente
+  const [audioEnabled, setAudioEnabled] = useState(false); // Controla se o áudio foi habilitado
+  const [showAudioModal, setShowAudioModal] = useState(true); // Controla a exibição do modal
   const leftVideoRef = useRef<HTMLVideoElement>(null);
   const rightVideoRef = useRef<HTMLVideoElement>(null);
 
@@ -131,6 +133,58 @@ export default function Home() {
         rightVideoRef.current.muted = true;
         setRightVideoMuted(true);
       }
+    }
+  };
+
+  // Ensure videos start muted initially
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (leftVideoRef.current) {
+        leftVideoRef.current.muted = true; // Mantém mutado
+        leftVideoRef.current.volume = leftVideoVolume;
+        // Não tenta reproduzir automaticamente
+        setLeftVideoPlaying(false);
+        console.log("Left video ready, paused and muted");
+      }
+      if (rightVideoRef.current) {
+        rightVideoRef.current.muted = true; // Mantém mutado
+        rightVideoRef.current.volume = rightVideoVolume;
+        // Não tenta reproduzir automaticamente
+        setRightVideoPlaying(false);
+        console.log("Right video ready, paused and muted");
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [leftVideoVolume, rightVideoVolume]);
+
+  // Function to enable audio on modal click
+  const enableAudio = () => {
+    if (leftVideoRef.current) {
+      leftVideoRef.current.play().then(() => {
+        setLeftVideoPlaying(true); // Marca como reproduzindo
+        // Mantém mutado
+        console.log("Left video started playing (muted)");
+      }).catch((error) => {
+        console.log("Failed to start left video:", error);
+      });
+    }
+    
+    if (rightVideoRef.current) {
+      rightVideoRef.current.muted = false; // Habilita áudio
+      rightVideoRef.current.volume = rightVideoVolume;
+      rightVideoRef.current
+        .play()
+        .then(() => {
+          setRightVideoPlaying(true); // Marca como reproduzindo
+          setRightVideoMuted(false);
+          setAudioEnabled(true);
+          setShowAudioModal(false); // Esconde o modal
+          console.log("Right video started playing with audio!");
+        })
+        .catch((error) => {
+          console.log("Failed to start right video:", error);
+        });
     }
   };
 
@@ -240,9 +294,9 @@ export default function Home() {
               <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] group">
                 <motion.video
                   ref={leftVideoRef}
-                  autoPlay
-                  muted={leftVideoMuted}
+                  muted={true} // Mantém mutado
                   loop
+                  playsInline
                   className="w-full h-full object-cover rounded-lg shadow-2xl border-2 sm:border-4 border-black dark:border-yellow-400 group-hover:scale-105 transition-transform duration-300"
                   whileHover={{
                     scale: 1.05,
@@ -251,9 +305,12 @@ export default function Home() {
                   }}
                   onPlay={() => setLeftVideoPlaying(true)}
                   onPause={() => setLeftVideoPlaying(false)}
-                  onLoadedMetadata={() => {
+                  onLoadedData={() => {
                     if (leftVideoRef.current) {
                       leftVideoRef.current.volume = leftVideoVolume;
+                      leftVideoRef.current.muted = true; // Mantém mutado
+                      // Não tenta reproduzir automaticamente
+                      setLeftVideoPlaying(false);
                     }
                   }}
                 >
@@ -463,9 +520,9 @@ export default function Home() {
               <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] group">
                 <motion.video
                   ref={rightVideoRef}
-                  autoPlay
-                  muted={rightVideoMuted}
+                  muted={true} // Mantém mutado inicialmente
                   loop
+                  playsInline
                   className="w-full h-full object-cover rounded-lg shadow-2xl border-2 sm:border-4 border-black dark:border-yellow-400 group-hover:scale-105 transition-transform duration-300"
                   whileHover={{
                     scale: 1.05,
@@ -474,9 +531,12 @@ export default function Home() {
                   }}
                   onPlay={() => setRightVideoPlaying(true)}
                   onPause={() => setRightVideoPlaying(false)}
-                  onLoadedMetadata={() => {
+                  onLoadedData={() => {
                     if (rightVideoRef.current) {
                       rightVideoRef.current.volume = rightVideoVolume;
+                      rightVideoRef.current.muted = true; // Mantém mutado
+                      // Não tenta reproduzir automaticamente
+                      setRightVideoPlaying(false);
                     }
                   }}
                 >
@@ -588,8 +648,8 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                The most entertaining meme coin in the crypto space! Our dancing
-                rats are here to bring joy and profits to the community.
+                TikTok was too small! <br /> Now the king of dance
+                rules memecoins!
               </motion.p>
             </motion.div>
 
@@ -609,7 +669,7 @@ export default function Home() {
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
                   >
-                    WATCH THE DANCE
+                    WANNA SEE THE MOVES?
                   </motion.h3>
                   <motion.p
                     className="text-gray-700 dark:text-gray-300"
@@ -618,7 +678,7 @@ export default function Home() {
                     transition={{ duration: 0.6, delay: 0.2 }}
                     viewport={{ once: true }}
                   >
-                    Hover to see the video in 3D perspective!
+                    Hover like a degen and watch the dance pop!
                   </motion.p>
                 </div>
 
@@ -672,7 +732,7 @@ export default function Home() {
                       description:
                         "Built by the community, for the community. Every rat has a voice!",
                       features: [
-                        "DAO Governance",
+                        "CTO Governance",
                         "Community Voting",
                         "Transparent Development",
                       ],
@@ -680,9 +740,9 @@ export default function Home() {
                     {
                       title: "Entertainment First",
                       description:
-                        "We're not just another meme coin - we're a movement of joy and dance!",
+                        "Forget boring memes. We're pumping vibes, & dance moves!",
                       features: [
-                        "Daily Content",
+                        "Community Airdrops",
                         "Dance Challenges",
                         "Viral Marketing",
                       ],
@@ -690,7 +750,7 @@ export default function Home() {
                     {
                       title: "Moon Mission",
                       description:
-                        "Our rats are dancing their way to the moon, one step at a time!",
+                        "One tiny step for a rat, one giant dance move for memecoins!",
                       features: [
                         "Strategic Partnerships",
                         "Exchange Listings",
@@ -792,6 +852,37 @@ export default function Home() {
 
         <CallToAction />
         <Footer />
+
+        {showAudioModal && (
+          <motion.div
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div
+              className="bg-gradient-to-br from-yellow-400 to-orange-500 p-8 rounded-2xl shadow-2xl text-center max-w-md mx-auto"
+              initial={{ scale: 0.8, y: 50 }}
+              animate={{ scale: 1, y: 0 }}
+              transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
+            >
+              <h3 className="text-2xl font-black text-black mb-4">
+                START VIDEO WITH AUDIO!
+              </h3>
+              <p className="text-black/80 mb-6 text-lg">
+                Click here to start the dance and enjoy the music!
+              </p>
+              <motion.button
+                onClick={enableAudio}
+                className="bg-black text-yellow-400 px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                LET'S DANCE!
+              </motion.button>
+            </motion.div>
+          </motion.div>
+        )}
       </div>
     </BackgroundLines>
   );
