@@ -22,7 +22,7 @@ export function GalleryShowcase({ videos, className }: GalleryShowcaseProps) {
             onClick={() => setViewMode("carousel")}
             className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
               viewMode === "carousel"
-                ? "bg-[#ace4bb] text-black shadow-lg"
+                ? "bg-emerald-500 text-white shadow-lg"
                 : "text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
             }`}
           >
@@ -32,7 +32,7 @@ export function GalleryShowcase({ videos, className }: GalleryShowcaseProps) {
             onClick={() => setViewMode("grid")}
             className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
               viewMode === "grid"
-                ? "bg-[#ace4bb] text-black shadow-lg"
+                ? "bg-emerald-500 text-white shadow-lg"
                 : "text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
             }`}
           >

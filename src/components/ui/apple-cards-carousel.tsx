@@ -188,7 +188,7 @@ export function AppleCardsCarousel({
         <div className="absolute top-6 left-6 flex items-center space-x-3 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 z-20">
           <button
             onClick={handleMuteToggle}
-            className="w-8 h-8 flex items-center justify-center text-white hover:text-[#ace4bb] transition-colors duration-200"
+            className="w-8 h-8 flex items-center justify-center text-white hover:text-emerald-400 transition-colors duration-200"
             title={isMuted ? "Unmute Video" : "Mute Video"}
           >
             {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
@@ -204,7 +204,7 @@ export function AppleCardsCarousel({
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
             />
             <div
-              className="h-full bg-[#ace4bb] rounded-full transition-all duration-200"
+              className="h-full bg-emerald-400 rounded-full transition-all duration-200"
               style={{ width: `${volume * 100}%` }}
             />
           </div>
@@ -219,7 +219,7 @@ export function AppleCardsCarousel({
             onClick={() => goToSlide(index)}
             className={`relative w-24 h-24 rounded-2xl overflow-hidden transition-all duration-300 ${
               index === currentIndex
-                ? "ring-4 ring-[#ace4bb] scale-110 shadow-lg"
+                ? "ring-4 ring-emerald-400 scale-110 shadow-lg"
                 : "hover:scale-105 hover:shadow-md"
             }`}
           >
@@ -231,7 +231,7 @@ export function AppleCardsCarousel({
             />
             {index === currentIndex && (
               <motion.div
-                className="absolute inset-0 bg-[#ace4bb]/20"
+                className="absolute inset-0 bg-emerald-400/20"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
@@ -244,7 +244,7 @@ export function AppleCardsCarousel({
       {/* Progress Bar */}
       <div className="mt-6 w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
         <motion.div
-          className="bg-[#ace4bb] h-1.5 rounded-full"
+          className="bg-emerald-400 h-1.5 rounded-full"
           initial={{ width: 0 }}
           animate={{ width: `${((currentIndex + 1) / videos.length) * 100}%` }}
           transition={{ duration: 0.5, ease: "easeOut" }}

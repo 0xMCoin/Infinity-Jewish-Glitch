@@ -20,6 +20,7 @@ import { GalleryShowcase } from "@/components/ui/gallery-showcase";
 import { placeholderVideos } from "@/data/gallery-data";
 import { CallToAction } from "@/components/ui/call-to-action";
 import { Footer } from "@/components/ui/floating-dock";
+import { SiSolana } from "react-icons/si";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,8 +30,8 @@ export default function Home() {
   const [rightVideoPlaying, setRightVideoPlaying] = useState(false);
   const [leftVideoVolume, setLeftVideoVolume] = useState(0.7);
   const [rightVideoVolume, setRightVideoVolume] = useState(0.7);
-  const [leftVideoMuted, setLeftVideoMuted] = useState(true); // Novo estado para mute
-  const [rightVideoMuted, setRightVideoMuted] = useState(true); // Novo estado para mute
+  const [leftVideoMuted, setLeftVideoMuted] = useState(true);
+  const [rightVideoMuted, setRightVideoMuted] = useState(true);
   const [showAudioModal, setShowAudioModal] = useState(true);
   const leftVideoRef = useRef<HTMLVideoElement>(null);
   const rightVideoRef = useRef<HTMLVideoElement>(null);
@@ -47,8 +48,8 @@ export default function Home() {
     "/videos/rat_meme9.mp4",
   ];
 
-  const totalRaised = 141476;
-  const goal = 340000;
+  const totalRaised = 100000;
+  const goal = 1000000;
   const progress = (totalRaised / goal) * 100;
   const currentPrice = 0.0003;
   const nextPrice = 0.0004;
@@ -83,12 +84,10 @@ export default function Home() {
     setLeftVideoVolume(newVolume);
     if (leftVideoRef.current) {
       leftVideoRef.current.volume = newVolume;
-      // Se o volume for 0, muta o vídeo
       if (newVolume === 0) {
         setLeftVideoMuted(true);
         leftVideoRef.current.muted = true;
       } else {
-        // Se o volume for aumentado de 0, desmuta
         if (leftVideoMuted) {
           setLeftVideoMuted(false);
           leftVideoRef.current.muted = false;
@@ -101,12 +100,10 @@ export default function Home() {
     setRightVideoVolume(newVolume);
     if (rightVideoRef.current) {
       rightVideoRef.current.volume = newVolume;
-      // Se o volume for 0, muta o vídeo
       if (newVolume === 0) {
         setRightVideoMuted(true);
         rightVideoRef.current.muted = true;
       } else {
-        // Se o volume for aumentado de 0, desmuta
         if (rightVideoMuted) {
           setRightVideoMuted(false);
           rightVideoRef.current.muted = false;
@@ -121,7 +118,6 @@ export default function Home() {
       setLeftVideoMuted(newMutedState);
       leftVideoRef.current.muted = newMutedState;
 
-      // Se desmutando e o volume era 0, define um volume razoável
       if (!newMutedState && leftVideoVolume === 0) {
         const newVolume = 0.5;
         setLeftVideoVolume(newVolume);
@@ -136,7 +132,6 @@ export default function Home() {
       setRightVideoMuted(newMutedState);
       rightVideoRef.current.muted = newMutedState;
 
-      // Se desmutando e o volume era 0, define um volume razoável
       if (!newMutedState && rightVideoVolume === 0) {
         const newVolume = 0.5;
         setRightVideoVolume(newVolume);
@@ -174,8 +169,8 @@ export default function Home() {
 
   return (
     <BackgroundLines
-      className="w-full text-black relative min-h-screen"
-      lineColor="rgb(172, 228, 187)"
+      className="w-full text-gray-900 dark:text-gray-100 relative min-h-screen bg-gray-50"
+      lineColor="rgb(34, 197, 94)"
       lineWidth={1}
       lineCount={30}
       animationDuration={12}
@@ -184,8 +179,8 @@ export default function Home() {
       {/* Content Overlay */}
       <div className="relative z-10">
         {/* Scrolling Header */}
-        <div className="bg-black dark:bg-gray-900 text-white dark:text-gray-100 py-2 overflow-hidden relative z-20">
-          <div className="animate-marquee whitespace-nowrap text-sm font-bold">
+        <div className="bg-gradient-to-r from-emerald-600 to-green-600 text-white py-2 overflow-hidden relative z-20 shadow-lg">
+          <div className="animate-marquee whitespace-nowrap text-sm font-bold font-arcade">
             <span className="mx-8">
               RODOLFO THE RAT IS THE NEXT BIG THING IN CRYPTO
             </span>
@@ -198,10 +193,10 @@ export default function Home() {
         </div>
 
         {/* Main Header */}
-        <header className="bg-[#98c8ac] dark:bg-[#8caca4] px-4 py-3 flex items-center justify-between shadow-lg relative z-20 transition-colors duration-300">
+        <header className="bg-gradient-to-r from-emerald-500 to-green-500 dark:from-emerald-600 dark:to-green-600 px-4 py-3 flex items-center justify-between shadow-xl relative z-20 transition-all duration-300">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-black hover:text-[#8caca4] dark:hover:text-[#8caca4] transition-colors hover:scale-110 transform duration-200"
+            className="text-white hover:text-emerald-200 dark:hover:text-emerald-200 transition-colors hover:scale-110 transform duration-200"
           >
             <FaBars size={24} />
           </button>
@@ -210,19 +205,19 @@ export default function Home() {
             <ThemeToggle />
             <a
               href="#"
-              className="text-black hover:text-[#8caca4] dark:hover:text-[#8caca4] transition-colors hover:scale-110 transform duration-200"
+              className="text-white hover:text-emerald-200 dark:hover:text-emerald-200 transition-colors hover:scale-110 transform duration-200"
             >
               <FaInstagram size={20} />
             </a>
             <a
               href="#"
-              className="text-black hover:text-[#8caca4] dark:hover:text-[#8caca4] transition-colors hover:scale-110 transform duration-200"
+              className="text-white hover:text-emerald-200 dark:hover:text-emerald-200 transition-colors hover:scale-110 transform duration-200"
             >
               <FaDiscord size={20} />
             </a>
             <a
               href="#"
-              className="text-black hover:text-[#8caca4] dark:hover:text-[#8caca4] transition-colors hover:scale-110 transform duration-200"
+              className="text-white hover:text-emerald-200 dark:hover:text-emerald-200 transition-colors hover:scale-110 transform duration-200"
             >
               <FaTwitter size={20} />
             </a>
@@ -231,33 +226,33 @@ export default function Home() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="absolute top-24 left-0 w-64 bg-black dark:bg-gray-900 text-white dark:text-gray-100 p-4 z-50 rounded-br-lg shadow-2xl animate-pulse">
+          <div className="absolute top-24 left-0 w-64 bg-gray-900 dark:bg-gray-800 text-white p-4 z-50 rounded-br-lg shadow-2xl animate-pulse border border-emerald-500/30">
             <nav className="space-y-4">
               <a
                 href="#about"
                 onClick={() => setIsMenuOpen(false)}
-                className="block hover:text-[#ace4bb] transition-colors hover:translate-x-2 transform duration-200"
+                className="block hover:text-emerald-400 transition-colors hover:translate-x-2 transform duration-200"
               >
                 About
               </a>
               <a
                 href="#tokenomics"
                 onClick={() => setIsMenuOpen(false)}
-                className="block hover:text-[#ace4bb] transition-colors hover:translate-x-2 transform duration-200"
+                className="block hover:text-emerald-400 transition-colors hover:translate-x-2 transform duration-200"
               >
                 Tokenomics
               </a>
               <a
                 href="#roadmap"
                 onClick={() => setIsMenuOpen(false)}
-                className="block hover:text-[#ace4bb] transition-colors hover:translate-x-2 transform duration-200"
+                className="block hover:text-emerald-400 transition-colors hover:translate-x-2 transform duration-200"
               >
                 Roadmap
               </a>
               <a
                 href="#community"
                 onClick={() => setIsMenuOpen(false)}
-                className="block hover:text-[#ace4bb] transition-colors hover:translate-x-2 transform duration-200"
+                className="block hover:text-emerald-400 transition-colors hover:translate-x-2 transform duration-200"
               >
                 Community
               </a>
@@ -278,10 +273,10 @@ export default function Home() {
               <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] group">
                 <motion.video
                   ref={leftVideoRef}
-                  muted={true} // Mantém mutado
+                  muted={true}
                   loop
                   playsInline
-                  className="w-full h-full object-cover rounded-lg shadow-2xl border-2 sm:border-4 border-black dark:border-[#ace4bb] group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover rounded-lg shadow-2xl border-2 sm:border-4 border-emerald-500 dark:border-emerald-400 group-hover:scale-105 transition-transform duration-300"
                   whileHover={{
                     scale: 1.05,
                     rotateY: 10,
@@ -291,8 +286,8 @@ export default function Home() {
                   onPause={() => setLeftVideoPlaying(false)}
                   onLoadedData={() => {
                     if (leftVideoRef.current) {
-                      leftVideoRef.current.muted = true; // Sempre mutado
-                      leftVideoRef.current.volume = 0; // Sem volume
+                      leftVideoRef.current.muted = true;
+                      leftVideoRef.current.volume = 0;
                       setLeftVideoPlaying(false);
                     }
                   }}
@@ -305,7 +300,7 @@ export default function Home() {
                   {/* Play/Pause Button */}
                   <button
                     onClick={toggleLeftVideoPlay}
-                    className="w-8 h-8 sm:w-10 sm:h-10 bg-black/70 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/90 transition-all duration-200 hover:scale-110 active:scale-95"
+                    className="w-8 h-8 sm:w-10 sm:h-10 bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-emerald-600 transition-all duration-200 hover:scale-110 active:scale-95"
                   >
                     {leftVideoPlaying ? (
                       <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-sm"></div>
@@ -315,10 +310,10 @@ export default function Home() {
                   </button>
 
                   {/* Volume Control */}
-                  <div className="flex items-center space-x-2 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
+                  <div className="flex items-center space-x-2 bg-black/80 backdrop-blur-sm rounded-full px-2 py-1">
                     <button
                       onClick={handleLeftVideoMuteToggle}
-                      className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-white hover:text-[#ace4bb] transition-colors duration-200"
+                      className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-white hover:text-emerald-400 transition-colors duration-200"
                     >
                       {leftVideoMuted ? (
                         <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-sm"></div>
@@ -332,7 +327,7 @@ export default function Home() {
                         min="0"
                         max="1"
                         step="0.1"
-                        value={leftVideoMuted ? 0 : leftVideoVolume} // Usa o estado de mute
+                        value={leftVideoMuted ? 0 : leftVideoVolume}
                         onChange={(e) =>
                           handleLeftVideoVolumeChange(
                             parseFloat(e.target.value)
@@ -341,7 +336,7 @@ export default function Home() {
                         className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                       />
                       <div
-                        className="h-full bg-[#ace4bb] rounded-full transition-all duration-200"
+                        className="h-full bg-emerald-400 rounded-full transition-all duration-200"
                         style={{
                           width: `${
                             (leftVideoMuted ? 0 : leftVideoVolume) * 100
@@ -353,7 +348,7 @@ export default function Home() {
                 </div>
 
                 {/* Video Label */}
-                <div className="absolute -bottom-2 -right-2 bg-black dark:bg-gray-800 text-[#ace4bb] px-2 py-1 rounded text-xs font-bold">
+                <div className="absolute -bottom-2 -right-2 bg-emerald-600 dark:bg-emerald-700 text-white px-2 py-1 rounded text-xs font-bold shadow-lg">
                   LIVE DANCE
                 </div>
               </div>
@@ -368,10 +363,10 @@ export default function Home() {
             >
               {/* Compact Buy Card */}
               <div className="relative group">
-                <div className="relative backdrop-blur-sm bg-black/80 dark:bg-gray-900/80 text-white dark:text-gray-100 p-4 sm:p-6 rounded-xl shadow-2xl border border-[#ace4bb]/20">
+                <div className="relative backdrop-blur-sm bg-gradient-to-br from-gray-900/95 to-gray-800/95 dark:from-gray-800/95 dark:to-gray-900/95 text-white p-4 sm:p-6 rounded-xl shadow-2xl border border-emerald-500/30">
                   {/* Header */}
                   <div className="text-center mb-4 sm:mb-6">
-                    <h2 className="text-xl sm:text-2xl font-black text-[#ace4bb] mb-2">
+                    <h2 className="text-xl sm:text-2xl font-black text-emerald-400 mb-2 font-arcade text-arcade-shadow">
                       BUY $RAT NOW!
                     </h2>
                   </div>
@@ -379,36 +374,40 @@ export default function Home() {
                   {/* Progress */}
                   <div className="mb-4 sm:mb-6">
                     <div className="text-center mb-3">
-                      <p className="text-2xl sm:text-3xl font-black text-[#ace4bb]">
+                      <p className="text-2xl sm:text-3xl font-black text-emerald-400">
                         ${totalRaised.toLocaleString()}
                       </p>
-                      <p className="text-gray-400 text-xs sm:text-sm">
+                      <p className="text-gray-300 text-xs sm:text-sm">
                         Goal: ${goal.toLocaleString()}
                       </p>
                     </div>
 
                     <div className="w-full bg-gray-700 dark:bg-gray-600 rounded-full h-2 mb-2">
                       <div
-                        className="h-2 rounded-full bg-gradient-to-r from-[#ace4bb] to-[#98c8ac] transition-all duration-1000"
+                        className="h-2 rounded-full bg-gradient-to-r from-emerald-400 to-green-500 transition-all duration-1000"
                         style={{ width: `${progress}%` }}
                       />
                     </div>
-                    <p className="text-center text-[#ace4bb] font-bold text-xs sm:text-sm">
+                    <p className="text-center text-emerald-400 font-bold text-xs sm:text-sm">
                       {progress.toFixed(1)}%
                     </p>
                   </div>
 
                   {/* Price Info */}
                   <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
-                    <div className="text-center p-2 sm:p-3 bg-gray-800/50 rounded-lg">
-                      <p className="text-gray-400 text-xs mb-1">CURRENT</p>
-                      <p className="text-[#ace4bb] font-bold text-sm sm:text-base">
+                    <div className="text-center p-2 sm:p-3 bg-gray-800/70 rounded-lg border border-gray-700">
+                      <p className="text-gray-300 text-xs mb-1">
+                        CURRENT PRICE
+                      </p>
+                      <p className="text-emerald-400 font-bold text-sm sm:text-base">
                         ${currentPrice}
                       </p>
                     </div>
-                    <div className="text-center p-2 sm:p-3 bg-gray-800/50 rounded-lg">
-                      <p className="text-gray-400 text-xs mb-1">NEXT</p>
-                      <p className="text-[#ace4bb] font-bold text-sm sm:text-base">
+                    <div className="text-center p-2 sm:p-3 bg-gray-800/70 rounded-lg border border-gray-700">
+                      <p className="text-gray-300 text-xs mb-1">
+                        CURRENT MARKET CAP
+                      </p>
+                      <p className="text-emerald-400 font-bold text-sm sm:text-base">
                         ${nextPrice}
                       </p>
                     </div>
@@ -417,21 +416,17 @@ export default function Home() {
                   {/* Network Selection */}
                   <div className="mb-4 sm:mb-6">
                     <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
-                      <button className="flex-1 p-2 sm:p-3 bg-[#98c8ac]/10 border border-[#ace4bb]/50 rounded-lg text-[#ace4bb] text-xs sm:text-sm font-medium">
-                        <FaEthereum className="inline mr-2" />
-                        ETHEREUM
-                      </button>
-                      <button className="flex-1 p-2 sm:p-3 bg-gray-800/50 border border-gray-600 rounded-lg text-gray-400 text-xs sm:text-sm font-medium hover:border-[#ace4bb]/30 transition-colors">
-                        <FaEthereum className="inline mr-2" />
-                        POLYGON
+                      <button className="flex-1 p-2 sm:p-3 bg-emerald-600/20 border border-emerald-500/50 rounded-lg text-emerald-400 text-xs sm:text-sm font-medium hover:bg-emerald-600/30 transition-colors">
+                        <SiSolana className="inline mr-2" />
+                        SOLANA
                       </button>
                     </div>
                   </div>
 
                   {/* Transaction Inputs */}
                   <div className="space-y-3 mb-4 sm:mb-6">
-                    <div className="p-2 sm:p-3 bg-gray-800/50 rounded-lg">
-                      <label className="text-gray-400 text-xs block mb-1">
+                    <div className="p-2 sm:p-3 bg-gray-800/70 rounded-lg border border-gray-700">
+                      <label className="text-gray-300 text-xs block mb-1">
                         YOU PAY
                       </label>
                       <div className="flex items-center space-x-2">
@@ -442,21 +437,21 @@ export default function Home() {
                           onChange={(e) => setEthAmount(e.target.value)}
                           className="flex-1 bg-transparent text-white text-base sm:text-lg font-bold outline-none"
                         />
-                        <span className="text-[#8caca4] text-xs sm:text-sm">
-                          ETH
+                        <span className="text-emerald-400 text-xs sm:text-sm">
+                          SOL
                         </span>
                       </div>
                     </div>
 
-                    <div className="p-2 sm:p-3 bg-gray-800/50 rounded-lg">
-                      <label className="text-gray-400 text-xs block mb-1">
+                    <div className="p-2 sm:p-3 bg-gray-800/70 rounded-lg border border-gray-700">
+                      <label className="text-gray-300 text-xs block mb-1">
                         YOU RECEIVE
                       </label>
                       <div className="flex items-center space-x-2">
                         <span className="flex-1 text-white text-base sm:text-lg font-bold">
                           {tokenAmount}
                         </span>
-                        <span className="text-[#ace4bb] text-xs sm:text-sm">
+                        <span className="text-emerald-400 text-xs sm:text-sm">
                           RAT
                         </span>
                       </div>
@@ -467,18 +462,18 @@ export default function Home() {
                   <div className="space-y-3">
                     <motion.button
                       onClick={handleBuy}
-                      className="w-full p-2 sm:p-3 bg-gradient-to-r from-[#ace4bb] to-[#98c8ac] text-black font-bold rounded-lg shadow-lg text-sm sm:text-base"
+                      className="w-full p-2 sm:p-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold rounded-lg shadow-lg text-sm sm:text-base hover:from-emerald-600 hover:to-green-700 transition-all duration-300"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
                       <FaWallet className="inline mr-2" />
-                      CONNECT WALLET
+                      BUY NOW!
                     </motion.button>
                   </div>
 
                   {/* Floating Elements */}
-                  <div className="absolute top-3 right-3 w-2 h-2 bg-[#ace4bb] rounded-full animate-pulse"></div>
-                  <div className="absolute bottom-3 left-3 w-1.5 h-1.5 bg-[#98c8ac] rounded-full animate-pulse"></div>
+                  <div className="absolute top-3 right-3 w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                  <div className="absolute bottom-3 left-3 w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
                 </div>
               </div>
             </motion.div>
@@ -493,10 +488,10 @@ export default function Home() {
               <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] group">
                 <motion.video
                   ref={rightVideoRef}
-                  muted={true} // Mantém mutado inicialmente
+                  muted={true}
                   loop
                   playsInline
-                  className="w-full h-full object-cover rounded-lg shadow-2xl border-2 sm:border-4 border-black dark:border-[#ace4bb] group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover rounded-lg shadow-2xl border-2 sm:border-4 border-emerald-500 dark:border-emerald-400 group-hover:scale-105 transition-transform duration-300"
                   whileHover={{
                     scale: 1.05,
                     rotateY: 10,
@@ -506,8 +501,8 @@ export default function Home() {
                   onPause={() => setRightVideoPlaying(false)}
                   onLoadedData={() => {
                     if (rightVideoRef.current) {
-                      rightVideoRef.current.muted = true; // Sempre mutado
-                      rightVideoRef.current.volume = 0; // Sem volume
+                      rightVideoRef.current.muted = true;
+                      rightVideoRef.current.volume = 0;
                       setRightVideoPlaying(false);
                     }
                   }}
@@ -520,7 +515,7 @@ export default function Home() {
                   {/* Play/Pause Button */}
                   <button
                     onClick={toggleRightVideoPlay}
-                    className="w-8 h-8 sm:w-10 sm:h-10 bg-black/70 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/90 transition-all duration-200 hover:scale-110 active:scale-95"
+                    className="w-8 h-8 sm:w-10 sm:h-10 bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-emerald-600 transition-all duration-200 hover:scale-110 active:scale-95"
                   >
                     {rightVideoPlaying ? (
                       <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-sm"></div>
@@ -530,10 +525,10 @@ export default function Home() {
                   </button>
 
                   {/* Volume Control */}
-                  <div className="flex items-center space-x-2 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
+                  <div className="flex items-center space-x-2 bg-black/80 backdrop-blur-sm rounded-full px-2 py-1">
                     <button
                       onClick={handleRightVideoMuteToggle}
-                      className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-white hover:text-[#ace4bb] transition-colors duration-200"
+                      className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-white hover:text-emerald-400 transition-colors duration-200"
                     >
                       {rightVideoMuted ? (
                         <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-sm"></div>
@@ -547,7 +542,7 @@ export default function Home() {
                         min="0"
                         max="1"
                         step="0.1"
-                        value={rightVideoMuted ? 0 : rightVideoVolume} // Usa o estado de mute
+                        value={rightVideoMuted ? 0 : rightVideoVolume}
                         onChange={(e) =>
                           handleRightVideoVolumeChange(
                             parseFloat(e.target.value)
@@ -556,7 +551,7 @@ export default function Home() {
                         className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                       />
                       <div
-                        className="h-full bg-[#ace4bb] rounded-full transition-all duration-200"
+                        className="h-full bg-emerald-400 rounded-full transition-all duration-200"
                         style={{
                           width: `${
                             (rightVideoMuted ? 0 : rightVideoVolume) * 100
@@ -568,7 +563,7 @@ export default function Home() {
                 </div>
 
                 {/* Video Label */}
-                <div className="absolute -bottom-2 -left-2 bg-black dark:bg-gray-800 text-[#ace4bb] px-2 py-1 rounded text-xs font-bold">
+                <div className="absolute -bottom-2 -left-2 bg-emerald-600 dark:bg-emerald-700 text-white px-2 py-1 rounded text-xs font-bold shadow-lg">
                   PARTY TIME
                 </div>
               </div>
@@ -577,14 +572,14 @@ export default function Home() {
 
           {/* Bottom Large Text */}
           <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 hidden lg:flex w-full justify-center items-center">
-            <h1 className="text-6xl lg:text-8xl font-black tracking-wider text-black dark:text-white opacity-80 dark:opacity-90 select-none transition-colors duration-300">
+            <h1 className="text-6xl lg:text-8xl font-black tracking-wider text-gray-900 dark:text-white opacity-90 select-none transition-colors duration-300 font-arcade text-arcade-shadow">
               RODOLFO THE RAT
             </h1>
           </div>
 
           {/* Mobile Bottom Text */}
           <div className="lg:hidden text-center mt-6 sm:mt-8">
-            <h1 className="text-3xl sm:text-4xl font-black tracking-wider text-black dark:text-white opacity-80 dark:opacity-90 transition-colors duration-300">
+            <h1 className="text-3xl sm:text-4xl font-black tracking-wider text-gray-900 dark:text-white opacity-90 transition-colors duration-300 font-arcade text-arcade-shadow">
               RODOLFO THE RAT
             </h1>
           </div>
@@ -600,21 +595,21 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <motion.h2
-                className="text-6xl md:text-8xl font-black text-[#3c885c] mb-8"
+                className="text-6xl md:text-8xl font-black text-emerald-600 dark:text-emerald-500 mb-8 font-arcade text-arcade-shadow"
                 initial={{ opacity: 0, scale: 0.5 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
                 viewport={{ once: true }}
                 whileHover={{
                   scale: 1.05,
-                  textShadow: "0 0 30px rgba(152, 200, 172, 0.8)",
+                  textShadow: "0 0 30px rgba(16, 185, 129, 0.8)",
                   transition: { duration: 0.3 },
                 }}
               >
                 ABOUT RODOLFO
               </motion.h2>
               <motion.p
-                className="text-xl md:text-2xl text-gray-800 dark:text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed"
+                className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -635,7 +630,7 @@ export default function Home() {
               >
                 <div className="text-center">
                   <motion.h3
-                    className="text-3xl font-bold text-[#3c885c] mb-4"
+                    className="text-3xl font-bold text-emerald-600 dark:text-emerald-500 mb-4 font-arcade text-arcade-shadow"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
@@ -644,7 +639,7 @@ export default function Home() {
                     WANNA SEE THE MOVES?
                   </motion.h3>
                   <motion.p
-                    className="text-gray-700 dark:text-gray-300"
+                    className="text-gray-600 dark:text-gray-400"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
@@ -687,9 +682,8 @@ export default function Home() {
                 transition={{ duration: 1, type: "spring", stiffness: 100 }}
                 viewport={{ once: true }}
               >
-                {/* v */}
                 <motion.h3
-                  className="text-4xl font-bold text-[#3c885c] mb-8"
+                  className="text-4xl font-bold text-emerald-600 dark:text-emerald-500 mb-8 font-arcade text-arcade-shadow"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
@@ -747,22 +741,22 @@ export default function Home() {
                       <div className="flex items-start space-x-4">
                         <div className="flex-1">
                           <motion.h4
-                            className="font-bold text-black dark:text-white text-xl mb-2 group-hover:text-[#8caca4] transition-colors duration-300"
+                            className="font-bold text-gray-900 dark:text-white text-xl mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-500 transition-colors duration-300"
                             whileHover={{
-                              textShadow: "0 0 10px rgba(140, 172, 164, 0.5)",
+                              textShadow: "0 0 10px rgba(16, 185, 129, 0.5)",
                               transition: { duration: 0.3 },
                             }}
                           >
                             {item.title}
                           </motion.h4>
-                          <p className="text-gray-700 dark:text-gray-300 mb-3 leading-relaxed">
+                          <p className="text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">
                             {item.description}
                           </p>
                           <div className="space-y-1">
                             {item.features.map((feature, idx) => (
                               <motion.div
                                 key={idx}
-                                className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400"
+                                className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-500"
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 transition={{
@@ -771,7 +765,7 @@ export default function Home() {
                                 }}
                                 viewport={{ once: true }}
                               >
-                                <div className="w-2 h-2 bg-[#ace4bb] rounded-full"></div>
+                                <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
                                 <span>{feature}</span>
                               </motion.div>
                             ))}
@@ -791,7 +785,7 @@ export default function Home() {
             {/* Section Header */}
             <div className="text-center mb-16">
               <motion.h2
-                className="text-6xl font-black text-black dark:text-white mb-6"
+                className="text-6xl font-black text-gray-900 dark:text-white mb-6 font-arcade text-arcade-shadow"
                 initial={{ opacity: 0, scale: 0.5 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6 }}
@@ -800,7 +794,7 @@ export default function Home() {
                 RODOLFO VIDEO GALLERY
               </motion.h2>
               <motion.p
-                className="text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-3xl mx-auto"
+                className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -834,20 +828,20 @@ export default function Home() {
             transition={{ duration: 0.3 }}
           >
             <motion.div
-              className="bg-gradient-to-br from-[#ace4bb] to-[#98c8ac] p-8 rounded-2xl shadow-2xl text-center max-w-md mx-auto"
+              className="bg-gradient-to-br from-emerald-500 to-green-600 p-8 rounded-2xl shadow-2xl text-center max-w-md mx-auto"
               initial={{ scale: 0.8, y: 50 }}
               animate={{ scale: 1, y: 0 }}
               transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
             >
-              <h3 className="text-2xl font-black text-black mb-4">
+              <h3 className="text-2xl font-black text-white mb-4 font-arcade text-arcade-shadow">
                 START VIDEO WITH AUDIO!
               </h3>
-              <p className="text-black/80 mb-6 text-lg">
+              <p className="text-white/90 mb-6 text-lg">
                 Click here to start the dance and enjoy the music!
               </p>
               <motion.button
                 onClick={enableAudio}
-                className="bg-[#8caca4] text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-white text-emerald-600 px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-100"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

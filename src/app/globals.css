@@ -4,6 +4,81 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Font Variables */
+:root {
+  --font-press-start-2p: 'Press Start 2P', cursive;
+  --font-bangers: 'Bangers', cursive;
+  --font-bebas-neue: 'Bebas Neue', cursive;
+  --font-anton: 'Anton', sans-serif;
+}
+
+/* Custom Font Classes */
+.font-arcade {
+  font-family: var(--font-press-start-2p);
+}
+
+.font-cartoon {
+  font-family: var(--font-press-start-2p);
+}
+
+.font-meme {
+  font-family: var(--font-press-start-2p);
+}
+
+.font-viral {
+  font-family: var(--font-press-start-2p);
+}
+
+/* Arcade Text Effects */
+.text-arcade-shadow {
+  text-shadow: 
+    2px 2px 0px #000,
+    4px 4px 0px #333,
+    6px 6px 0px #666;
+}
+
+.text-cartoon-outline {
+  -webkit-text-stroke: 2px #000;
+  text-shadow: 
+    2px 2px 0px #fff,
+    4px 4px 0px #fff;
+}
+
+/* Meme Text Styles */
+.text-meme-glow {
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor;
+}
+
+.text-arcade-pixel {
+  font-family: var(--font-press-start-2p);
+  letter-spacing: 2px;
+  line-height: 1.2;
+}
+
+/* Responsive Font Sizes for Arcade */
+@media (max-width: 640px) {
+  .text-arcade-pixel {
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .text-arcade-pixel {
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .text-arcade-pixel {
+    font-size: 1.125rem;
+    letter-spacing: 2px;
+  }
+}
 html {
   scroll-behavior: smooth;
 }
@@ -11,28 +86,29 @@ html {
 body {
   font-family: 'Inter', sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: hsl(0 0% 95%);
 }
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 0 0% 95%;
     --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
+    --card: 0 0% 98%;
     --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
+    --popover: 0 0% 98%;
     --popover-foreground: 222.2 84% 4.9%;
     --primary: 45 93% 47%;
     --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 210 40% 96%;
+    --secondary: 210 40% 90%;
     --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
+    --muted: 210 40% 90%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
+    --accent: 210 40% 90%;
     --accent-foreground: 222.2 84% 4.9%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --border: 214.3 31.8% 85%;
+    --input: 214.3 31.8% 85%;
     --ring: 45 93% 47%;
     --radius: 0.5rem;
   }

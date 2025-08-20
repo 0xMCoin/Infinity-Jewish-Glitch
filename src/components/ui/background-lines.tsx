@@ -17,7 +17,7 @@ interface BackgroundLinesProps {
 export const BackgroundLines = ({
   className = "",
   children,
-  lineColor = "rgb(172, 228, 187)",
+  lineColor = "rgb(16, 185, 129)",
   lineWidth = 1,
   lineCount = 20,
   animationDuration = 20,
@@ -224,7 +224,7 @@ export const BackgroundLines = ({
         background:
           theme === "dark"
             ? `linear-gradient(135deg, rgba(17, 24, 39, 0.95) 0%, rgba(31, 41, 55, 0.95) 100%)`
-            : `linear-gradient(135deg, rgba(152, 200, 172, 0.08) 0%, rgba(140, 172, 164, 0.06) 100%)`,
+            : `linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(34, 197, 94, 0.06) 100%)`,
       }}
     >
       {/* Background Lines Verticais */}

@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "@/contexts/theme-context";
 
 const inter = Inter({ subsets: ["latin"] });
+const pressStart2P = Press_Start_2P({ 
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-press-start-2p"
+});
 
 export const metadata: Metadata = {
   title: "Rodolfo The Rat - Meme Coin",
@@ -22,7 +27,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/images/logo.png" sizes="64x64" />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} ${pressStart2P.variable}`}>
         <ThemeProvider>
           {children}
           <Toaster
@@ -32,7 +37,7 @@ export default function RootLayout({
               style: {
                 background: "#000",
                 color: "#fff",
-                border: "2px solid #ace4bb",
+                border: "2px solid rgb(16, 185, 129)",
               },
             }}
           />
