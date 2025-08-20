@@ -25,14 +25,13 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [ethAmount, setEthAmount] = useState("0.003");
   const [tokenAmount, setTokenAmount] = useState("66,420.00");
-  const [leftVideoMuted, setLeftVideoMuted] = useState(true); // Ambos mutados inicialmente
-  const [rightVideoMuted, setRightVideoMuted] = useState(true); // Ambos mutados inicialmente
-  const [leftVideoVolume, setLeftVideoVolume] = useState(0.5);
+  const [leftVideoPlaying, setLeftVideoPlaying] = useState(false);
+  const [rightVideoPlaying, setRightVideoPlaying] = useState(false);
+  const [leftVideoVolume, setLeftVideoVolume] = useState(0.7);
   const [rightVideoVolume, setRightVideoVolume] = useState(0.7);
-  const [leftVideoPlaying, setLeftVideoPlaying] = useState(false); // Ambos pausados inicialmente
-  const [rightVideoPlaying, setRightVideoPlaying] = useState(false); // Ambos pausados inicialmente
-  const [audioEnabled, setAudioEnabled] = useState(false); // Controla se o áudio foi habilitado
-  const [showAudioModal, setShowAudioModal] = useState(true); // Controla a exibição do modal
+  const [leftVideoMuted, setLeftVideoMuted] = useState(true); // Novo estado para mute
+  const [rightVideoMuted, setRightVideoMuted] = useState(true); // Novo estado para mute
+  const [showAudioModal, setShowAudioModal] = useState(true);
   const leftVideoRef = useRef<HTMLVideoElement>(null);
   const rightVideoRef = useRef<HTMLVideoElement>(null);
 
@@ -88,12 +87,16 @@ export default function Home() {
     setLeftVideoVolume(newVolume);
     if (leftVideoRef.current) {
       leftVideoRef.current.volume = newVolume;
+      // Se o volume for 0, muta o vídeo
       if (newVolume === 0) {
         setLeftVideoMuted(true);
         leftVideoRef.current.muted = true;
-      } else if (leftVideoMuted) {
-        setLeftVideoMuted(false);
-        leftVideoRef.current.muted = false;
+      } else {
+        // Se o volume for aumentado de 0, desmuta
+        if (leftVideoMuted) {
+          setLeftVideoMuted(false);
+          leftVideoRef.current.muted = false;
+        }
       }
     }
   };
@@ -102,89 +105,74 @@ export default function Home() {
     setRightVideoVolume(newVolume);
     if (rightVideoRef.current) {
       rightVideoRef.current.volume = newVolume;
+      // Se o volume for 0, muta o vídeo
       if (newVolume === 0) {
         setRightVideoMuted(true);
         rightVideoRef.current.muted = true;
-      } else if (rightVideoMuted) {
-        setRightVideoMuted(false);
-        rightVideoRef.current.muted = false;
+      } else {
+        // Se o volume for aumentado de 0, desmuta
+        if (rightVideoMuted) {
+          setRightVideoMuted(false);
+          rightVideoRef.current.muted = false;
+        }
       }
     }
   };
 
   const handleLeftVideoMuteToggle = () => {
     if (leftVideoRef.current) {
-      if (leftVideoMuted) {
-        leftVideoRef.current.muted = false;
-        setLeftVideoMuted(false);
-      } else {
-        leftVideoRef.current.muted = true;
-        setLeftVideoMuted(true);
+      const newMutedState = !leftVideoMuted;
+      setLeftVideoMuted(newMutedState);
+      leftVideoRef.current.muted = newMutedState;
+
+      // Se desmutando e o volume era 0, define um volume razoável
+      if (!newMutedState && leftVideoVolume === 0) {
+        const newVolume = 0.5;
+        setLeftVideoVolume(newVolume);
+        leftVideoRef.current.volume = newVolume;
       }
     }
   };
 
   const handleRightVideoMuteToggle = () => {
     if (rightVideoRef.current) {
-      if (rightVideoMuted) {
-        rightVideoRef.current.muted = false;
-        setRightVideoMuted(false);
-      } else {
-        rightVideoRef.current.muted = true;
-        setRightVideoMuted(true);
+      const newMutedState = !rightVideoMuted;
+      setRightVideoMuted(newMutedState);
+      rightVideoRef.current.muted = newMutedState;
+
+      // Se desmutando e o volume era 0, define um volume razoável
+      if (!newMutedState && rightVideoVolume === 0) {
+        const newVolume = 0.5;
+        setRightVideoVolume(newVolume);
+        rightVideoRef.current.volume = newVolume;
       }
     }
   };
 
-  // Ensure videos start muted initially
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (leftVideoRef.current) {
-        leftVideoRef.current.muted = true; // Mantém mutado
-        leftVideoRef.current.volume = leftVideoVolume;
-        // Não tenta reproduzir automaticamente
-        setLeftVideoPlaying(false);
-        console.log("Left video ready, paused and muted");
-      }
-      if (rightVideoRef.current) {
-        rightVideoRef.current.muted = true; // Mantém mutado
-        rightVideoRef.current.volume = rightVideoVolume;
-        // Não tenta reproduzir automaticamente
-        setRightVideoPlaying(false);
-        console.log("Right video ready, paused and muted");
-      }
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [leftVideoVolume, rightVideoVolume]);
-
-  // Function to enable audio on modal click
   const enableAudio = () => {
     if (leftVideoRef.current) {
-      leftVideoRef.current.play().then(() => {
-        setLeftVideoPlaying(true); // Marca como reproduzindo
-        // Mantém mutado
-        console.log("Left video started playing (muted)");
-      }).catch((error) => {
-        console.log("Failed to start left video:", error);
-      });
+      leftVideoRef.current
+        .play()
+        .then(() => {
+          setLeftVideoPlaying(true);
+          leftVideoRef.current!.muted = true;
+          leftVideoRef.current!.volume = 0;
+        })
+        .catch(console.log);
     }
-    
+
     if (rightVideoRef.current) {
-      rightVideoRef.current.muted = false; // Habilita áudio
-      rightVideoRef.current.volume = rightVideoVolume;
       rightVideoRef.current
         .play()
         .then(() => {
-          setRightVideoPlaying(true); // Marca como reproduzindo
+          setRightVideoPlaying(true);
+          rightVideoRef.current!.muted = false;
+          rightVideoRef.current!.volume = 0.7;
+          setRightVideoVolume(0.7);
           setRightVideoMuted(false);
-          setAudioEnabled(true);
-          setShowAudioModal(false); // Esconde o modal
-          console.log("Right video started playing with audio!");
+          setShowAudioModal(false);
         })
-        .catch((error) => {
-          console.log("Failed to start right video:", error);
-        });
+        .catch(console.log);
     }
   };
 
@@ -307,9 +295,8 @@ export default function Home() {
                   onPause={() => setLeftVideoPlaying(false)}
                   onLoadedData={() => {
                     if (leftVideoRef.current) {
-                      leftVideoRef.current.volume = leftVideoVolume;
-                      leftVideoRef.current.muted = true; // Mantém mutado
-                      // Não tenta reproduzir automaticamente
+                      leftVideoRef.current.muted = true; // Sempre mutado
+                      leftVideoRef.current.volume = 0; // Sem volume
                       setLeftVideoPlaying(false);
                     }
                   }}
@@ -349,7 +336,7 @@ export default function Home() {
                         min="0"
                         max="1"
                         step="0.1"
-                        value={leftVideoMuted ? 0 : leftVideoVolume}
+                        value={leftVideoMuted ? 0 : leftVideoVolume} // Usa o estado de mute
                         onChange={(e) =>
                           handleLeftVideoVolumeChange(
                             parseFloat(e.target.value)
@@ -533,9 +520,8 @@ export default function Home() {
                   onPause={() => setRightVideoPlaying(false)}
                   onLoadedData={() => {
                     if (rightVideoRef.current) {
-                      rightVideoRef.current.volume = rightVideoVolume;
-                      rightVideoRef.current.muted = true; // Mantém mutado
-                      // Não tenta reproduzir automaticamente
+                      rightVideoRef.current.muted = true; // Sempre mutado
+                      rightVideoRef.current.volume = 0; // Sem volume
                       setRightVideoPlaying(false);
                     }
                   }}
@@ -575,7 +561,7 @@ export default function Home() {
                         min="0"
                         max="1"
                         step="0.1"
-                        value={rightVideoMuted ? 0 : rightVideoVolume}
+                        value={rightVideoMuted ? 0 : rightVideoVolume} // Usa o estado de mute
                         onChange={(e) =>
                           handleRightVideoVolumeChange(
                             parseFloat(e.target.value)

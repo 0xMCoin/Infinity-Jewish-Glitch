@@ -49,7 +49,7 @@ export function CallToAction({ className }: CallToActionProps) {
               transition: { duration: 0.3 },
             }}
           >
-            READY TO JOIN THE DANCE?
+            SQUEAKO MODE
           </motion.h2>
           <motion.p
             className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed"
@@ -58,8 +58,7 @@ export function CallToAction({ className }: CallToActionProps) {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Be part of the most entertaining crypto community ever created! Join
-            thousands of rats dancing their way to the moon.
+            Switch flips, bass drops, chart pops. Degen rats only.
           </motion.p>
         </div>
 
@@ -95,7 +94,6 @@ export function CallToAction({ className }: CallToActionProps) {
             whileHover={{ scale: 1.05, rotateY: -5 }}
             whileTap={{ scale: 0.95 }}
           >
-
             {/* Button Content */}
             <div className="relative flex items-center space-x-3">
               <SiSolana className="w-5 h-5" />
@@ -120,11 +118,10 @@ export function CallToAction({ className }: CallToActionProps) {
             <div className="relative backdrop-blur-sm bg-black/80 dark:bg-gray-900/80 text-white dark:text-gray-100 p-8 rounded-2xl shadow-2xl border border-yellow-400/20">
               <div className="relative z-10">
                 <h3 className="text-3xl font-black text-yellow-400 mb-4">
-                  DON'T MISS THE PARTY!
+                  If you wanna pump my coin, you gotta give me cheese.
                 </h3>
                 <p className="text-lg text-gray-300 mb-6">
-                  Join the most entertaining meme coin community and start
-                  dancing with the rats!
+                  Moonin' lasts forever, rats are all we need!
                 </p>
                 <motion.button
                   onClick={handleBuy}
