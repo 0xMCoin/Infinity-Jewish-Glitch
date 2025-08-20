@@ -17,7 +17,7 @@ interface BackgroundLinesProps {
 export const BackgroundLines = ({
   className = "",
   children,
-  lineColor = "rgb(251, 191, 36)",
+  lineColor = "rgb(172, 228, 187)",
   lineWidth = 1,
   lineCount = 20,
   animationDuration = 20,
@@ -165,20 +165,20 @@ export const BackgroundLines = ({
     const circles = [];
     // Usando valores fixos para evitar problemas de hidratação
     const circleData = [
-      { left: 3.14, top: 10.66, size: 7.53, opacity: 0.20 },
-      { left: 76.20, top: 51.26, size: 3.07, opacity: 0.38 },
+      { left: 3.14, top: 10.66, size: 7.53, opacity: 0.2 },
+      { left: 76.2, top: 51.26, size: 3.07, opacity: 0.38 },
       { left: 9.59, top: 67.92, size: 3.87, opacity: 0.32 },
       { left: 70.27, top: 67.26, size: 5.34, opacity: 0.15 },
-      { left: 61.61, top: 95.15, size: 3.50, opacity: 0.31 },
-      { left: 16.70, top: 44.23, size: 3.57, opacity: 0.13 },
-      { left: 86.40, top: 50.11, size: 6.97, opacity: 0.26 },
+      { left: 61.61, top: 95.15, size: 3.5, opacity: 0.31 },
+      { left: 16.7, top: 44.23, size: 3.57, opacity: 0.13 },
+      { left: 86.4, top: 50.11, size: 6.97, opacity: 0.26 },
       { left: 64.55, top: 86.27, size: 2.45, opacity: 0.17 },
       { left: 59.36, top: 3.02, size: 4.99, opacity: 0.12 },
-      { left: 10.04, top: 76.23, size: 5.70, opacity: 0.15 },
+      { left: 10.04, top: 76.23, size: 5.7, opacity: 0.15 },
       { left: 88.49, top: 4.26, size: 6.74, opacity: 0.16 },
       { left: 26.94, top: 0.57, size: 3.35, opacity: 0.25 },
-      { left: 73.70, top: 64.27, size: 7.65, opacity: 0.35 },
-      { left: 14.82, top: 45.20, size: 4.15, opacity: 0.23 },
+      { left: 73.7, top: 64.27, size: 7.65, opacity: 0.35 },
+      { left: 14.82, top: 45.2, size: 4.15, opacity: 0.23 },
       { left: 94.99, top: 61.61, size: 4.11, opacity: 0.33 },
     ];
 
@@ -221,9 +221,10 @@ export const BackgroundLines = ({
       ref={containerRef}
       className={`relative overflow-hidden ${className}`}
       style={{
-        background: theme === 'dark' 
-          ? `linear-gradient(135deg, rgba(17, 24, 39, 0.95) 0%, rgba(31, 41, 55, 0.95) 100%)`
-          : `linear-gradient(135deg, rgba(251, 191, 36, 0.05) 0%, rgba(245, 158, 11, 0.05) 100%)`,
+        background:
+          theme === "dark"
+            ? `linear-gradient(135deg, rgba(17, 24, 39, 0.95) 0%, rgba(31, 41, 55, 0.95) 100%)`
+            : `linear-gradient(135deg, rgba(152, 200, 172, 0.08) 0%, rgba(140, 172, 164, 0.06) 100%)`,
       }}
     >
       {/* Background Lines Verticais */}
@@ -290,10 +291,10 @@ export const BackgroundLines = ({
       </div>
 
       {/* Overlay de tema dark */}
-      <div className="absolute inset-0 pointer-events-none bg-transparent dark:bg-black/10 transition-colors duration-300"></div>
+      <div className="absolute inset-0 pointer-events-none bg-black/20 dark:bg-black/10 transition-colors duration-300"></div>
 
       {/* Content */}
       <div className="relative z-10">{children}</div>
     </div>
   );
-}; 
+};

@@ -47,7 +47,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                 height: heightTransform,
                 opacity: opacityTransform,
               }}
-              className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-yellow-400 via-yellow-500 to-transparent from-[0%] via-[10%] rounded-full"
+              className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-[#ace4bb] via-[#98c8ac] to-transparent from-[0%] via-[10%] rounded-full"
             />
           </div>
         </div>
@@ -62,9 +62,9 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               {/* Título da seção com indicador visual */}
               <div className="mb-8 md:mb-16 relative">
                 {/* Indicador circular na linha da timeline */}
-                <div className="absolute -left-12 md:-left-16 lg:-left-20 top-1/2 transform -translate-y-1/2 w-4 h-4 rounded-full bg-yellow-400 dark:bg-yellow-500 border-2 border-white dark:border-gray-800 shadow-lg z-40"></div>
+                <div className="absolute -left-12 md:-left-16 lg:-left-20 top-1/2 transform -translate-y-1/2 w-4 h-4 rounded-full bg-[#ace4bb] dark:bg-[#98c8ac] border-2 border-white dark:border-gray-800 shadow-lg z-40"></div>
                 
-                <h3 className="text-2xl md:text-5xl font-bold text-yellow-400 dark:text-yellow-500 text-center">
+                <h3 className="text-2xl md:text-5xl font-bold text-[#ace4bb] dark:text-[#3c885c] text-center">
                   {item.title}
                 </h3>
               </div>

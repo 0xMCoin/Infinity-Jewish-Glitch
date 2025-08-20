@@ -32,7 +32,7 @@ export default function RootLayout({
               style: {
                 background: "#000",
                 color: "#fff",
-                border: "2px solid #fbbf24",
+                border: "2px solid #ace4bb",
               },
             }}
           />

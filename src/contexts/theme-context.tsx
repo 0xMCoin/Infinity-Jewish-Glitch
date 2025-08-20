@@ -25,7 +25,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     setMounted(true);
-    
+
     // Verificar se há um tema salvo no localStorage
     const savedTheme = localStorage.getItem("theme") as Theme;
     if (savedTheme) {
@@ -37,7 +37,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (!mounted) return;
-    
+
     // Aplicar o tema ao documento
     const root = document.documentElement;
     root.classList.remove("light", "dark");
@@ -46,7 +46,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   }, [theme, mounted]);
 
   const toggleTheme = () => {
-    setTheme(prev => prev === "light" ? "dark" : "light");
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   // Evitar problemas de hidratação
@@ -63,4 +63,4 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       {children}
     </ThemeContext.Provider>
   );
-}; 
+};

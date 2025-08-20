@@ -57,10 +57,6 @@ export default function Home() {
     toast.success("🐀 Rat tokens purchased! Welcome to the party!");
   };
 
-  const handleConnectWallet = () => {
-    toast.success("🐀 Wallet connected! Ready to dance with the rats!");
-  };
-
   const toggleLeftVideoPlay = () => {
     if (leftVideoRef.current) {
       if (leftVideoPlaying) {
@@ -179,7 +175,7 @@ export default function Home() {
   return (
     <BackgroundLines
       className="w-full text-black relative min-h-screen"
-      lineColor="rgb(251, 191, 36)"
+      lineColor="rgb(172, 228, 187)"
       lineWidth={1}
       lineCount={30}
       animationDuration={12}
@@ -202,10 +198,10 @@ export default function Home() {
         </div>
 
         {/* Main Header */}
-        <header className="bg-yellow-400 dark:bg-yellow-500 px-4 py-3 flex items-center justify-between shadow-lg relative z-20 transition-colors duration-300">
+        <header className="bg-[#98c8ac] dark:bg-[#8caca4] px-4 py-3 flex items-center justify-between shadow-lg relative z-20 transition-colors duration-300">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-black hover:text-gray-700 dark:hover:text-gray-300 transition-colors hover:scale-110 transform duration-200"
+            className="text-black hover:text-[#8caca4] dark:hover:text-[#8caca4] transition-colors hover:scale-110 transform duration-200"
           >
             <FaBars size={24} />
           </button>
@@ -214,19 +210,19 @@ export default function Home() {
             <ThemeToggle />
             <a
               href="#"
-              className="text-black hover:text-gray-700 dark:hover:text-gray-300 transition-colors hover:scale-110 transform duration-200"
+              className="text-black hover:text-[#8caca4] dark:hover:text-[#8caca4] transition-colors hover:scale-110 transform duration-200"
             >
               <FaInstagram size={20} />
             </a>
             <a
               href="#"
-              className="text-black hover:text-gray-700 dark:hover:text-gray-300 transition-colors hover:scale-110 transform duration-200"
+              className="text-black hover:text-[#8caca4] dark:hover:text-[#8caca4] transition-colors hover:scale-110 transform duration-200"
             >
               <FaDiscord size={20} />
             </a>
             <a
               href="#"
-              className="text-black hover:text-gray-700 dark:hover:text-gray-300 transition-colors hover:scale-110 transform duration-200"
+              className="text-black hover:text-[#8caca4] dark:hover:text-[#8caca4] transition-colors hover:scale-110 transform duration-200"
             >
               <FaTwitter size={20} />
             </a>
@@ -240,28 +236,28 @@ export default function Home() {
               <a
                 href="#about"
                 onClick={() => setIsMenuOpen(false)}
-                className="block hover:text-yellow-400 transition-colors hover:translate-x-2 transform duration-200"
+                className="block hover:text-[#ace4bb] transition-colors hover:translate-x-2 transform duration-200"
               >
                 About
               </a>
               <a
                 href="#tokenomics"
                 onClick={() => setIsMenuOpen(false)}
-                className="block hover:text-yellow-400 transition-colors hover:translate-x-2 transform duration-200"
+                className="block hover:text-[#ace4bb] transition-colors hover:translate-x-2 transform duration-200"
               >
                 Tokenomics
               </a>
               <a
                 href="#roadmap"
                 onClick={() => setIsMenuOpen(false)}
-                className="block hover:text-yellow-400 transition-colors hover:translate-x-2 transform duration-200"
+                className="block hover:text-[#ace4bb] transition-colors hover:translate-x-2 transform duration-200"
               >
                 Roadmap
               </a>
               <a
                 href="#community"
                 onClick={() => setIsMenuOpen(false)}
-                className="block hover:text-yellow-400 transition-colors hover:translate-x-2 transform duration-200"
+                className="block hover:text-[#ace4bb] transition-colors hover:translate-x-2 transform duration-200"
               >
                 Community
               </a>
@@ -285,7 +281,7 @@ export default function Home() {
                   muted={true} // Mantém mutado
                   loop
                   playsInline
-                  className="w-full h-full object-cover rounded-lg shadow-2xl border-2 sm:border-4 border-black dark:border-yellow-400 group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover rounded-lg shadow-2xl border-2 sm:border-4 border-black dark:border-[#ace4bb] group-hover:scale-105 transition-transform duration-300"
                   whileHover={{
                     scale: 1.05,
                     rotateY: 10,
@@ -322,7 +318,7 @@ export default function Home() {
                   <div className="flex items-center space-x-2 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
                     <button
                       onClick={handleLeftVideoMuteToggle}
-                      className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-white hover:text-yellow-400 transition-colors duration-200"
+                      className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-white hover:text-[#ace4bb] transition-colors duration-200"
                     >
                       {leftVideoMuted ? (
                         <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-sm"></div>
@@ -345,7 +341,7 @@ export default function Home() {
                         className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                       />
                       <div
-                        className="h-full bg-yellow-400 rounded-full transition-all duration-200"
+                        className="h-full bg-[#ace4bb] rounded-full transition-all duration-200"
                         style={{
                           width: `${
                             (leftVideoMuted ? 0 : leftVideoVolume) * 100
@@ -357,7 +353,7 @@ export default function Home() {
                 </div>
 
                 {/* Video Label */}
-                <div className="absolute -bottom-2 -right-2 bg-black dark:bg-gray-800 text-yellow-400 px-2 py-1 rounded text-xs font-bold">
+                <div className="absolute -bottom-2 -right-2 bg-black dark:bg-gray-800 text-[#ace4bb] px-2 py-1 rounded text-xs font-bold">
                   LIVE DANCE
                 </div>
               </div>
@@ -372,10 +368,10 @@ export default function Home() {
             >
               {/* Compact Buy Card */}
               <div className="relative group">
-                <div className="relative backdrop-blur-sm bg-black/80 dark:bg-gray-900/80 text-white dark:text-gray-100 p-4 sm:p-6 rounded-xl shadow-2xl border border-yellow-400/20">
+                <div className="relative backdrop-blur-sm bg-black/80 dark:bg-gray-900/80 text-white dark:text-gray-100 p-4 sm:p-6 rounded-xl shadow-2xl border border-[#ace4bb]/20">
                   {/* Header */}
                   <div className="text-center mb-4 sm:mb-6">
-                    <h2 className="text-xl sm:text-2xl font-black text-yellow-400 mb-2">
+                    <h2 className="text-xl sm:text-2xl font-black text-[#ace4bb] mb-2">
                       BUY $RAT NOW!
                     </h2>
                   </div>
@@ -383,7 +379,7 @@ export default function Home() {
                   {/* Progress */}
                   <div className="mb-4 sm:mb-6">
                     <div className="text-center mb-3">
-                      <p className="text-2xl sm:text-3xl font-black text-yellow-400">
+                      <p className="text-2xl sm:text-3xl font-black text-[#ace4bb]">
                         ${totalRaised.toLocaleString()}
                       </p>
                       <p className="text-gray-400 text-xs sm:text-sm">
@@ -393,11 +389,11 @@ export default function Home() {
 
                     <div className="w-full bg-gray-700 dark:bg-gray-600 rounded-full h-2 mb-2">
                       <div
-                        className="h-2 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 transition-all duration-1000"
+                        className="h-2 rounded-full bg-gradient-to-r from-[#ace4bb] to-[#98c8ac] transition-all duration-1000"
                         style={{ width: `${progress}%` }}
                       />
                     </div>
-                    <p className="text-center text-yellow-400 font-bold text-xs sm:text-sm">
+                    <p className="text-center text-[#ace4bb] font-bold text-xs sm:text-sm">
                       {progress.toFixed(1)}%
                     </p>
                   </div>
@@ -406,13 +402,13 @@ export default function Home() {
                   <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
                     <div className="text-center p-2 sm:p-3 bg-gray-800/50 rounded-lg">
                       <p className="text-gray-400 text-xs mb-1">CURRENT</p>
-                      <p className="text-green-400 font-bold text-sm sm:text-base">
+                      <p className="text-[#ace4bb] font-bold text-sm sm:text-base">
                         ${currentPrice}
                       </p>
                     </div>
                     <div className="text-center p-2 sm:p-3 bg-gray-800/50 rounded-lg">
                       <p className="text-gray-400 text-xs mb-1">NEXT</p>
-                      <p className="text-green-400 font-bold text-sm sm:text-base">
+                      <p className="text-[#ace4bb] font-bold text-sm sm:text-base">
                         ${nextPrice}
                       </p>
                     </div>
@@ -421,11 +417,11 @@ export default function Home() {
                   {/* Network Selection */}
                   <div className="mb-4 sm:mb-6">
                     <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
-                      <button className="flex-1 p-2 sm:p-3 bg-yellow-400/10 border border-yellow-400/50 rounded-lg text-yellow-400 text-xs sm:text-sm font-medium">
+                      <button className="flex-1 p-2 sm:p-3 bg-[#98c8ac]/10 border border-[#ace4bb]/50 rounded-lg text-[#ace4bb] text-xs sm:text-sm font-medium">
                         <FaEthereum className="inline mr-2" />
                         ETHEREUM
                       </button>
-                      <button className="flex-1 p-2 sm:p-3 bg-gray-800/50 border border-gray-600 rounded-lg text-gray-400 text-xs sm:text-sm font-medium hover:border-yellow-400/30 transition-colors">
+                      <button className="flex-1 p-2 sm:p-3 bg-gray-800/50 border border-gray-600 rounded-lg text-gray-400 text-xs sm:text-sm font-medium hover:border-[#ace4bb]/30 transition-colors">
                         <FaEthereum className="inline mr-2" />
                         POLYGON
                       </button>
@@ -446,7 +442,7 @@ export default function Home() {
                           onChange={(e) => setEthAmount(e.target.value)}
                           className="flex-1 bg-transparent text-white text-base sm:text-lg font-bold outline-none"
                         />
-                        <span className="text-blue-400 text-xs sm:text-sm">
+                        <span className="text-[#8caca4] text-xs sm:text-sm">
                           ETH
                         </span>
                       </div>
@@ -460,7 +456,7 @@ export default function Home() {
                         <span className="flex-1 text-white text-base sm:text-lg font-bold">
                           {tokenAmount}
                         </span>
-                        <span className="text-yellow-400 text-xs sm:text-sm">
+                        <span className="text-[#ace4bb] text-xs sm:text-sm">
                           RAT
                         </span>
                       </div>
@@ -471,17 +467,7 @@ export default function Home() {
                   <div className="space-y-3">
                     <motion.button
                       onClick={handleBuy}
-                      className="w-full p-2 sm:p-3 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold rounded-lg shadow-lg text-sm sm:text-base"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <FaCreditCard className="inline mr-2" />
-                      BUY WITH CARD
-                    </motion.button>
-
-                    <motion.button
-                      onClick={handleConnectWallet}
-                      className="w-full p-2 sm:p-3 bg-gray-200 dark:bg-gray-700 text-white font-bold rounded-lg border border-gray-600 hover:border-yellow-400/50 transition-colors text-sm sm:text-base"
+                      className="w-full p-2 sm:p-3 bg-gradient-to-r from-[#ace4bb] to-[#98c8ac] text-black font-bold rounded-lg shadow-lg text-sm sm:text-base"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
@@ -491,8 +477,8 @@ export default function Home() {
                   </div>
 
                   {/* Floating Elements */}
-                  <div className="absolute top-3 right-3 w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
-                  <div className="absolute bottom-3 left-3 w-1.5 h-1.5 bg-orange-500 rounded-full animate-pulse"></div>
+                  <div className="absolute top-3 right-3 w-2 h-2 bg-[#ace4bb] rounded-full animate-pulse"></div>
+                  <div className="absolute bottom-3 left-3 w-1.5 h-1.5 bg-[#98c8ac] rounded-full animate-pulse"></div>
                 </div>
               </div>
             </motion.div>
@@ -510,7 +496,7 @@ export default function Home() {
                   muted={true} // Mantém mutado inicialmente
                   loop
                   playsInline
-                  className="w-full h-full object-cover rounded-lg shadow-2xl border-2 sm:border-4 border-black dark:border-yellow-400 group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover rounded-lg shadow-2xl border-2 sm:border-4 border-black dark:border-[#ace4bb] group-hover:scale-105 transition-transform duration-300"
                   whileHover={{
                     scale: 1.05,
                     rotateY: 10,
@@ -547,7 +533,7 @@ export default function Home() {
                   <div className="flex items-center space-x-2 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
                     <button
                       onClick={handleRightVideoMuteToggle}
-                      className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-white hover:text-yellow-400 transition-colors duration-200"
+                      className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-white hover:text-[#ace4bb] transition-colors duration-200"
                     >
                       {rightVideoMuted ? (
                         <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-sm"></div>
@@ -570,7 +556,7 @@ export default function Home() {
                         className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                       />
                       <div
-                        className="h-full bg-yellow-400 rounded-full transition-all duration-200"
+                        className="h-full bg-[#ace4bb] rounded-full transition-all duration-200"
                         style={{
                           width: `${
                             (rightVideoMuted ? 0 : rightVideoVolume) * 100
@@ -582,7 +568,7 @@ export default function Home() {
                 </div>
 
                 {/* Video Label */}
-                <div className="absolute -bottom-2 -left-2 bg-black dark:bg-gray-800 text-yellow-400 px-2 py-1 rounded text-xs font-bold">
+                <div className="absolute -bottom-2 -left-2 bg-black dark:bg-gray-800 text-[#ace4bb] px-2 py-1 rounded text-xs font-bold">
                   PARTY TIME
                 </div>
               </div>
@@ -614,14 +600,14 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <motion.h2
-                className="text-6xl md:text-8xl font-black text-yellow-400 mb-8"
+                className="text-6xl md:text-8xl font-black text-[#3c885c] mb-8"
                 initial={{ opacity: 0, scale: 0.5 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
                 viewport={{ once: true }}
                 whileHover={{
                   scale: 1.05,
-                  textShadow: "0 0 30px rgba(251, 191, 36, 0.8)",
+                  textShadow: "0 0 30px rgba(152, 200, 172, 0.8)",
                   transition: { duration: 0.3 },
                 }}
               >
@@ -634,8 +620,8 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                TikTok was too small! <br /> Now the king of dance
-                rules memecoins!
+                TikTok was too small! <br /> Now the king of dance rules
+                memecoins!
               </motion.p>
             </motion.div>
 
@@ -649,7 +635,7 @@ export default function Home() {
               >
                 <div className="text-center">
                   <motion.h3
-                    className="text-3xl font-bold text-yellow-400 mb-4"
+                    className="text-3xl font-bold text-[#3c885c] mb-4"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
@@ -701,8 +687,9 @@ export default function Home() {
                 transition={{ duration: 1, type: "spring", stiffness: 100 }}
                 viewport={{ once: true }}
               >
+                {/* v */}
                 <motion.h3
-                  className="text-4xl font-bold text-yellow-400 mb-8"
+                  className="text-4xl font-bold text-[#3c885c] mb-8"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
@@ -760,9 +747,9 @@ export default function Home() {
                       <div className="flex items-start space-x-4">
                         <div className="flex-1">
                           <motion.h4
-                            className="font-bold text-black dark:text-white text-xl mb-2 group-hover:text-yellow-600 transition-colors duration-300"
+                            className="font-bold text-black dark:text-white text-xl mb-2 group-hover:text-[#8caca4] transition-colors duration-300"
                             whileHover={{
-                              textShadow: "0 0 10px rgba(251, 191, 36, 0.5)",
+                              textShadow: "0 0 10px rgba(140, 172, 164, 0.5)",
                               transition: { duration: 0.3 },
                             }}
                           >
@@ -784,7 +771,7 @@ export default function Home() {
                                 }}
                                 viewport={{ once: true }}
                               >
-                                <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                                <div className="w-2 h-2 bg-[#ace4bb] rounded-full"></div>
                                 <span>{feature}</span>
                               </motion.div>
                             ))}
@@ -847,7 +834,7 @@ export default function Home() {
             transition={{ duration: 0.3 }}
           >
             <motion.div
-              className="bg-gradient-to-br from-yellow-400 to-orange-500 p-8 rounded-2xl shadow-2xl text-center max-w-md mx-auto"
+              className="bg-gradient-to-br from-[#ace4bb] to-[#98c8ac] p-8 rounded-2xl shadow-2xl text-center max-w-md mx-auto"
               initial={{ scale: 0.8, y: 50 }}
               animate={{ scale: 1, y: 0 }}
               transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
@@ -860,7 +847,7 @@ export default function Home() {
               </p>
               <motion.button
                 onClick={enableAudio}
-                className="bg-black text-yellow-400 px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-[#8caca4] text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
