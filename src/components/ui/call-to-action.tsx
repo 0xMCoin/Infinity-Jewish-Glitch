@@ -8,6 +8,7 @@ import {
   FaUsers,
   FaChartLine,
 } from "react-icons/fa";
+import { SiSolana } from "react-icons/si";
 
 interface CallToActionProps {
   className?: string;
@@ -90,14 +91,14 @@ export function CallToAction({ className }: CallToActionProps) {
 
           <motion.button
             onClick={handleConnectWallet}
-            className="relative group px-8 py-4 bg-black/80 dark:bg-gray-800 text-yellow-400 font-bold text-lg rounded-xl shadow-2xl border border-yellow-400/50 overflow-hidden"
+            className="relative group px-8 py-4 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-yellow-400 font-bold text-lg rounded-xl shadow-2xl border border-yellow-400/50 overflow-hidden"
             whileHover={{ scale: 1.05, rotateY: -5 }}
             whileTap={{ scale: 0.95 }}
           >
 
             {/* Button Content */}
             <div className="relative flex items-center space-x-3">
-              <FaEthereum className="w-5 h-5" />
+              <SiSolana className="w-5 h-5" />
               <span>CONNECT WALLET</span>
             </div>
           </motion.button>

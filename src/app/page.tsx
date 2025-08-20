@@ -13,7 +13,6 @@ import {
 import { toast } from "react-hot-toast";
 import { Lens } from "@/components/ui/lens";
 import { BackgroundLines } from "@/components/ui/background-lines";
-import { TracingBeam } from "@/components/ui/tracing-beam";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { motion } from "framer-motion";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
@@ -229,22 +228,22 @@ export default function Home() {
         )}
 
         {/* Main Content - Hero Section */}
-        <section className="relative py-8 min-h-[80vh] flex items-center">
-          <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-center max-w-7xl mx-auto px-4">
+        <section className="relative py-4 sm:py-6 lg:py-8 min-h-[70vh] sm:min-h-[75vh] lg:min-h-[80vh] flex items-center">
+          <div className="w-full grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-4 sm:gap-6 items-center max-w-7xl mx-auto px-4 sm:px-6">
             {/* Left Side - Dancing Rat Video */}
             <motion.div
-              className="hidden lg:block lg:col-span-3"
+              className="hidden md:block md:col-span-4 lg:col-span-3 order-2 md:order-1"
               initial={{ opacity: 0, x: -100, rotateY: -90 }}
               animate={{ opacity: 1, x: 0, rotateY: 0 }}
               transition={{ duration: 1, type: "spring", stiffness: 100 }}
             >
-              <div className="relative w-full h-[500px] group">
+              <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] group">
                 <motion.video
                   ref={leftVideoRef}
                   autoPlay
                   muted={leftVideoMuted}
                   loop
-                  className="w-full h-full object-cover rounded-lg shadow-2xl border-4 border-black dark:border-yellow-400 group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover rounded-lg shadow-2xl border-2 sm:border-4 border-black dark:border-yellow-400 group-hover:scale-105 transition-transform duration-300"
                   whileHover={{
                     scale: 1.05,
                     rotateY: 10,
@@ -266,12 +265,12 @@ export default function Home() {
                   {/* Play/Pause Button */}
                   <button
                     onClick={toggleLeftVideoPlay}
-                    className="w-10 h-10 bg-black/70 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/90 transition-all duration-200 hover:scale-110 active:scale-95"
+                    className="w-8 h-8 sm:w-10 sm:h-10 bg-black/70 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/90 transition-all duration-200 hover:scale-110 active:scale-95"
                   >
                     {leftVideoPlaying ? (
-                      <div className="w-3 h-3 bg-white rounded-sm"></div>
+                      <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-sm"></div>
                     ) : (
-                      <div className="w-0 h-0 border-l-[6px] border-l-white border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent ml-0.5"></div>
+                      <div className="w-0 h-0 border-l-[4px] sm:border-l-[6px] border-l-white border-t-[3px] sm:border-t-[4px] border-t-transparent border-b-[3px] sm:border-b-[4px] border-b-transparent ml-0.5"></div>
                     )}
                   </button>
 
@@ -279,15 +278,15 @@ export default function Home() {
                   <div className="flex items-center space-x-2 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
                     <button
                       onClick={handleLeftVideoMuteToggle}
-                      className="w-6 h-6 flex items-center justify-center text-white hover:text-yellow-400 transition-colors duration-200"
+                      className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-white hover:text-yellow-400 transition-colors duration-200"
                     >
                       {leftVideoMuted ? (
-                        <div className="w-3 h-3 bg-white rounded-sm"></div>
+                        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-sm"></div>
                       ) : (
-                        <div className="w-3 h-3 bg-white rounded-sm"></div>
+                        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-sm"></div>
                       )}
                     </button>
-                    <div className="w-16 h-1.5 bg-white/30 rounded-full relative">
+                    <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-white/30 rounded-full relative">
                       <input
                         type="range"
                         min="0"
@@ -322,28 +321,28 @@ export default function Home() {
 
             {/* Center - Buy Section */}
             <motion.div
-              className="lg:col-span-6 relative z-20"
+              className="md:col-span-8 lg:col-span-6 relative z-20 order-1 md:order-2"
               initial={{ opacity: 0, y: 50, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               {/* Compact Buy Card */}
               <div className="relative group">
-                <div className="relative backdrop-blur-sm bg-black/80 dark:bg-gray-900/80 text-white dark:text-gray-100 p-6 rounded-xl shadow-2xl border border-yellow-400/20">
+                <div className="relative backdrop-blur-sm bg-black/80 dark:bg-gray-900/80 text-white dark:text-gray-100 p-4 sm:p-6 rounded-xl shadow-2xl border border-yellow-400/20">
                   {/* Header */}
-                  <div className="text-center mb-6">
-                    <h2 className="text-2xl font-black text-yellow-400 mb-2">
+                  <div className="text-center mb-4 sm:mb-6">
+                    <h2 className="text-xl sm:text-2xl font-black text-yellow-400 mb-2">
                       BUY $RAT NOW!
                     </h2>
                   </div>
 
                   {/* Progress */}
-                  <div className="mb-6">
+                  <div className="mb-4 sm:mb-6">
                     <div className="text-center mb-3">
-                      <p className="text-3xl font-black text-yellow-400">
+                      <p className="text-2xl sm:text-3xl font-black text-yellow-400">
                         ${totalRaised.toLocaleString()}
                       </p>
-                      <p className="text-gray-400 text-sm">
+                      <p className="text-gray-400 text-xs sm:text-sm">
                         Goal: ${goal.toLocaleString()}
                       </p>
                     </div>
@@ -354,33 +353,35 @@ export default function Home() {
                         style={{ width: `${progress}%` }}
                       />
                     </div>
-                    <p className="text-center text-yellow-400 font-bold text-sm">
+                    <p className="text-center text-yellow-400 font-bold text-xs sm:text-sm">
                       {progress.toFixed(1)}%
                     </p>
                   </div>
 
                   {/* Price Info */}
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="text-center p-3 bg-gray-800/50 rounded-lg">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
+                    <div className="text-center p-2 sm:p-3 bg-gray-800/50 rounded-lg">
                       <p className="text-gray-400 text-xs mb-1">CURRENT</p>
-                      <p className="text-green-400 font-bold">
+                      <p className="text-green-400 font-bold text-sm sm:text-base">
                         ${currentPrice}
                       </p>
                     </div>
-                    <div className="text-center p-3 bg-gray-800/50 rounded-lg">
+                    <div className="text-center p-2 sm:p-3 bg-gray-800/50 rounded-lg">
                       <p className="text-gray-400 text-xs mb-1">NEXT</p>
-                      <p className="text-green-400 font-bold">${nextPrice}</p>
+                      <p className="text-green-400 font-bold text-sm sm:text-base">
+                        ${nextPrice}
+                      </p>
                     </div>
                   </div>
 
                   {/* Network Selection */}
-                  <div className="mb-6">
-                    <div className="flex space-x-2">
-                      <button className="flex-1 p-3 bg-yellow-400/10 border border-yellow-400/50 rounded-lg text-yellow-400 text-sm font-medium">
+                  <div className="mb-4 sm:mb-6">
+                    <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+                      <button className="flex-1 p-2 sm:p-3 bg-yellow-400/10 border border-yellow-400/50 rounded-lg text-yellow-400 text-xs sm:text-sm font-medium">
                         <FaEthereum className="inline mr-2" />
                         ETHEREUM
                       </button>
-                      <button className="flex-1 p-3 bg-gray-800/50 border border-gray-600 rounded-lg text-gray-400 text-sm font-medium hover:border-yellow-400/30 transition-colors">
+                      <button className="flex-1 p-2 sm:p-3 bg-gray-800/50 border border-gray-600 rounded-lg text-gray-400 text-xs sm:text-sm font-medium hover:border-yellow-400/30 transition-colors">
                         <FaEthereum className="inline mr-2" />
                         POLYGON
                       </button>
@@ -388,8 +389,8 @@ export default function Home() {
                   </div>
 
                   {/* Transaction Inputs */}
-                  <div className="space-y-3 mb-6">
-                    <div className="p-3 bg-gray-800/50 rounded-lg">
+                  <div className="space-y-3 mb-4 sm:mb-6">
+                    <div className="p-2 sm:p-3 bg-gray-800/50 rounded-lg">
                       <label className="text-gray-400 text-xs block mb-1">
                         YOU PAY
                       </label>
@@ -399,21 +400,25 @@ export default function Home() {
                           placeholder="0.003"
                           value={ethAmount}
                           onChange={(e) => setEthAmount(e.target.value)}
-                          className="flex-1 bg-transparent text-white text-lg font-bold outline-none"
+                          className="flex-1 bg-transparent text-white text-base sm:text-lg font-bold outline-none"
                         />
-                        <span className="text-blue-400 text-sm">ETH</span>
+                        <span className="text-blue-400 text-xs sm:text-sm">
+                          ETH
+                        </span>
                       </div>
                     </div>
 
-                    <div className="p-3 bg-gray-800/50 rounded-lg">
+                    <div className="p-2 sm:p-3 bg-gray-800/50 rounded-lg">
                       <label className="text-gray-400 text-xs block mb-1">
                         YOU RECEIVE
                       </label>
                       <div className="flex items-center space-x-2">
-                        <span className="flex-1 text-white text-lg font-bold">
+                        <span className="flex-1 text-white text-base sm:text-lg font-bold">
                           {tokenAmount}
                         </span>
-                        <span className="text-yellow-400 text-sm">RAT</span>
+                        <span className="text-yellow-400 text-xs sm:text-sm">
+                          RAT
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -422,7 +427,7 @@ export default function Home() {
                   <div className="space-y-3">
                     <motion.button
                       onClick={handleBuy}
-                      className="w-full p-3 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold rounded-lg shadow-lg"
+                      className="w-full p-2 sm:p-3 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold rounded-lg shadow-lg text-sm sm:text-base"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
@@ -432,7 +437,7 @@ export default function Home() {
 
                     <motion.button
                       onClick={handleConnectWallet}
-                      className="w-full p-3 bg-gray-700 dark:bg-gray-600 text-white font-bold rounded-lg border border-gray-600 hover:border-yellow-400/50 transition-colors"
+                      className="w-full p-2 sm:p-3 bg-gray-200 dark:bg-gray-700 text-white font-bold rounded-lg border border-gray-600 hover:border-yellow-400/50 transition-colors text-sm sm:text-base"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
@@ -450,18 +455,18 @@ export default function Home() {
 
             {/* Right Side - Dancing Rat Video */}
             <motion.div
-              className="hidden lg:block lg:col-span-3"
+              className="hidden md:block md:col-span-4 lg:col-span-3 order-3"
               initial={{ opacity: 0, x: 100, rotateY: 90 }}
               animate={{ opacity: 1, x: 0, rotateY: 0 }}
               transition={{ duration: 1, type: "spring", stiffness: 100 }}
             >
-              <div className="relative w-full h-[500px] group">
+              <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] group">
                 <motion.video
                   ref={rightVideoRef}
                   autoPlay
                   muted={rightVideoMuted}
                   loop
-                  className="w-full h-full object-cover rounded-lg shadow-2xl border-4 border-black dark:border-yellow-400 group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover rounded-lg shadow-2xl border-2 sm:border-4 border-black dark:border-yellow-400 group-hover:scale-105 transition-transform duration-300"
                   whileHover={{
                     scale: 1.05,
                     rotateY: 10,
@@ -483,12 +488,12 @@ export default function Home() {
                   {/* Play/Pause Button */}
                   <button
                     onClick={toggleRightVideoPlay}
-                    className="w-10 h-10 bg-black/70 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/90 transition-all duration-200 hover:scale-110 active:scale-95"
+                    className="w-8 h-8 sm:w-10 sm:h-10 bg-black/70 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/90 transition-all duration-200 hover:scale-110 active:scale-95"
                   >
                     {rightVideoPlaying ? (
-                      <div className="w-3 h-3 bg-white rounded-sm"></div>
+                      <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-sm"></div>
                     ) : (
-                      <div className="w-0 h-0 border-l-[6px] border-l-white border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent ml-0.5"></div>
+                      <div className="w-0 h-0 border-l-[4px] sm:border-l-[6px] border-l-white border-t-[3px] sm:border-t-[4px] border-t-transparent border-b-[3px] sm:border-b-[4px] border-b-transparent ml-0.5"></div>
                     )}
                   </button>
 
@@ -496,15 +501,15 @@ export default function Home() {
                   <div className="flex items-center space-x-2 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
                     <button
                       onClick={handleRightVideoMuteToggle}
-                      className="w-6 h-6 flex items-center justify-center text-white hover:text-yellow-400 transition-colors duration-200"
+                      className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-white hover:text-yellow-400 transition-colors duration-200"
                     >
                       {rightVideoMuted ? (
-                        <div className="w-3 h-3 bg-white rounded-sm"></div>
+                        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-sm"></div>
                       ) : (
-                        <div className="w-3 h-3 bg-white rounded-sm"></div>
+                        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-white rounded-sm"></div>
                       )}
                     </button>
-                    <div className="w-16 h-1.5 bg-white/30 rounded-full relative">
+                    <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-white/30 rounded-full relative">
                       <input
                         type="range"
                         min="0"
@@ -546,8 +551,8 @@ export default function Home() {
           </div>
 
           {/* Mobile Bottom Text */}
-          <div className="lg:hidden text-center mt-8">
-            <h1 className="text-4xl font-black tracking-wider text-black dark:text-white opacity-80 dark:opacity-90 transition-colors duration-300">
+          <div className="lg:hidden text-center mt-6 sm:mt-8">
+            <h1 className="text-3xl sm:text-4xl font-black tracking-wider text-black dark:text-white opacity-80 dark:opacity-90 transition-colors duration-300">
               RODOLFO THE RAT
             </h1>
           </div>

@@ -58,10 +58,10 @@ export function Footer() {
       <div className="relative max-w-7xl mx-auto px-4">
         {/* Floating Dock */}
         <div className="flex justify-center mb-8">
-          <FloatingDock 
+          <FloatingDock
             items={dockItems}
-            desktopClassName="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm border-2 border-yellow-400/40 shadow-lg"
-            mobileClassName="bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm border-2 border-yellow-400/40 shadow-lg"
+            desktopClassName="bg-white dark:bg-neutral-900/80 backdrop-blur-sm border-2 border-yellow-400/50"
+            mobileClassName="bg-white dark:bg-neutral-800/80 backdrop-blur-sm border-2 border-yellow-400/50"
           />
         </div>
 
@@ -128,7 +128,7 @@ const FloatingDockMobile = ({
                 <a
                   href={item.href}
                   key={item.title}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm border-2 border-yellow-400/40 text-yellow-600 dark:text-yellow-400 hover:text-yellow-700 dark:hover:text-yellow-300 hover:border-yellow-500/60 transition-all duration-200 shadow-md"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50/80 dark:bg-neutral-900/80 backdrop-blur-sm border border-yellow-400/20 text-gray-700 dark:text-yellow-400 hover:text-yellow-500 transition-colors"
                 >
                   <div className="h-4 w-4">{item.icon}</div>
                 </a>
@@ -139,7 +139,7 @@ const FloatingDockMobile = ({
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm border-2 border-yellow-400/40 text-yellow-600 dark:text-yellow-400 hover:text-yellow-700 dark:hover:text-yellow-300 hover:border-yellow-500/60 transition-all duration-200 shadow-md"
+        className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50/80 dark:bg-neutral-800/80 backdrop-blur-sm border border-yellow-400/20 text-gray-700 dark:text-yellow-400 hover:text-yellow-500 transition-colors"
       >
         <FaBars className="h-5 w-5" />
       </button>
@@ -160,7 +160,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm border-2 border-yellow-400/40 shadow-lg px-4 pb-3 md:flex",
+        "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-gray-50/80 dark:bg-neutral-900/80 backdrop-blur-sm border border-yellow-400/20 px-4 pb-3 md:flex",
         className
       )}
     >
@@ -231,7 +231,7 @@ function IconContainer({
         style={{ width, height }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="relative flex aspect-square items-center justify-center rounded-full bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm border-2 border-yellow-400/40 hover:border-yellow-500/60 transition-all duration-200 shadow-md"
+        className="relative flex aspect-square items-center justify-center rounded-full bg-gray-200/80 dark:bg-neutral-800/80 backdrop-blur-sm border border-yellow-400/30 hover:border-yellow-400/60 transition-colors"
       >
         <AnimatePresence>
           {hovered && (
@@ -239,7 +239,7 @@ function IconContainer({
               initial={{ opacity: 0, y: 10, x: "-50%" }}
               animate={{ opacity: 1, y: 0, x: "-50%" }}
               exit={{ opacity: 0, y: 2, x: "-50%" }}
-              className="absolute -top-8 left-1/2 w-fit rounded-md border-2 border-yellow-400/40 bg-white/95 dark:bg-neutral-800/95 backdrop-blur-sm px-3 py-1 text-xs whitespace-pre text-yellow-700 dark:text-yellow-300 shadow-lg"
+              className="absolute -top-8 left-1/2 w-fit rounded-md border border-yellow-400/20 bg-yellow-400/10 backdrop-blur-sm px-2 py-0.5 text-xs whitespace-pre text-yellow-400 dark:text-yellow-300"
             >
               {title}
             </motion.div>
@@ -247,7 +247,7 @@ function IconContainer({
         </AnimatePresence>
         <motion.div
           style={{ width: widthIcon, height: heightIcon }}
-          className="flex items-center justify-center text-yellow-600 dark:text-yellow-400 hover:text-yellow-700 dark:hover:text-yellow-300 transition-colors"
+          className="flex items-center justify-center text-gray-700 dark:text-yellow-400 hover:text-yellow-300 transition-colors"
         >
           {icon}
         </motion.div>
