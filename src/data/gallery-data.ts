@@ -14,7 +14,7 @@ export const placeholderVideos: GalleryVideo[] = [
     src: "/videos/rat_meme1.mp4",
     alt: "Dancing Rat 1",
     title: "Rodolfo Dance 1",
-    description: "RRodolfo slides in disco groove.",
+    description: "Rodolfo slides in disco groove.",
     category: "dance",
   },
   {
