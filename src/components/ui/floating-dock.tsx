@@ -53,9 +53,9 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative py-8 pt-16 overflow-hidden">
-      <div className="relative max-w-7xl mx-auto px-4">
-        <div className="flex justify-center mb-8">
+    <footer className="relative py-6 sm:py-8 pt-12 sm:pt-16 overflow-hidden">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="flex justify-center mb-6 sm:mb-8">
           <FloatingDock
             items={dockItems}
             desktopClassName="bg-black/10 backdrop-blur-md dark:bg-black/20"
@@ -64,17 +64,17 @@ export function Footer() {
         </div>
 
         <div className="text-center">
-          <p className="text-sm text-gray-700 dark:text-gray-200 mb-2">
+          <p className="text-sm sm:text-base text-gray-700 dark:text-gray-200 mb-3 sm:mb-4">
             © {currentYear} Rodolfo The Rat. All rights reserved.
           </p>
-          <div className="text-xs text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            <p className="mb-1">
+          <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-2 sm:px-0">
+            <p className="mb-2 sm:mb-3">
               <strong className="text-gray-800 dark:text-white">
                 DISCLAIMER:
               </strong>{" "}
               This is a meme coin created for entertainment purposes only.
             </p>
-            <p className="mb-1">
+            <p className="mb-2 sm:mb-3">
               Cryptocurrency investments carry significant risks. Never invest
               more than you can afford to lose.
             </p>
@@ -120,7 +120,7 @@ const FloatingDockMobile = ({
         {open && (
           <motion.div
             layoutId="nav"
-            className="absolute inset-x-0 bottom-full mb-2 flex flex-col gap-2"
+            className="absolute inset-x-0 bottom-full mb-3 flex flex-col gap-3"
           >
             {items.map((item, idx) => (
               <motion.div
@@ -142,9 +142,9 @@ const FloatingDockMobile = ({
                 <a
                   href={item.href}
                   key={item.title}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50/80 dark:bg-gray-700 backdrop-blur-sm border border-[#ace4bb]/20 text-gray-700 dark:text-[#ace4bb] hover:text-[#3c885c] transition-colors"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-50/80 dark:bg-gray-700 backdrop-blur-sm border border-[#ace4bb]/20 text-gray-700 dark:text-[#ace4bb] hover:text-[#3c885c] transition-colors"
                 >
-                  <div className="h-4 w-4">{item.icon}</div>
+                  <div className="h-5 w-5">{item.icon}</div>
                 </a>
               </motion.div>
             ))}
@@ -153,9 +153,9 @@ const FloatingDockMobile = ({
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50/80 dark:bg-gray-700 backdrop-blur-sm border border-[#ace4bb]/20 text-gray-700 dark:text-[#ace4bb] hover:text-[#3c885c] transition-colors"
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-50/80 dark:bg-gray-700 backdrop-blur-sm border border-[#ace4bb]/20 text-gray-700 dark:text-[#ace4bb] hover:text-[#3c885c] transition-colors"
       >
-        <FaBars className="h-5 w-5" />
+        <FaBars className="h-6 w-6" />
       </button>
     </div>
   );

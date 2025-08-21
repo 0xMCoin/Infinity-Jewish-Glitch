@@ -103,7 +103,6 @@ export function AppleCardsCarousel({
       }
     }
 
-    // Also try to find the video element by selector as fallback
     const currentVideo = document.querySelector(
       `video[src="${videos[currentIndex].src}"]`
     ) as HTMLVideoElement;

@@ -36,30 +36,62 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  turbopack: {
+    rules: {
+      "*.svg": {
+        loaders: ["@svgr/webpack"],
+        as: "*.js",
+      },
+    },
+  },
   images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "imperadortoken.com",
+        hostname: "rodolfotherat.xyz",
       },
       {
         protocol: "https",
-        hostname: "www.imperadortoken.com",
-      },
-      {
-        protocol: "https",
-        hostname: "adr-token.vercel.app",
-      },
-      {
-        protocol: "https",
-        hostname: "adriano-imperador.gitbook.io",
+        hostname: "www.rodolfotherat.xyz",
       },
     ],
+    formats: ["image/webp", "image/avif"],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   compress: true,
   poweredByHeader: false,
   experimental: {
-    optimizePackageImports: ['@fortawesome/react-fontawesome', '@fortawesome/free-solid-svg-icons'],
+    optimizePackageImports: [
+      "@fortawesome/react-fontawesome",
+      "@fortawesome/free-solid-svg-icons",
+    ],
+    optimizeCss: true,
+  },
+  swcMinify: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+  webpack: (config, { dev, isServer }) => {
+    if (!dev && !isServer) {
+      config.optimization.splitChunks = {
+        chunks: "all",
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: "vendors",
+            chunks: "all",
+          },
+          common: {
+            name: "common",
+            minChunks: 2,
+            chunks: "all",
+            enforce: true,
+          },
+        },
+      };
+    }
+    return config;
   },
 };
 

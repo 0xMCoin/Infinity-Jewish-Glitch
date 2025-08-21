@@ -1,15 +1,15 @@
 "use client";
-
-import { useState } from "react";
 import { BackgroundLines } from "@/components/ui/background-lines";
 import { Header } from "@/components/layout";
 import {
   HeroSection,
   AboutSection,
   GallerySection,
+  TikTokSection,
 } from "@/components/sections";
 import { CallToAction } from "@/components/ui/call-to-action";
 import { Footer } from "@/components/ui/floating-dock";
+import { LazySection } from "@/components/ui/lazy-section";
 
 export default function Home() {
   const totalRaised = 100000;
@@ -21,12 +21,10 @@ export default function Home() {
     <BackgroundLines
       className="w-full text-gray-900 dark:text-gray-100 relative min-h-screen bg-gray-50"
       lineColor="rgb(34, 197, 94)"
-      lineWidth={1}
-      lineCount={30}
-      animationDuration={12}
-      interactive={true}
+      lineCount={15} // Reduzido de 30 para 15
+      animationDuration={15} // Reduzido de 12 para 15
+      interactive={false} // Desabilitado para melhor performance
     >
-      {/* Content Overlay */}
       <div className="relative z-10">
         <Header />
 
@@ -37,9 +35,22 @@ export default function Home() {
           nextPrice={nextPrice}
         />
 
-        <AboutSection />
-        <GallerySection />
-        <CallToAction />
+        <LazySection>
+          <AboutSection />
+        </LazySection>
+
+        <LazySection>
+          <GallerySection />
+        </LazySection>
+
+        <LazySection>
+          <CallToAction />
+        </LazySection>
+
+        <LazySection>
+          <TikTokSection />
+        </LazySection>
+
         <Footer />
       </div>
     </BackgroundLines>

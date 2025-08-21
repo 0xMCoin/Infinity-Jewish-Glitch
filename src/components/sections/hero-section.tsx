@@ -29,11 +29,7 @@ export function HeroSection({
     toast.success("🐀 Rat tokens purchased! Welcome to the party!");
   };
 
-  const videos = [
-    "/videos/rat_meme1.mp4",
-    "/videos/rat_meme2.mp4",
-    "/videos/rat_meme3.mp4",
-  ];
+  const videos = ["/videos/rat_meme1.mp4", "/videos/rat_meme2.mp4"];
 
   return (
     <section className="relative py-4 sm:py-6 lg:py-8 min-h-[70vh] sm:min-h-[75vh] lg:min-h-screen flex flex-col items-center justify-center">
@@ -44,7 +40,7 @@ export function HeroSection({
           className="md:col-span-4 lg:col-span-3"
           initial={{ opacity: 0, x: -100, rotateY: -90 }}
           animate={{ opacity: 1, x: 0, rotateY: 0 }}
-          transition={{ duration: 1, type: "spring", stiffness: 100 }}
+          transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
         >
           <VideoPlayer
             videoSrc={videos[0]}
@@ -58,7 +54,7 @@ export function HeroSection({
           className="md:col-span-8 lg:col-span-6 relative z-20"
           initial={{ opacity: 0, y: 50, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }} // Reduzido duration e delay
         >
           <BuyCard
             totalRaised={totalRaised}
@@ -78,10 +74,10 @@ export function HeroSection({
           className="md:col-span-4 lg:col-span-3"
           initial={{ opacity: 0, x: 100, rotateY: 90 }}
           animate={{ opacity: 1, x: 0, rotateY: 0 }}
-          transition={{ duration: 1, type: "spring", stiffness: 100 }}
+          transition={{ duration: 0.8, type: "spring", stiffness: 80 }} // Reduzido duration e stiffness
         >
           <VideoPlayer
-            videoSrc={videos[2]}
+            videoSrc={videos[1]}
             label="PARTY TIME"
             labelPosition="bottom-left"
           />
@@ -95,11 +91,11 @@ export function HeroSection({
           className="w-full max-w-md"
           initial={{ opacity: 0, y: -50, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
+          transition={{ duration: 0.6, delay: 0.1 }} // Reduzido duration e delay
         >
           <VideoPlayer
-            videoSrc={videos[1]}
-            label="MOBILE PARTY"
+            videoSrc={videos[0]}
+            label="LIVE DANCE"
             labelPosition="bottom-right"
           />
         </motion.div>
@@ -107,9 +103,9 @@ export function HeroSection({
         {/* Mobile Buy Section */}
         <motion.div
           className="w-full max-w-md"
-          initial={{ opacity: 0, y: 50, scale: 0.9 }}
+          initial={{ opacity: 0, y: 30, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }} // Reduzido duration e delay
         >
           <BuyCard
             totalRaised={totalRaised}
@@ -178,11 +174,11 @@ function BuyCard({
         {/* Progress */}
         <div className="mb-4 sm:mb-6">
           <div className="text-center mb-3">
-            <p className="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400">
+            <p className="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400 font-arcade text-arcade-shadow">
               ${totalRaised.toLocaleString()}
             </p>
-            <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm">
-              Goal: ${goal.toLocaleString()}
+            <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm mt-2">
+              Goal Market Cap: 1 Billion
             </p>
           </div>
 

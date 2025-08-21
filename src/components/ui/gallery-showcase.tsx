@@ -15,7 +15,6 @@ export function GalleryShowcase({ videos, className }: GalleryShowcaseProps) {
 
   return (
     <div className={`w-full ${className}`}>
-      {/* View Mode Toggle */}
       <div className="flex justify-center mb-8">
         <div className="bg-black/10 backdrop-blur-md dark:bg-black/20 rounded-full p-1">
           <button
