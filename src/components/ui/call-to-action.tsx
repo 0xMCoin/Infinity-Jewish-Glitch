@@ -44,16 +44,11 @@ export function CallToAction({ className }: CallToActionProps) {
           viewport={{ once: true }}
         >
           <motion.h2
-            className="text-6xl font-black text-gray-900 dark:text-white mb-6 font-arcade text-arcade-shadow"
+            className="text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6 font-arcade text-arcade-shadow"
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
             viewport={{ once: true }}
-            whileHover={{
-              scale: 1.05,
-              textShadow: "0 0 30px rgba(16, 185, 129, 0.8)",
-              transition: { duration: 0.3 },
-            }}
           >
             READY TO JOIN THE PARTY?
           </motion.h2>
@@ -64,14 +59,14 @@ export function CallToAction({ className }: CallToActionProps) {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Don't miss out on the next big meme coin sensation! Join thousands of
-            rats in the ultimate dance party and financial adventure.
+            Don't miss out on the next big meme coin sensation! Join thousands
+            of rats in the ultimate dance party and financial adventure.
           </motion.p>
         </motion.div>
 
         {/* CTA Buttons */}
         <motion.div
-          className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
+          className="flex flex-col sm:flex-row gap-6 justify-center items-center"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -92,19 +87,6 @@ export function CallToAction({ className }: CallToActionProps) {
             <div className="relative flex items-center space-x-3">
               <FaCoins className="w-5 h-5" />
               <span>BUY $RAT NOW</span>
-            </div>
-          </motion.button>
-
-          <motion.button
-            onClick={handleConnectWallet}
-            className="relative group px-8 py-4 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-emerald-400 font-bold text-lg rounded-xl shadow-2xl border border-emerald-500/50 overflow-hidden hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300"
-            whileHover={{ scale: 1.05, rotateY: -5 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {/* Button Content */}
-            <div className="relative flex items-center space-x-3">
-              <SiSolana className="w-5 h-5" />
-              <span>CONNECT WALLET</span>
             </div>
           </motion.button>
         </motion.div>

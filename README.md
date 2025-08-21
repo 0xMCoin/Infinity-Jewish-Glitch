@@ -1,124 +1,123 @@
-# 🐀 Dancing Rat - Meme Coin Landing Page
+# 🐀 RODOLFO THE RAT - Memecoin Website
 
-A creative and dynamic landing page for the Dancing Rat meme coin, featuring an interactive design with dancing rat videos and a modern crypto purchase interface.
+## 🏗️ **Estrutura de Componentes Refatorada**
 
-## ✨ Features
+O site foi completamente componentizado para melhor organização e manutenibilidade.
 
-- **Dynamic Video Display**: Rotating videos of dancing rats from your collection
-- **Interactive Purchase Interface**: ETH-based token purchase with real-time calculations
-- **Responsive Design**: Mobile-first approach with desktop enhancements
-- **Smooth Animations**: Custom Tailwind CSS animations and hover effects
-- **Toast Notifications**: User feedback for actions using react-hot-toast
-- **Modern UI**: Inspired by popular meme coin landing pages
+### 📁 **Estrutura de Pastas:**
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+ 
-- npm or pnpm
-
-### Installation
-
-1. Clone the repository
-```bash
-git clone <your-repo-url>
-cd ratmeme
-```
-
-2. Install dependencies
-```bash
-npm install
-# or
-pnpm install
-```
-
-3. Start the development server
-```bash
-npm run dev
-# or
-pnpm dev
-```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
-
-## 🎥 Video Requirements
-
-Place your dancing rat videos in the `public/videos/` directory:
-- `rat_meme1.mp4`
-- `rat_meme2.mp4` 
-- `rat_meme3.mp4`
-- `rat_meme4.mp4`
-
-The videos will automatically rotate every 5 seconds to showcase different dancing rat moments.
-
-## 🎨 Customization
-
-### Colors
-- Primary: Yellow theme (`yellow-400`, `yellow-300`, `yellow-500`)
-- Accent: Black and white contrast
-- Success: Green for price indicators
-
-### Animations
-- Custom Tailwind animations: `float`, `bounce-slow`, `pulse-slow`, `wiggle`
-- Hover effects with scale transforms
-- Smooth transitions throughout the interface
-
-### Content
-- Update token information in the `Home` component
-- Modify social media links in the header
-- Customize the scrolling marquee text
-
-## 🛠️ Built With
-
-- **Next.js 15** - React framework
-- **Tailwind CSS** - Utility-first CSS framework
-- **React Icons** - Icon library
-- **React Hot Toast** - Toast notifications
-- **TypeScript** - Type safety
-
-## 📱 Responsive Design
-
-- **Mobile**: Optimized layout with hidden side videos
-- **Tablet**: Adaptive sizing for medium screens
-- **Desktop**: Full layout with side videos and floating elements
-
-## 🎯 Key Components
-
-1. **Scrolling Header**: Animated marquee with meme coin slogans
-2. **Main Header**: Navigation with social media links
-3. **Video Display**: Rotating rat videos on left and right sides
-4. **Purchase Interface**: ETH-based token purchase form
-5. **Progress Bar**: Visual representation of fundraising progress
-6. **Floating Elements**: Animated emojis for visual appeal
-
-## 🔧 Development
-
-### Project Structure
 ```
 src/
 ├── app/
-│   ├── layout.tsx      # Root layout with Toaster
-│   ├── page.tsx        # Main landing page
-│   └── globals.css     # Global styles
-├── components/         # Reusable components
-└── ...
+│   ├── page.tsx          # Página principal (agora limpa e organizada)
+│   ├── layout.tsx        # Layout raiz
+│   └── globals.css       # Estilos globais
+├── components/
+│   ├── sections/         # Componentes de seções principais
+│   │   ├── hero-section.tsx
+│   │   ├── about-section.tsx
+│   │   ├── gallery-section.tsx
+│   │   └── index.ts
+│   ├── layout/           # Componentes de layout
+│   │   ├── header.tsx
+│   │   └── index.ts
+│   └── ui/               # Componentes de interface reutilizáveis
+│       ├── video-player.tsx
+│       ├── audio-modal.tsx
+│       ├── call-to-action.tsx
+│       ├── gallery-showcase.tsx
+│       ├── theme-toggle.tsx
+│       ├── floating-dock.tsx
+│       ├── background-lines.tsx
+│       ├── 3d-card.tsx
+│       ├── lens.tsx
+│       └── timeline.tsx
+└── data/
+    └── gallery-data.ts   # Dados da galeria
 ```
 
-### Available Scripts
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
+### 🎯 **Componentes Principais:**
 
-## 🎉 Contributing
+#### **1. HeroSection** (`src/components/sections/hero-section.tsx`)
+- Seção principal com vídeos e card de compra
+- Inclui componente `BuyCard` para funcionalidade de compra
+- Vídeos laterais com controles de reprodução
 
-Feel free to submit issues and enhancement requests!
+#### **2. AboutSection** (`src/components/sections/about-section.tsx`)
+- Seção "Sobre o Projeto" com recursos interativos
+- Card 3D com efeito de lente
+- Lista de recursos com animações
 
-## 📄 License
+#### **3. GallerySection** (`src/components/sections/gallery-section.tsx`)
+- Galeria de vídeos com showcase interativo
+- Títulos com efeito `text-arcade-shadow`
 
-This project is licensed under the MIT License.
+#### **4. Header** (`src/components/layout/header.tsx`)
+- Cabeçalho com navegação e menu mobile
+- Header de rolagem com mensagens animadas
+- Toggle de tema e links sociais
+
+#### **5. VideoPlayer** (`src/components/ui/video-player.tsx`)
+- Componente reutilizável para reprodução de vídeo
+- Controles de play/pause e volume
+- Labels personalizáveis
+
+#### **6. AudioModal** (`src/components/ui/audio-modal.tsx`)
+- Modal para ativação de áudio
+- Controle de vídeos ocultos para sincronização
+
+### 🎨 **Características de Design:**
+
+- **Paleta de Cores:** Esquema emerald/green consistente
+- **Tipografia:** `Press Start 2P` para títulos, `Inter` para texto
+- **Efeitos:** `text-arcade-shadow` em todos os títulos principais
+- **Animações:** Framer Motion para transições suaves
+- **Responsividade:** Design mobile-first com Tailwind CSS
+
+### 🚀 **Benefícios da Refatoração:**
+
+1. **Código Limpo:** Página principal reduzida de 856 para ~60 linhas
+2. **Reutilização:** Componentes podem ser reutilizados em outras páginas
+3. **Manutenibilidade:** Cada seção tem sua própria responsabilidade
+4. **Testabilidade:** Componentes isolados são mais fáceis de testar
+5. **Performance:** Lazy loading e code splitting mais eficientes
+6. **Organização:** Estrutura clara e fácil de navegar
+
+### 📱 **Funcionalidades:**
+
+- ✅ Reprodução de vídeo com controles
+- ✅ Modal de áudio interativo
+- ✅ Toggle de tema claro/escuro
+- ✅ Menu mobile responsivo
+- ✅ Animações de scroll
+- ✅ Efeitos 3D e interativos
+- ✅ Galeria de vídeos com carrossel
+- ✅ Sistema de compra simulado
+
+### 🔧 **Como Usar:**
+
+```tsx
+// Importar seções
+import { HeroSection, AboutSection, GallerySection } from "@/components/sections";
+
+// Importar layout
+import { Header } from "@/components/layout";
+
+// Usar na página
+<Header />
+<HeroSection totalRaised={100000} goal={1000000} />
+<AboutSection />
+<GallerySection />
+```
+
+### 🎯 **Próximos Passos Sugeridos:**
+
+1. **Testes:** Adicionar testes unitários para cada componente
+2. **Storybook:** Implementar documentação interativa
+3. **Performance:** Otimizar carregamento de vídeos
+4. **SEO:** Melhorar meta tags e estrutura semântica
+5. **Acessibilidade:** Adicionar ARIA labels e navegação por teclado
 
 ---
 
-**🐀 Dance your way to the moon with Dancing Rat tokens! 🚀**
+**Status:** ✅ **Refatoração Completa** - Código organizado e componentizado!

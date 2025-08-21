@@ -17,7 +17,7 @@ export function GalleryShowcase({ videos, className }: GalleryShowcaseProps) {
     <div className={`w-full ${className}`}>
       {/* View Mode Toggle */}
       <div className="flex justify-center mb-8">
-        <div className="bg-gray-200 dark:bg-gray-700 rounded-full p-1">
+        <div className="bg-black/10 backdrop-blur-md dark:bg-black/20 rounded-full p-1">
           <button
             onClick={() => setViewMode("carousel")}
             className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${

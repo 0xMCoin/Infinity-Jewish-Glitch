@@ -58,19 +58,21 @@ export function Footer() {
         <div className="flex justify-center mb-8">
           <FloatingDock
             items={dockItems}
-            desktopClassName="bg-white dark:bg-neutral-900/80 backdrop-blur-sm border-2 border-emerald-500/50"
-            mobileClassName="bg-white dark:bg-neutral-800/80 backdrop-blur-sm border-2 border-emerald-500/50"
+            desktopClassName="bg-black/10 backdrop-blur-md dark:bg-black/20"
+            mobileClassName="bg-black/10 backdrop-blur-md dark:bg-black/20"
           />
         </div>
 
         <div className="text-center">
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+          <p className="text-sm text-gray-700 dark:text-gray-200 mb-2">
             © {currentYear} Rodolfo The Rat. All rights reserved.
           </p>
-          <div className="text-xs text-gray-400 dark:text-gray-500 max-w-2xl mx-auto">
+          <div className="text-xs text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             <p className="mb-1">
-              <strong>DISCLAIMER:</strong> This is a meme coin created for
-              entertainment purposes only.
+              <strong className="text-gray-800 dark:text-white">
+                DISCLAIMER:
+              </strong>{" "}
+              This is a meme coin created for entertainment purposes only.
             </p>
             <p className="mb-1">
               Cryptocurrency investments carry significant risks. Never invest
@@ -140,7 +142,7 @@ const FloatingDockMobile = ({
                 <a
                   href={item.href}
                   key={item.title}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50/80 dark:bg-neutral-900/80 backdrop-blur-sm border border-emerald-500/20 text-gray-700 dark:text-emerald-400 hover:text-emerald-600 transition-colors"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50/80 dark:bg-gray-700 backdrop-blur-sm border border-[#ace4bb]/20 text-gray-700 dark:text-[#ace4bb] hover:text-[#3c885c] transition-colors"
                 >
                   <div className="h-4 w-4">{item.icon}</div>
                 </a>
@@ -151,7 +153,7 @@ const FloatingDockMobile = ({
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50/80 dark:bg-neutral-800/80 backdrop-blur-sm border border-emerald-500/20 text-gray-700 dark:text-emerald-400 hover:text-emerald-600 transition-colors"
+        className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50/80 dark:bg-gray-700 backdrop-blur-sm border border-[#ace4bb]/20 text-gray-700 dark:text-[#ace4bb] hover:text-[#3c885c] transition-colors"
       >
         <FaBars className="h-5 w-5" />
       </button>
@@ -172,7 +174,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-gray-50/80 dark:bg-neutral-900/80 backdrop-blur-sm border border-emerald-500/20 px-4 pb-3 md:flex",
+        "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-gray-50/80 dark:bg-gray-800 backdrop-blur-sm border border-[#ace4bb]/20 px-4 pb-3 md:flex",
         className
       )}
     >
@@ -247,7 +249,7 @@ function IconContainer({
         style={{ width, height }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="relative flex aspect-square items-center justify-center rounded-full bg-gray-200/80 dark:bg-neutral-800/80 backdrop-blur-sm border border-emerald-500/30 hover:border-emerald-500/60 transition-colors"
+        className="relative flex aspect-square items-center justify-center rounded-full bg-gray-200/80 dark:bg-gray-700 backdrop-blur-sm border border-[#ace4bb]/30 hover:border-[#ace4bb]/60 transition-colors"
       >
         <AnimatePresence>
           {hovered && (
@@ -255,7 +257,7 @@ function IconContainer({
               initial={{ opacity: 0, y: 10, x: "-50%" }}
               animate={{ opacity: 1, y: 0, x: "-50%" }}
               exit={{ opacity: 0, y: 2, x: "-50%" }}
-              className="absolute -top-8 left-1/2 w-fit rounded-md border border-emerald-500/20 bg-emerald-500/10 backdrop-blur-sm px-2 py-0.5 text-xs whitespace-pre text-emerald-500 dark:text-emerald-400"
+              className="absolute -top-8 left-1/2 w-fit rounded-md border border-[#ace4bb]/20 bg-[#ace4bb]/15 backdrop-blur-sm px-2 py-0.5 text-xs whitespace-pre text-gray-700 dark:text-gray-200"
             >
               {title}
             </motion.div>
@@ -263,7 +265,7 @@ function IconContainer({
         </AnimatePresence>
         <motion.div
           style={{ width: widthIcon, height: heightIcon }}
-          className="flex items-center justify-center text-gray-700 dark:text-emerald-400 hover:text-emerald-600 transition-colors"
+          className="flex items-center justify-center text-gray-700 dark:text-[#ace4bb] hover:text-[#3c885c] transition-colors"
         >
           {icon}
         </motion.div>

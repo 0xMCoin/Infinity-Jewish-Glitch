@@ -90,11 +90,11 @@ export function AppleCardsCarousel({
   const handleMuteToggle = () => {
     const newMutedState = !isMuted;
     setIsMuted(newMutedState);
-    
+
     // Try to update the current video element
     if (videoRef.current) {
       videoRef.current.muted = newMutedState;
-      
+
       // If unmuting and volume was 0, set reasonable volume
       if (!newMutedState && volume === 0) {
         const newVolume = 0.5;
@@ -102,9 +102,11 @@ export function AppleCardsCarousel({
         videoRef.current.volume = newVolume;
       }
     }
-    
+
     // Also try to find the video element by selector as fallback
-    const currentVideo = document.querySelector(`video[src="${videos[currentIndex].src}"]`) as HTMLVideoElement;
+    const currentVideo = document.querySelector(
+      `video[src="${videos[currentIndex].src}"]`
+    ) as HTMLVideoElement;
     if (currentVideo) {
       currentVideo.muted = newMutedState;
       if (!newMutedState && volume === 0) {
@@ -115,7 +117,6 @@ export function AppleCardsCarousel({
     }
   };
 
-  // Update video volume when component mounts or video changes
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.volume = volume;
@@ -123,7 +124,6 @@ export function AppleCardsCarousel({
     }
   }, [currentIndex, volume, isMuted]);
 
-  // Force update video ref when currentIndex changes
   useEffect(() => {
     const timer = setTimeout(() => {
       if (videoRef.current) {
@@ -133,7 +133,7 @@ export function AppleCardsCarousel({
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [currentIndex]);
+  }, [currentIndex, volume, isMuted]);
 
   return (
     <div className={`relative w-full max-w-6xl mx-auto ${className}`}>
@@ -242,7 +242,7 @@ export function AppleCardsCarousel({
       </div>
 
       {/* Progress Bar */}
-      <div className="mt-6 w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
+      <div className="mt-6 w-full bg-black/10 backdrop-blur-md dark:bg-black/20 rounded-full h-1.5">
         <motion.div
           className="bg-emerald-400 h-1.5 rounded-full"
           initial={{ width: 0 }}
