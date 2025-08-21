@@ -10,20 +10,12 @@ import {
 } from "@/components/sections";
 import { CallToAction } from "@/components/ui/call-to-action";
 import { Footer } from "@/components/ui/floating-dock";
-import { AudioModal } from "@/components/ui/audio-modal";
 
 export default function Home() {
-  const [showAudioModal, setShowAudioModal] = useState(true);
-
-  // Constants
   const totalRaised = 100000;
   const goal = 1000000;
   const currentPrice = 0.0003;
   const nextPrice = 0.0004;
-
-  const handleEnableAudio = () => {
-    setShowAudioModal(false);
-  };
 
   return (
     <BackgroundLines
@@ -49,12 +41,6 @@ export default function Home() {
         <GallerySection />
         <CallToAction />
         <Footer />
-
-        <AudioModal
-          isOpen={showAudioModal}
-          onClose={() => setShowAudioModal(false)}
-          onEnableAudio={handleEnableAudio}
-        />
       </div>
     </BackgroundLines>
   );

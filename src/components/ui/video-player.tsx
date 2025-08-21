@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
 interface VideoPlayerProps {
@@ -9,11 +9,25 @@ interface VideoPlayerProps {
   labelPosition: "bottom-left" | "bottom-right";
 }
 
-export function VideoPlayer({ videoSrc, label, labelPosition }: VideoPlayerProps) {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(0.7);
+export function VideoPlayer({
+  videoSrc,
+  label,
+  labelPosition,
+}: VideoPlayerProps) {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [volume, setVolume] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.volume = 0;
+      videoRef.current.play().catch(() => {
+        setIsPlaying(false);
+      });
+    }
+  }, []);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -60,8 +74,9 @@ export function VideoPlayer({ videoSrc, label, labelPosition }: VideoPlayerProps
     <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] group">
       <motion.video
         ref={videoRef}
-        muted={true}
+        muted
         loop
+        autoPlay
         playsInline
         className="w-full h-full object-cover rounded-lg shadow-2xl border-2 sm:border-4 border-emerald-500 dark:border-emerald-400 group-hover:scale-105 transition-transform duration-300"
         whileHover={{
@@ -73,9 +88,14 @@ export function VideoPlayer({ videoSrc, label, labelPosition }: VideoPlayerProps
         onPause={() => setIsPlaying(false)}
         onLoadedData={() => {
           if (videoRef.current) {
+            // Ensure video is muted and playing when data is loaded
             videoRef.current.muted = true;
             videoRef.current.volume = 0;
-            setIsPlaying(false);
+            if (!isPlaying) {
+              videoRef.current.play().catch(() => {
+                setIsPlaying(false);
+              });
+            }
           }
         }}
       >
@@ -138,4 +158,4 @@ export function VideoPlayer({ videoSrc, label, labelPosition }: VideoPlayerProps
       </div>
     </div>
   );
-} 
+}
