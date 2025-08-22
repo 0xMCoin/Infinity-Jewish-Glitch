@@ -84,7 +84,7 @@ export function CallToAction({ className }: CallToActionProps) {
             {/* Button Content */}
             <div className="relative flex items-center space-x-3">
               <FaCoins className="w-5 h-5" />
-              <span>BUY $RAT NOW</span>
+              <span>BUY $RODOLFO NOW</span>
             </div>
           </motion.button>
         </motion.div>
