@@ -1,12 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  FaCoins,
-  FaRocket,
-  FaUsers,
-  FaChartLine,
-} from "react-icons/fa";
+import { FaCoins, FaRocket, FaUsers, FaChartLine } from "react-icons/fa";
 
 interface CallToActionProps {
   className?: string;
@@ -16,11 +11,10 @@ export function CallToAction({ className }: CallToActionProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleBuy = () => {
-    // Handle buy action
-  };
-
-  const handleConnectWallet = () => {
-    // Handle wallet connection
+    window.open(
+      "https://pump.fun/coin/4A7ArY6tPkjBef391sG93vxgriHythPUNKtjNURjpump",
+      "_blank"
+    );
   };
 
   return (
@@ -78,10 +72,7 @@ export function CallToAction({ className }: CallToActionProps) {
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
           >
-            {/* Glowing Border */}
             <div className="absolute -inset-1 bg-gradient-to-r from-emerald-400 via-green-500 to-emerald-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
-
-            {/* Button Content */}
             <div className="relative flex items-center space-x-3">
               <FaCoins className="w-5 h-5" />
               <span>BUY $RODOLFO NOW</span>
