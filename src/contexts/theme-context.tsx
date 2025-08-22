@@ -1,12 +1,14 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext } from "react";
+import { useTheme as useThemeHook } from "@/hooks/use-theme";
 
 type Theme = "light" | "dark";
 
 interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
+  mounted: boolean;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -20,47 +22,24 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>("light");
-  const [mounted, setMounted] = useState(false);
+  const { theme, toggleTheme, mounted } = useThemeHook();
 
-  useEffect(() => {
-    setMounted(true);
-
-    // Verificar se há um tema salvo no localStorage
-    const savedTheme = localStorage.getItem("theme") as Theme;
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setTheme("dark");
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
-
-    // Aplicar o tema ao documento
-    const root = document.documentElement;
-    root.classList.remove("light", "dark");
-    root.classList.add(theme);
-    localStorage.setItem("theme", theme);
-  }, [theme, mounted]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
-
-  // Evitar problemas de hidratação
+  // Renderizar um fallback simples durante a hidratação
   if (!mounted) {
     return (
-      <ThemeContext.Provider value={{ theme: "light", toggleTheme }}>
-        {children}
+      <ThemeContext.Provider value={{ theme: "light", toggleTheme: () => {}, mounted: false }}>
+        <div className="min-h-screen bg-gray-50">
+          {children}
+        </div>
       </ThemeContext.Provider>
     );
   }
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
+    <ThemeContext.Provider value={{ theme, toggleTheme, mounted }}>
+      <div className={`min-h-screen ${theme === "dark" ? "dark" : ""}`}>
+        {children}
+      </div>
     </ThemeContext.Provider>
   );
 };

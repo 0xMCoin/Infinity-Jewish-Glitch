@@ -79,81 +79,49 @@
     letter-spacing: 2px;
   }
 }
+
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
+  /* Prevenir scroll automático */
+  scroll-padding-top: 0;
+  scroll-padding-bottom: 0;
+  /* Forçar scroll para o topo */
+  scroll-behavior: auto;
 }
 
 body {
   font-family: 'Inter', sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
-  background-color: hsl(0 0% 95%);
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+  /* Prevenir scroll automático */
+  overflow-x: hidden;
+  /* Garantir que o scroll comece do topo */
+  scroll-behavior: auto;
+  /* Forçar posição inicial */
+  position: relative;
+  top: 0;
 }
 
-@layer base {
-  :root {
-    --background: 0 0% 95%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 98%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 98%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 45 93% 47%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 210 40% 90%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 90%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 90%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 85%;
-    --input: 214.3 31.8% 85%;
-    --ring: 45 93% 47%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 45 93% 47%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 45 93% 47%;
-  }
+/* Prevenir scroll automático em todos os elementos */
+* {
+  scroll-behavior: auto;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-  
-  /* Melhorias para dark mode */
-  .dark body {
-    background-color: hsl(222.2 84% 4.9%);
-    color: hsl(210 40% 98%);
-  }
-  
-  /* Transições suaves para mudanças de tema */
-  * {
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-  }
+/* Forçar scroll para o topo no carregamento */
+html, body {
+  scroll-behavior: auto !important;
+}
+
+/* Dark mode styles */
+.dark body {
+  background-color: #0a0a0a;
+  color: #f5f5f5;
+}
+
+/* Transições suaves para mudanças de tema */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 /* Animações personalizadas inspiradas no Aceternity UI */
@@ -301,5 +269,5 @@ body {
   inset: 2px;
   background: inherit;
   border-radius: inherit;
-  background: var(--bg, #1f2937);
+  background: #1f2937;
 }

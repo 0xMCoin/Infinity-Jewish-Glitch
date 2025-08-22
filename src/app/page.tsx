@@ -21,9 +21,9 @@ export default function Home() {
     <BackgroundLines
       className="w-full text-gray-900 dark:text-gray-100 relative min-h-screen bg-gray-50"
       lineColor="rgb(34, 197, 94)"
-      lineCount={15} // Reduzido de 30 para 15
-      animationDuration={15} // Reduzido de 12 para 15
-      interactive={false} // Desabilitado para melhor performance
+      lineCount={15}
+      animationDuration={15}
+      interactive={false}
     >
       <div className="relative z-10">
         <Header />

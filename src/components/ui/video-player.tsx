@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Volume2, VolumeX, Play, Pause } from "lucide-react";
 
 interface VideoPlayerProps {
@@ -18,7 +18,6 @@ export function VideoPlayer({
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
-  const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -28,9 +27,7 @@ export function VideoPlayer({
     if (videoRef.current) {
       videoRef.current.muted = true;
       videoRef.current.volume = 0;
-      setIsLoaded(true);
       setIsLoading(false);
-      // Tentar reproduzir automaticamente
       videoRef.current
         .play()
         .then(() => {
@@ -72,8 +69,6 @@ export function VideoPlayer({
   useEffect(() => {
     console.log("VideoPlayer useEffect triggered with videoSrc:", videoSrc);
     if (videoRef.current) {
-      // Reset states
-      setIsLoaded(false);
       setIsLoading(true);
       setHasError(false);
       setIsPlaying(false);
@@ -152,7 +147,7 @@ export function VideoPlayer({
 
   return (
     <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] group">
-      <motion.video
+      <m.video
         ref={videoRef}
         src={videoSrc}
         muted
@@ -184,7 +179,7 @@ export function VideoPlayer({
       />
 
       {/* Label */}
-      <motion.div
+      <m.div
         className={`absolute ${
           labelPosition === "bottom-left"
             ? "bottom-2 left-2"
@@ -195,7 +190,7 @@ export function VideoPlayer({
         transition={{ duration: 0.3, delay: 0.5 }}
       >
         {label}
-      </motion.div>
+      </m.div>
 
       {/* Loading indicator */}
       {isLoading && !hasError && (

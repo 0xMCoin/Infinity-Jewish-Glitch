@@ -10,7 +10,9 @@
     "optimize-videos": "node scripts/optimize-videos.js",
     "fix-videos": "node scripts/fix-odd-dimensions.js",
     "analyze": "ANALYZE=true next build",
-    "build:analyze": "cross-env ANALYZE=true next build"
+    "build:analyze": "cross-env ANALYZE=true next build",
+    "build:prod": "NODE_ENV=production next build",
+    "analyze:bundle": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
@@ -41,6 +43,7 @@
     "@types/react-window": "^1.8.8",
     "autoprefixer": "^10.4.20",
     "cross-env": "^7.0.3",
+    "cssnano": "^7.0.6",
     "eslint": "^9",
     "eslint-config-next": "15.1.2",
     "jest": "^29.7.0",

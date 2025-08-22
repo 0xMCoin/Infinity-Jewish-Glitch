@@ -1,11 +1,19 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { useState, useMemo, useCallback, lazy, Suspense } from "react";
+import { m, LazyMotion, domAnimation } from "framer-motion";
 import { FaWallet } from "react-icons/fa";
 import { SiSolana } from "react-icons/si";
 import { toast } from "react-hot-toast";
-import { VideoPlayer } from "../ui/video-player";
+import React from "react";
+
+const formatNumber = (num: number): string => {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
+const VideoPlayer = lazy(() =>
+  import("../ui/video-player").then((mod) => ({ default: mod.VideoPlayer }))
+);
 
 interface HeroSectionProps {
   totalRaised: number;
@@ -23,124 +31,141 @@ export function HeroSection({
   const [ethAmount, setEthAmount] = useState("0.003");
   const [tokenAmount, setTokenAmount] = useState("66,420.00");
 
-  const progress = (totalRaised / goal) * 100;
+  const progress = useMemo(
+    () => (totalRaised / goal) * 100,
+    [totalRaised, goal]
+  );
 
-  const handleBuy = () => {
+  const handleBuy = useCallback(() => {
     toast.success("🐀 Rat tokens purchased! Welcome to the party!");
-  };
+  }, []);
 
-  const videos = ["/videos/rat_meme1.mp4", "/videos/rat_meme2.mp4"];
+  const videos = useMemo(
+    () => ["/videos/rat_meme1.mp4", "/videos/rat_meme2.mp4"],
+    []
+  );
+
+  const VideoPlayerSkeleton = () => (
+    <div className="w-full h-64 bg-gray-200 dark:bg-gray-800 rounded-lg animate-pulse flex items-center justify-center">
+      <div className="text-gray-500 dark:text-gray-400 text-sm">Loading...</div>
+    </div>
+  );
 
   return (
-    <section className="relative py-4 sm:py-6 lg:py-8 min-h-[70vh] sm:min-h-[75vh] lg:min-h-screen flex flex-col items-center justify-center">
-      {/* Desktop Layout */}
-      <div className="hidden md:grid w-full grid-cols-12 gap-4 sm:gap-6 items-center max-w-7xl mx-auto px-4 sm:px-6">
-        {/* Left Side - Dancing Rat Video */}
-        <motion.div
-          className="md:col-span-4 lg:col-span-3"
-          initial={{ opacity: 0, x: -100, rotateY: -90 }}
-          animate={{ opacity: 1, x: 0, rotateY: 0 }}
-          transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
-        >
-          <VideoPlayer
-            videoSrc={videos[0]}
-            label="LIVE DANCE"
-            labelPosition="bottom-right"
-          />
-        </motion.div>
+    <LazyMotion features={domAnimation} strict>
+      <section className="relative py-4 sm:py-6 lg:py-8 min-h-[70vh] sm:min-h-[75vh] lg:min-h-screen flex flex-col items-center justify-center">
+        {/* Desktop Layout */}
+        <div className="hidden md:grid w-full grid-cols-12 gap-4 sm:gap-6 items-center max-w-7xl mx-auto px-4 sm:px-6">
+          {/* Left Side - Dancing Rat Video */}
+          <m.div
+            className="md:col-span-4 lg:col-span-3"
+            initial={{ opacity: 0, x: -100, rotateY: -90 }}
+            animate={{ opacity: 1, x: 0, rotateY: 0 }}
+            transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
+          >
+            <Suspense fallback={<VideoPlayerSkeleton />}>
+              <VideoPlayer
+                videoSrc={videos[0]}
+                label="LIVE DANCE"
+                labelPosition="bottom-right"
+              />
+            </Suspense>
+          </m.div>
 
-        {/* Center - Buy Section */}
-        <motion.div
-          className="md:col-span-8 lg:col-span-6 relative z-20"
-          initial={{ opacity: 0, y: 50, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }} // Reduzido duration e delay
-        >
-          <BuyCard
-            totalRaised={totalRaised}
-            goal={goal}
-            progress={progress}
-            currentPrice={currentPrice}
-            nextPrice={nextPrice}
-            ethAmount={ethAmount}
-            setEthAmount={setEthAmount}
-            tokenAmount={tokenAmount}
-            onBuy={handleBuy}
-          />
-        </motion.div>
+          {/* Center - Buy Section */}
+          <m.div
+            className="md:col-span-8 lg:col-span-6 relative z-20"
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <BuyCard
+              totalRaised={totalRaised}
+              progress={progress}
+              currentPrice={currentPrice}
+              nextPrice={nextPrice}
+              ethAmount={ethAmount}
+              setEthAmount={setEthAmount}
+              tokenAmount={tokenAmount}
+              onBuy={handleBuy}
+            />
+          </m.div>
 
-        {/* Right Side - Dancing Rat Video */}
-        <motion.div
-          className="md:col-span-4 lg:col-span-3"
-          initial={{ opacity: 0, x: 100, rotateY: 90 }}
-          animate={{ opacity: 1, x: 0, rotateY: 0 }}
-          transition={{ duration: 0.8, type: "spring", stiffness: 80 }} // Reduzido duration e stiffness
-        >
-          <VideoPlayer
-            videoSrc={videos[1]}
-            label="PARTY TIME"
-            labelPosition="bottom-left"
-          />
-        </motion.div>
-      </div>
+          {/* Right Side - Dancing Rat Video */}
+          <m.div
+            className="md:col-span-4 lg:col-span-3"
+            initial={{ opacity: 0, x: 100, rotateY: 90 }}
+            animate={{ opacity: 1, x: 0, rotateY: 0 }}
+            transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
+          >
+            <Suspense fallback={<VideoPlayerSkeleton />}>
+              <VideoPlayer
+                videoSrc={videos[1]}
+                label="PARTY TIME"
+                labelPosition="bottom-left"
+              />
+            </Suspense>
+          </m.div>
+        </div>
 
-      {/* Mobile Layout */}
-      <div className="md:hidden w-full max-w-7xl mx-auto mt-20 px-4 sm:px-6 flex flex-col items-center space-y-6">
-        {/* Mobile Video Section */}
-        <motion.div
-          className="w-full max-w-md"
-          initial={{ opacity: 0, y: -50, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }} // Reduzido duration e delay
-        >
-          <VideoPlayer
-            videoSrc={videos[0]}
-            label="LIVE DANCE"
-            labelPosition="bottom-right"
-          />
-        </motion.div>
+        {/* Mobile Layout */}
+        <div className="md:hidden w-full max-w-7xl mx-auto mt-20 px-4 sm:px-6 flex flex-col items-center space-y-6">
+          {/* Mobile Video Section */}
+          <m.div
+            className="w-full max-w-md"
+            initial={{ opacity: 0, y: -50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <Suspense fallback={<VideoPlayerSkeleton />}>
+              <VideoPlayer
+                videoSrc={videos[0]}
+                label="LIVE DANCE"
+                labelPosition="bottom-right"
+              />
+            </Suspense>
+          </m.div>
 
-        {/* Mobile Buy Section */}
-        <motion.div
-          className="w-full max-w-md"
-          initial={{ opacity: 0, y: 30, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }} // Reduzido duration e delay
-        >
-          <BuyCard
-            totalRaised={totalRaised}
-            goal={goal}
-            progress={progress}
-            currentPrice={currentPrice}
-            nextPrice={nextPrice}
-            ethAmount={ethAmount}
-            setEthAmount={setEthAmount}
-            tokenAmount={tokenAmount}
-            onBuy={handleBuy}
-          />
-        </motion.div>
-      </div>
+          {/* Mobile Buy Section */}
+          <m.div
+            className="w-full max-w-md"
+            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <BuyCard
+              totalRaised={totalRaised}
+              progress={progress}
+              currentPrice={currentPrice}
+              nextPrice={nextPrice}
+              ethAmount={ethAmount}
+              setEthAmount={setEthAmount}
+              tokenAmount={tokenAmount}
+              onBuy={handleBuy}
+            />
+          </m.div>
+        </div>
 
-      {/* Bottom Large Text - Desktop Only */}
-      <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 hidden lg:flex w-full justify-center items-center">
-        <h1 className="text-6xl lg:text-8xl font-black tracking-wider text-gray-900 dark:text-white opacity-90 select-none transition-colors duration-300 font-arcade text-arcade-shadow">
-          RODOLFO THE RAT
-        </h1>
-      </div>
+        {/* Bottom Large Text - Desktop Only */}
+        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 hidden lg:flex w-full justify-center items-center">
+          <h1 className="text-6xl lg:text-8xl font-black tracking-wider text-gray-900 dark:text-white opacity-90 select-none transition-colors duration-300 font-arcade text-arcade-shadow">
+            RODOLFO THE RAT
+          </h1>
+        </div>
 
-      {/* Mobile Bottom Text */}
-      <div className="lg:hidden text-center mt-6 sm:mt-8">
-        <h1 className="text-5xl sm:text-4xl font-black tracking-wider text-gray-900 dark:text-white opacity-90 transition-colors duration-300 font-arcade text-arcade-shadow">
-          RODOLFO THE RAT
-        </h1>
-      </div>
-    </section>
+        {/* Mobile Bottom Text */}
+        <div className="lg:hidden text-center mt-6 sm:mt-8">
+          <h1 className="text-6xl sm:text-4xl font-black tracking-wider text-gray-900 dark:text-white opacity-90 transition-colors duration-300 font-arcade text-arcade-shadow">
+            RODOLFO THE RAT
+          </h1>
+        </div>
+      </section>
+    </LazyMotion>
   );
 }
 
 interface BuyCardProps {
   totalRaised: number;
-  goal: number;
   progress: number;
   currentPrice: number;
   nextPrice: number;
@@ -150,9 +175,9 @@ interface BuyCardProps {
   onBuy: () => void;
 }
 
-function BuyCard({
+// Componente BuyCard otimizado com memo
+const BuyCard = React.memo(function BuyCard({
   totalRaised,
-  goal,
   progress,
   currentPrice,
   nextPrice,
@@ -161,6 +186,14 @@ function BuyCard({
   tokenAmount,
   onBuy,
 }: BuyCardProps) {
+  // Memoização das funções de callback
+  const handleEthAmountChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setEthAmount(e.target.value);
+    },
+    [setEthAmount]
+  );
+
   return (
     <div className="relative group">
       <div className="relative bg-black/10 backdrop-blur-md dark:bg-black/20 dark:text-white p-4 sm:p-6 rounded-xl shadow-2xl border border-emerald-500/30">
@@ -175,7 +208,7 @@ function BuyCard({
         <div className="mb-4 sm:mb-6">
           <div className="text-center mb-3">
             <p className="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400 font-arcade text-arcade-shadow">
-              ${totalRaised.toLocaleString()}
+              ${formatNumber(totalRaised)}
             </p>
             <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm mt-2">
               Goal Market Cap: 1 Billion
@@ -234,7 +267,7 @@ function BuyCard({
                 type="text"
                 placeholder="0.003"
                 value={ethAmount}
-                onChange={(e) => setEthAmount(e.target.value)}
+                onChange={handleEthAmountChange}
                 className="flex-1 bg-transparent text-gray-900 dark:text-white text-base sm:text-lg font-bold outline-none"
               />
               <span className="text-emerald-600 dark:text-emerald-400 text-xs sm:text-sm">
@@ -260,7 +293,7 @@ function BuyCard({
 
         {/* Action Buttons */}
         <div className="space-y-3">
-          <motion.button
+          <m.button
             onClick={onBuy}
             className="w-full p-2 sm:p-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold rounded-lg shadow-lg text-sm sm:text-base hover:from-emerald-600 hover:to-green-700 transition-all duration-300"
             whileHover={{ scale: 1.02 }}
@@ -268,7 +301,7 @@ function BuyCard({
           >
             <FaWallet className="inline mr-2" />
             BUY NOW!
-          </motion.button>
+          </m.button>
         </div>
 
         {/* Floating Elements */}
@@ -277,4 +310,4 @@ function BuyCard({
       </div>
     </div>
   );
-}
+});
