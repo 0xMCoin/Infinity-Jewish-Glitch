@@ -46,16 +46,6 @@ const nextConfig: NextConfig = {
       "lucide-react",
     ],
     optimizeCss: true,
-    turbo: {
-      rules: {
-        "*.svg": {
-          loaders: ["@svgr/webpack"],
-          as: "*.js",
-        },
-      },
-    },
-    // Otimizações de bundle
-    bundlePagesExternals: true,
   },
   // Configurações de imagem otimizadas
   images: {
@@ -145,8 +135,6 @@ const nextConfig: NextConfig = {
 
     return config;
   },
-  // Otimizações de output
-  output: "standalone",
   // Otimizações de transpilação
   transpilePackages: [],
   // Otimizações de cache

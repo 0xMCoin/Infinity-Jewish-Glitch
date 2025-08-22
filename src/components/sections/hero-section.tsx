@@ -6,42 +6,44 @@ import { FaWallet } from "react-icons/fa";
 import { SiSolana } from "react-icons/si";
 import { toast } from "react-hot-toast";
 import React from "react";
-
-const formatNumber = (num: number): string => {
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-};
+import { useTokenData } from "@/hooks/useTokenData";
+import { CopyIcon } from "lucide-react";
 
 const VideoPlayer = lazy(() =>
   import("../ui/video-player").then((mod) => ({ default: mod.VideoPlayer }))
 );
 
-interface HeroSectionProps {
-  totalRaised: number;
-  goal: number;
-  currentPrice: number;
-  nextPrice: number;
-}
+export function HeroSection() {
+  const [usdAmount, setUsdAmount] = useState("100");
+  const { data: tokenData, loading: tokenLoading } = useTokenData();
 
-export function HeroSection({
-  totalRaised,
-  goal,
-  currentPrice,
-  nextPrice,
-}: HeroSectionProps) {
-  const [ethAmount, setEthAmount] = useState("0.003");
-  const [tokenAmount, setTokenAmount] = useState("66,420.00");
+  const goal = 1000000000; // 1 Billion goal
 
   const progress = useMemo(
-    () => (totalRaised / goal) * 100,
-    [totalRaised, goal]
+    () => (tokenData?.market_cap ? (tokenData.market_cap / goal) * 100 : 0),
+    [tokenData?.market_cap, goal]
   );
+
+  const tokenAmount = useMemo(() => {
+    if (!tokenData?.price || !usdAmount || isNaN(Number(usdAmount))) {
+      return "0.00";
+    }
+
+    const usdValue = Number(usdAmount);
+    const tokensReceived = usdValue / tokenData.price;
+
+    return tokensReceived.toLocaleString("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+  }, [tokenData?.price, usdAmount]);
 
   const handleBuy = useCallback(() => {
     toast.success("🐀 Rat tokens purchased! Welcome to the party!");
   }, []);
 
   const videos = useMemo(
-    () => ["/videos/rat_meme1.mp4", "/videos/rat_meme2.mp4"],
+    () => ["/videos/rat_meme3.mp4", "/videos/rat_meme2.mp4"],
     []
   );
 
@@ -58,7 +60,7 @@ export function HeroSection({
         <div className="hidden md:grid w-full grid-cols-12 gap-4 sm:gap-6 items-center max-w-7xl mx-auto px-4 sm:px-6">
           {/* Left Side - Dancing Rat Video */}
           <m.div
-            className="md:col-span-4 lg:col-span-3"
+            className="md:col-span-3 lg:col-span-3"
             initial={{ opacity: 0, x: -100, rotateY: -90 }}
             animate={{ opacity: 1, x: 0, rotateY: 0 }}
             transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
@@ -74,26 +76,28 @@ export function HeroSection({
 
           {/* Center - Buy Section */}
           <m.div
-            className="md:col-span-8 lg:col-span-6 relative z-20"
+            className="md:col-span-6 lg:col-span-6 relative z-20"
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <BuyCard
-              totalRaised={totalRaised}
+              totalRaised={tokenData?.market_cap || 0}
               progress={progress}
-              currentPrice={currentPrice}
-              nextPrice={nextPrice}
-              ethAmount={ethAmount}
-              setEthAmount={setEthAmount}
+              currentPrice={tokenData?.price || 0}
+              marketCap={tokenData?.market_cap || 0}
+              usdAmount={usdAmount}
+              setUsdAmount={setUsdAmount}
               tokenAmount={tokenAmount}
               onBuy={handleBuy}
+              tokenLoading={tokenLoading}
+              tokenData={tokenData}
             />
           </m.div>
 
           {/* Right Side - Dancing Rat Video */}
           <m.div
-            className="md:col-span-4 lg:col-span-3"
+            className="md:col-span-3 lg:col-span-3"
             initial={{ opacity: 0, x: 100, rotateY: 90 }}
             animate={{ opacity: 1, x: 0, rotateY: 0 }}
             transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
@@ -134,14 +138,16 @@ export function HeroSection({
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <BuyCard
-              totalRaised={totalRaised}
+              totalRaised={tokenData?.market_cap || 0}
               progress={progress}
-              currentPrice={currentPrice}
-              nextPrice={nextPrice}
-              ethAmount={ethAmount}
-              setEthAmount={setEthAmount}
+              currentPrice={tokenData?.price || 0}
+              marketCap={tokenData?.market_cap || 0}
+              usdAmount={usdAmount}
+              setUsdAmount={setUsdAmount}
               tokenAmount={tokenAmount}
               onBuy={handleBuy}
+              tokenLoading={tokenLoading}
+              tokenData={tokenData}
             />
           </m.div>
         </div>
@@ -168,43 +174,66 @@ interface BuyCardProps {
   totalRaised: number;
   progress: number;
   currentPrice: number;
-  nextPrice: number;
-  ethAmount: string;
-  setEthAmount: (value: string) => void;
+  marketCap: number;
+  usdAmount: string;
+  setUsdAmount: (value: string) => void;
   tokenAmount: string;
   onBuy: () => void;
+  tokenLoading: boolean;
+  tokenData: any;
 }
 
-// Componente BuyCard otimizado com memo
 const BuyCard = React.memo(function BuyCard({
   totalRaised,
   progress,
   currentPrice,
-  nextPrice,
-  ethAmount,
-  setEthAmount,
+  marketCap,
+  usdAmount,
+  setUsdAmount,
   tokenAmount,
   onBuy,
+  tokenLoading,
+  tokenData,
 }: BuyCardProps) {
-  // Memoização das funções de callback
-  const handleEthAmountChange = useCallback(
+  const handleUsdAmount = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      setEthAmount(e.target.value);
+      setUsdAmount(e.target.value);
     },
-    [setEthAmount]
+    [setUsdAmount]
   );
+
+  const formatNumber = (num: number): string => {
+    if (num >= 1e9) {
+      return (num / 1e9).toFixed(2) + "B";
+    } else if (num >= 1e6) {
+      return (num / 1e6).toFixed(2) + "M";
+    } else if (num >= 1e3) {
+      return (num / 1e3).toFixed(2) + "K";
+    }
+    return num.toFixed(2);
+  };
+
+  const formatPrice = (price: number): string => {
+    if (price < 0.0001) {
+      return price.toFixed(8);
+    } else if (price < 0.01) {
+      return price.toFixed(6);
+    } else if (price < 1) {
+      return price.toFixed(4);
+    } else {
+      return price.toFixed(2);
+    }
+  };
 
   return (
     <div className="relative group">
       <div className="relative bg-black/10 backdrop-blur-md dark:bg-black/20 dark:text-white p-4 sm:p-6 rounded-xl shadow-2xl border border-emerald-500/30">
-        {/* Header */}
         <div className="text-center mb-4 sm:mb-6">
           <h2 className="text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400 mb-2 font-arcade text-arcade-shadow">
             BUY $RAT NOW!
           </h2>
         </div>
 
-        {/* Progress */}
         <div className="mb-4 sm:mb-6">
           <div className="text-center mb-3">
             <p className="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400 font-arcade text-arcade-shadow">
@@ -222,26 +251,35 @@ const BuyCard = React.memo(function BuyCard({
             />
           </div>
           <p className="text-center text-emerald-600 dark:text-emerald-400 font-bold text-xs sm:text-sm">
-            {progress.toFixed(1)}%
+            {progress.toFixed(4)}%
           </p>
         </div>
 
-        {/* Price Info */}
         <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
           <div className="text-center p-2 sm:p-3 bg-gray-100 dark:bg-gray-800/70 rounded-lg border border-gray-300 dark:border-gray-700">
             <p className="text-gray-700 dark:text-gray-300 text-xs mb-1">
               CURRENT PRICE
             </p>
             <p className="text-emerald-600 dark:text-emerald-400 font-bold text-sm sm:text-base">
-              ${currentPrice}
+              $
+              {tokenLoading
+                ? "..."
+                : currentPrice > 0
+                ? formatPrice(currentPrice)
+                : "0"}
             </p>
           </div>
           <div className="text-center p-2 sm:p-3 bg-gray-100 dark:bg-gray-800/70 rounded-lg border border-gray-300 dark:border-gray-700">
             <p className="text-gray-700 dark:text-gray-300 text-xs mb-1">
-              CURRENT MARKET CAP
+              MARKET CAP
             </p>
             <p className="text-emerald-600 dark:text-emerald-400 font-bold text-sm sm:text-base">
-              ${nextPrice}
+              $
+              {tokenLoading
+                ? "..."
+                : marketCap > 0
+                ? formatNumber(marketCap)
+                : "0"}
             </p>
           </div>
         </div>
@@ -265,13 +303,13 @@ const BuyCard = React.memo(function BuyCard({
             <div className="flex items-center space-x-2">
               <input
                 type="text"
-                placeholder="0.003"
-                value={ethAmount}
-                onChange={handleEthAmountChange}
+                placeholder="100"
+                value={usdAmount}
+                onChange={handleUsdAmount}
                 className="flex-1 bg-transparent text-gray-900 dark:text-white text-base sm:text-lg font-bold outline-none"
               />
               <span className="text-emerald-600 dark:text-emerald-400 text-xs sm:text-sm">
-                SOL
+                USD
               </span>
             </div>
           </div>
@@ -288,23 +326,37 @@ const BuyCard = React.memo(function BuyCard({
                 RAT
               </span>
             </div>
+            <p className="text-gray-500 dark:text-gray-400 text-xs mt-1">
+              ≈ $
+              {(
+                Number(tokenAmount.replace(/,/g, "")) * (tokenData?.price || 0)
+              ).toFixed(2)}{" "}
+              USD
+            </p>
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="space-y-3">
-          <m.button
-            onClick={onBuy}
-            className="w-full p-2 sm:p-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold rounded-lg shadow-lg text-sm sm:text-base hover:from-emerald-600 hover:to-green-700 transition-all duration-300"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+        <div className="flex justify-center items-center gap-2">
+          <a
+            href="https://pump.fun/coin/4A7ArY6tPkjBef391sG93vxgriHythPUNKtjNURjpump"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full flex justify-center items-center p-2 sm:p-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold rounded-lg shadow-lg text-xs sm:text-base hover:from-emerald-600 hover:to-green-700 transition-all duration-300"
           >
-            <FaWallet className="inline mr-2" />
-            BUY NOW!
-          </m.button>
+            CA: 4A7ArY6tPkjBef391sG93vxgriHythPUNKtjNURjpump
+          </a>
+
+          <CopyIcon
+            onClick={() => {
+              navigator.clipboard.writeText(
+                "4A7ArY6tPkjBef391sG93vxgriHythPUNKtjNURjpump"
+              );
+              toast.success("Copied to clipboard");
+            }}
+            className="w-6 h-6 cursor-pointer"
+          />
         </div>
 
-        {/* Floating Elements */}
         <div className="absolute top-3 right-3 w-2 h-2 bg-emerald-500 dark:bg-emerald-400 rounded-full animate-pulse"></div>
         <div className="absolute bottom-3 left-3 w-1.5 h-1.5 bg-green-600 dark:bg-green-500 rounded-full animate-pulse"></div>
       </div>

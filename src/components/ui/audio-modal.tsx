@@ -9,7 +9,7 @@ interface AudioModalProps {
   onEnableAudio: () => void;
 }
 
-export function AudioModal({ isOpen, onClose, onEnableAudio }: AudioModalProps) {
+export function AudioModal({ isOpen, onEnableAudio }: AudioModalProps) {
   const leftVideoRef = useRef<HTMLVideoElement>(null);
   const rightVideoRef = useRef<HTMLVideoElement>(null);
 

@@ -1,16 +1,51 @@
 "use client";
 
 import { useState } from "react";
-import { FaBars, FaInstagram, FaTwitter, FaDiscord } from "react-icons/fa";
+import {
+  FaBars,
+  FaInstagram,
+  FaTwitter,
+  FaDiscord,
+  FaTelegram,
+  FaTiktok,
+} from "react-icons/fa";
+import { SiSolana } from "react-icons/si";
 import { ThemeToggle } from "../ui/theme-toggle";
 import { motion, AnimatePresence } from "framer-motion";
+
+const dockItems = [
+  {
+    title: "Twitter",
+    icon: <FaTwitter />,
+    href: "https://x.com/rodolfotherat",
+  },
+  {
+    title: "Telegram",
+    icon: <FaTelegram />,
+    href: "https://t.me/rodolfotherat",
+  },
+  {
+    title: "Instagram",
+    icon: <FaInstagram />,
+    href: "https://www.instagram.com/ratmemecoin",
+  },
+  {
+    title: "Tiktok",
+    icon: <FaTiktok />,
+    href: "https://www.tiktok.com/@rodolfoorato",
+  },
+  {
+    title: "Contract",
+    icon: <SiSolana />,
+    href: "https://pump.fun/coin/4A7ArY6tPkjBef391sG93vxgriHythPUNKtjNURjpump",
+  },
+];
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div className="fixed top-0 left-0 z-50 w-full">
-      {/* Scrolling Header with Enhanced Animation */}
       <div className="bg-gradient-to-r from-emerald-600 to-green-600 text-white py-2 overflow-hidden relative z-20 shadow-lg">
         <div className="relative">
           <div className="animate-marquee whitespace-nowrap text-sm font-bold font-arcade">
@@ -26,9 +61,7 @@ export function Header() {
         </div>
       </div>
 
-      {/* Main Header with Enhanced Design */}
       <header className="relative bg-gradient-to-r from-emerald-500 to-green-500 dark:from-emerald-600 dark:to-green-600 px-4 py-1 flex items-center justify-between shadow-xl z-20 transition-all duration-300 overflow-hidden">
-        {/* Content */}
         <div className="relative z-10 flex items-center justify-between w-full">
           <motion.button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -43,47 +76,29 @@ export function Header() {
 
           <div className="flex items-center space-x-4">
             <ThemeToggle />
-            
+
             {/* Social Links with Enhanced Hover Effects */}
             <div className="flex items-center space-x-3">
-              <motion.a
-                href="#"
-                className="relative group"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <div className="relative bg-black/20 backdrop-blur-sm px-3 py-1 rounded-lg border border-white/20 text-white hover:text-emerald-200 dark:hover:text-emerald-200 transition-all duration-300 hover:border-emerald-400/50 hover:bg-black/30">
-                  <FaInstagram size={20} />
-                </div>
-              </motion.a>
-              
-              <motion.a
-                href="#"
-                className="relative group"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <div className="relative bg-black/20 backdrop-blur-sm px-3 py-1 rounded-lg border border-white/20 text-white hover:text-emerald-200 dark:hover:text-emerald-200 transition-all duration-300 hover:border-emerald-400/50 hover:bg-black/30">
-                  <FaDiscord size={20} />
-                </div>
-              </motion.a>
-              
-              <motion.a
-                href="#"
-                className="relative group"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <div className="relative bg-black/20 backdrop-blur-sm px-3 py-1 rounded-lg border border-white/20 text-white hover:text-emerald-200 dark:hover:text-emerald-200 transition-all duration-300 hover:border-emerald-400/50 hover:bg-black/30">
-                  <FaTwitter size={20} />
-                </div>
-              </motion.a>
+              {dockItems.map((item) => (
+                <motion.a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative group"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div className="relative bg-black/20 backdrop-blur-sm px-3 py-1 rounded-lg border border-white/20 text-white hover:text-emerald-200 dark:hover:text-emerald-200 transition-all duration-300 hover:border-emerald-400/50 hover:bg-black/30">
+                    {item.icon}
+                  </div>
+                </motion.a>
+              ))}
             </div>
           </div>
         </div>
       </header>
 
-      {/* Enhanced Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -122,4 +137,4 @@ export function Header() {
       </AnimatePresence>
     </div>
   );
-} 
+}

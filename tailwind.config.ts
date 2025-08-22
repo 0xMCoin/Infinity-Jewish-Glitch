@@ -72,11 +72,9 @@ const config: Config = {
   plugins: [
     require("tailwind-scrollbar")({ nocompatible: true }),
   ],
-  // Otimizações de performance
   future: {
     hoverOnlyWhenSupported: true,
   },
-  // Reduzir o tamanho do CSS gerado
   corePlugins: {
     preflight: true,
     container: false,

@@ -12,11 +12,6 @@ import { Footer } from "@/components/ui/floating-dock";
 import { LazySection } from "@/components/ui/lazy-section";
 
 export default function Home() {
-  const totalRaised = 100000;
-  const goal = 1000000;
-  const currentPrice = 0.0003;
-  const nextPrice = 0.0004;
-
   return (
     <BackgroundLines
       className="w-full text-gray-900 dark:text-gray-100 relative min-h-screen bg-gray-50"
@@ -28,12 +23,7 @@ export default function Home() {
       <div className="relative z-10">
         <Header />
 
-        <HeroSection
-          totalRaised={totalRaised}
-          goal={goal}
-          currentPrice={currentPrice}
-          nextPrice={nextPrice}
-        />
+        <HeroSection />
 
         <LazySection>
           <AboutSection />

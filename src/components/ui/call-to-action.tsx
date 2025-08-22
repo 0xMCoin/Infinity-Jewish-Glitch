@@ -2,13 +2,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
-  FaEthereum,
   FaCoins,
   FaRocket,
   FaUsers,
   FaChartLine,
 } from "react-icons/fa";
-import { SiSolana } from "react-icons/si";
 
 interface CallToActionProps {
   className?: string;

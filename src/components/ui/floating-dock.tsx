@@ -11,8 +11,6 @@ import {
 } from "framer-motion";
 import { useRef, useState } from "react";
 import {
-  FaEthereum,
-  FaDiscord,
   FaTwitter,
   FaTelegram,
   FaInstagram,
@@ -33,7 +31,7 @@ export function Footer() {
     {
       title: "Telegram",
       icon: <FaTelegram />,
-      href: "t.me/rodolfotherat",
+      href: "https://t.me/rodolfotherat",
     },
     {
       title: "Instagram",
@@ -48,7 +46,7 @@ export function Footer() {
     {
       title: "Contract",
       icon: <SiSolana />,
-      href: "https://solscan.io/address/0x0000000000000000000000000000000000000000",
+      href: "https://pump.fun/coin/4A7ArY6tPkjBef391sG93vxgriHythPUNKtjNURjpump",
     },
   ];
 
