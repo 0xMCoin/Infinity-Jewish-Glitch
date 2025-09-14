@@ -1,18 +1,14 @@
 import type { TokenData } from "@/interfaces";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const BIRDEYE_URL = "https://public-api.birdeye.so/defi/v3/token/market-data";
 
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
-
-    // aceita ?mint=... ou usa o seu como default
-    const mint =
-      searchParams.get("mint") ??
-      "4A7ArY6tPkjBef391sG93vxgriHythPUNKtjNURjpump";
-
+    const mint = searchParams.get("mint");
     const apiKey = process.env.API_KEY;
 
     if (!apiKey) {

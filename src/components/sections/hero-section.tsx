@@ -17,7 +17,7 @@ export function HeroSection() {
   const [usdAmount, setUsdAmount] = useState("100");
   const { data: tokenData, loading: tokenLoading } = useTokenData();
 
-  const goal = 1000000000; // 1 Billion goal
+  const goal = 1000000000;
 
   const progress = useMemo(
     () => (tokenData?.market_cap ? (tokenData.market_cap / goal) * 100 : 0),

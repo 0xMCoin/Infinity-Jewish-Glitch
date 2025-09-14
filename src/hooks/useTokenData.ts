@@ -23,7 +23,6 @@ export function useTokenData() {
         if (tokenData.error) {
           throw new Error(tokenData.error);
         }
-        console.log(tokenData);
         setData(tokenData);
       } catch (err) {
         setError(err instanceof Error ? err.message : "An error occurred");
