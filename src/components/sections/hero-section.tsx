@@ -336,26 +336,26 @@ const BuyCard = React.memo(function BuyCard({
           </div>
         </div>
 
-        <div className="flex justify-center items-center gap-2">
+       {/*  <div className="flex justify-center items-center gap-2">
           <a
-            href="https://pump.fun/coin/4A7ArY6tPkjBef391sG93vxgriHythPUNKtjNURjpump"
+            href="https://pump.fun/coin"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full flex justify-center items-center p-2 sm:p-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold rounded-lg shadow-lg text-xs sm:text-base hover:from-emerald-600 hover:to-green-700 transition-all duration-300"
           >
-            CA: 4A7ArY6tPkjBef391sG93vxgriHythPUNKtjNURjpump
+            CA: 
           </a>
 
           <CopyIcon
             onClick={() => {
               navigator.clipboard.writeText(
-                "4A7ArY6tPkjBef391sG93vxgriHythPUNKtjNURjpump"
+                ""
               );
               toast.success("Copied to clipboard");
             }}
             className="w-6 h-6 cursor-pointer"
           />
-        </div>
+        </div> */}
 
         <div className="absolute top-3 right-3 w-2 h-2 bg-emerald-500 dark:bg-emerald-400 rounded-full animate-pulse"></div>
         <div className="absolute bottom-3 left-3 w-1.5 h-1.5 bg-green-600 dark:bg-green-500 rounded-full animate-pulse"></div>
