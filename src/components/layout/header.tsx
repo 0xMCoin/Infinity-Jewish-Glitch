@@ -15,7 +15,7 @@ const dockItems = [
   {
     title: "Instagram",
     icon: <FaInstagram />,
-    href: "https://www.instagram.com/ratmemecoin",
+    href: "https://www.instagram.com/rodolfotherat",
   },
   {
     title: "Tiktok",
