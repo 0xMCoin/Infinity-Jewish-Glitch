@@ -69,7 +69,6 @@ export function HeroSection() {
               <VideoPlayer
                 videoSrc={videos[0]}
                 label="LIVE DANCE"
-                muted={false}
                 labelPosition="bottom-right"
               />
             </Suspense>
