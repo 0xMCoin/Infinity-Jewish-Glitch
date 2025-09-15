@@ -136,7 +136,7 @@ export function AboutSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              Why $RODOLFO?
+              Why $PHONKRAT?
             </motion.h3>
 
             <div className="space-y-8">

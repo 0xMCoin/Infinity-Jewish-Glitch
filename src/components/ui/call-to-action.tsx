@@ -75,7 +75,7 @@ export function CallToAction({ className }: CallToActionProps) {
             <div className="absolute -inset-1 bg-gradient-to-r from-emerald-400 via-green-500 to-emerald-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="relative flex items-center space-x-3">
               <FaCoins className="w-5 h-5" />
-              <span>BUY $RODOLFO NOW</span>
+              <span>BUY $PHONKRAT NOW</span>
             </div>
           </motion.button>
         </motion.div>

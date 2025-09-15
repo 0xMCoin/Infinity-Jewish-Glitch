@@ -230,7 +230,7 @@ const BuyCard = React.memo(function BuyCard({
       <div className="relative bg-black/10 backdrop-blur-md dark:bg-black/20 dark:text-white p-4 sm:p-6 rounded-xl shadow-2xl border border-emerald-500/30">
         <div className="text-center mb-4 sm:mb-6">
           <h2 className="text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400 mb-2 font-arcade text-arcade-shadow">
-            BUY $RODOLFO NOW!
+            BUY $PHONKRAT NOW!
           </h2>
         </div>
 
@@ -323,7 +323,7 @@ const BuyCard = React.memo(function BuyCard({
                 {tokenAmount}
               </span>
               <span className="text-emerald-600 dark:text-emerald-400 text-xs sm:text-sm">
-                $RODOLFO
+                $PHONKRAT
               </span>
             </div>
             <p className="text-gray-500 dark:text-gray-400 text-xs mt-1">
