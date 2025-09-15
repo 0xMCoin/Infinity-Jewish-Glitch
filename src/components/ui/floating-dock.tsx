@@ -33,11 +33,12 @@ export function Footer() {
       icon: <FaTelegram />,
       href: "https://t.me/rodolfotherat",
     },
+     */
     {
       title: "Instagram",
       icon: <FaInstagram />,
       href: "https://www.instagram.com/ratmemecoin",
-    }, */
+    },
     {
       title: "Tiktok",
       icon: <FaTiktok />,
