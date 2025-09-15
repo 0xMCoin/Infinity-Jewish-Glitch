@@ -155,14 +155,14 @@ export function HeroSection() {
         {/* Bottom Large Text - Desktop Only */}
         <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 hidden lg:flex w-full justify-center items-center">
           <h1 className="text-6xl lg:text-8xl font-black tracking-wider text-gray-900 dark:text-white opacity-90 select-none transition-colors duration-300 font-arcade text-arcade-shadow">
-            RODOLFO THE RAT
+            PHONK RAT
           </h1>
         </div>
 
         {/* Mobile Bottom Text */}
         <div className="lg:hidden text-center mt-6 sm:mt-8">
           <h1 className="text-6xl sm:text-4xl font-black tracking-wider text-gray-900 dark:text-white opacity-90 transition-colors duration-300 font-arcade text-arcade-shadow">
-            RODOLFO THE RAT
+            PHONK RAT
           </h1>
         </div>
       </section>

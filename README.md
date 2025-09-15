@@ -1,4 +1,4 @@
-# 🐀 RODOLFO THE RAT - Memecoin Website
+# 🐀 PHONK RAT - Memecoin Website
 
 ## 🏗️ **Estrutura de Componentes Refatorada**
 

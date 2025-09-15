@@ -23,26 +23,26 @@ const pressStart2P = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  title: "Rodolfo The Rat - Meme Coin",
+  title: "Phonk Rat - Meme Coin",
   description:
-    "The next big thing in crypto - Rodolfo The Rat is here to rule the meme world!",
+    "The next big thing in crypto - Phonk Rat is here to rule the meme world!",
   keywords: ["meme coin", "crypto", "solana", "rat", "rodolfo"],
-  authors: [{ name: "Rodolfo The Rat Team" }],
-  creator: "Rodolfo The Rat",
-  publisher: "Rodolfo The Rat",
+  authors: [{ name: "Phonk Rat Team" }],
+  creator: "PHONK RAT",
+  publisher: "PHONK RAT",
   robots: "index, follow",
   openGraph: {
-    title: "Rodolfo The Rat - Meme Coin",
+    title: "Phonk Rat - Meme Coin",
     description:
-      "The next big thing in crypto - Rodolfo The Rat is here to rule the meme world!",
+      "The next big thing in crypto - PHONK RAT is here to rule the meme world!",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rodolfo The Rat - Meme Coin",
+    title: "PHONK RAT - Meme Coin",
     description:
-      "The next big thing in crypto - Rodolfo The Rat is here to rule the meme world!",
+      "The next big thing in crypto - PHONK RAT is here to rule the meme world!",
   },
   viewport: "width=device-width, initial-scale=1, maximum-scale=5",
   themeColor: "#10b981",
@@ -88,7 +88,7 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Rodolfo The Rat" />
+        <meta name="apple-mobile-web-app-title" content="PHONK RAT" />
 
         {/* Favicon e ícones */}
         <link rel="icon" href="/images/logo.png" sizes="64x64" />

@@ -63,7 +63,7 @@ export function Footer() {
 
         <div className="text-center">
           <p className="text-sm sm:text-base text-gray-700 dark:text-gray-200 mb-3 sm:mb-4">
-            © {currentYear} Rodolfo The Rat. All rights reserved.
+            © {currentYear} Phonk Rat. All rights reserved.
           </p>
           <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-2 sm:px-0">
             <p className="mb-2 sm:mb-3">

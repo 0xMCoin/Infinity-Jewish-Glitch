@@ -43,10 +43,10 @@ export function Header() {
         <div className="relative">
           <div className="animate-marquee whitespace-nowrap text-sm font-bold font-arcade">
             <span className="mx-8">
-              RODOLFO THE RAT IS THE NEXT BIG THING IN CRYPTO
+              PHONK RAT IS THE NEXT BIG THING IN CRYPTO
             </span>
             <span className="mx-8">
-              RODOLFO THE RAT IS HERE TO RULE THE MEME WORLD
+              PHONK RAT IS HERE TO RULE THE MEME WORLD
             </span>
             <span className="mx-8">DON'T MISS OUT ON THE FUN AND REWARDS</span>
             <span className="mx-8">GET READY FOR THE RODOLFO REVOLUTION</span>
