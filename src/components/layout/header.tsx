@@ -25,7 +25,7 @@ const dockItems = [
   {
     title: "Contract",
     icon: <SiSolana />,
-    href: "https://pump.fun/coin/882oofJFNQ3MskLmnk2M2sPcasrc9pC7XmVww42UZHGU",
+    href: "https://pump.fun/coin/DM7DYeWfUAXMY1dwoNcXMD65n1TzgurHLNCetenJpump",
   },
 ];
 

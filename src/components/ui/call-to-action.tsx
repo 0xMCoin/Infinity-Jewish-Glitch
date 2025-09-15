@@ -12,7 +12,7 @@ export function CallToAction({ className }: CallToActionProps) {
 
   const handleBuy = () => {
     window.open(
-      "https://pump.fun/coin/882oofJFNQ3MskLmnk2M2sPcasrc9pC7XmVww42UZHGU",
+      "https://pump.fun/coin/DM7DYeWfUAXMY1dwoNcXMD65n1TzgurHLNCetenJpump",
       "_blank"
     );
   };

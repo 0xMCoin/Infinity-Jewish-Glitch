@@ -338,18 +338,18 @@ const BuyCard = React.memo(function BuyCard({
 
         <div className="flex justify-center items-center gap-2">
           <a
-            href="https://pump.fun/coin/882oofJFNQ3MskLmnk2M2sPcasrc9pC7XmVww42UZHGU"
+            href="https://pump.fun/coin/DM7DYeWfUAXMY1dwoNcXMD65n1TzgurHLNCetenJpump"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full flex justify-center items-center p-2 sm:p-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold rounded-lg shadow-lg text-xs sm:text-base hover:from-emerald-600 hover:to-green-700 transition-all duration-300"
           >
-            CA: 882oofJFNQ3MskLmnk2M2sPcasrc9pC7XmVww42UZHGU
+            CA: DM7DYeWfUAXMY1dwoNcXMD65n1TzgurHLNCetenJpump
           </a>
 
           <CopyIcon
             onClick={() => {
               navigator.clipboard.writeText(
-                "882oofJFNQ3MskLmnk2M2sPcasrc9pC7XmVww42UZHGU"
+                "DM7DYeWfUAXMY1dwoNcXMD65n1TzgurHLNCetenJpump"
               );
               toast.success("Copied to clipboard");
             }}
