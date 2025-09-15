@@ -23,17 +23,11 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   const dockItems = [
-    /* {
+    {
       title: "Twitter",
       icon: <FaTwitter />,
-      href: "https://x.com/rodolfotherat",
+      href: "https://x.com/PhonkRatSol",
     },
-    {
-      title: "Telegram",
-      icon: <FaTelegram />,
-      href: "https://t.me/rodolfotherat",
-    },
-     */
     {
       title: "Instagram",
       icon: <FaInstagram />,
@@ -47,7 +41,7 @@ export function Footer() {
     {
       title: "Contract",
       icon: <SiSolana />,
-      href: "https://pump.fun/coin",
+      href: "https://pump.fun/coin/882oofJFNQ3MskLmnk2M2sPcasrc9pC7XmVww42UZHGU",
     },
   ];
 

@@ -1,23 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { FaBars, FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaBars, FaInstagram, FaTiktok, FaTwitter } from "react-icons/fa";
 import { SiSolana } from "react-icons/si";
 import { ThemeToggle } from "../ui/theme-toggle";
 import { motion, AnimatePresence } from "framer-motion";
 
 const dockItems = [
-  /*  {
+  {
     title: "Twitter",
     icon: <FaTwitter />,
-    href: "https://x.com/rodolfotherat",
+    href: "https://x.com/PhonkRatSol",
   },
-  {
-    title: "Telegram",
-    icon: <FaTelegram />,
-    href: "https://t.me/rodolfotherat",
-  }, 
-  */
   {
     title: "Instagram",
     icon: <FaInstagram />,
@@ -31,7 +25,7 @@ const dockItems = [
   {
     title: "Contract",
     icon: <SiSolana />,
-    href: "https://pump.fun/coin",
+    href: "https://pump.fun/coin/882oofJFNQ3MskLmnk2M2sPcasrc9pC7XmVww42UZHGU",
   },
 ];
 
