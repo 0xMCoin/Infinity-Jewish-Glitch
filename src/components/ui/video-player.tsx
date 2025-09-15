@@ -7,12 +7,14 @@ import { Volume2, VolumeX, Play, Pause } from "lucide-react";
 interface VideoPlayerProps {
   videoSrc: string;
   label: string;
+  muted?: boolean;
   labelPosition: "bottom-left" | "bottom-right";
 }
 
 export function VideoPlayer({
   videoSrc,
   label,
+  muted = true,
   labelPosition,
 }: VideoPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -25,8 +27,8 @@ export function VideoPlayer({
   const handleVideoLoad = useCallback(() => {
     console.log("Video loaded successfully:", videoSrc);
     if (videoRef.current) {
-      videoRef.current.muted = true;
-      videoRef.current.volume = 0;
+      videoRef.current.muted = muted;
+      videoRef.current.volume = muted ? 0 : 0.5;
       setIsLoading(false);
       videoRef.current
         .play()
@@ -63,8 +65,8 @@ export function VideoPlayer({
       setHasError(false);
       setIsPlaying(false);
 
-      videoRef.current.muted = true;
-      videoRef.current.volume = 0;
+      videoRef.current.muted = muted;
+      videoRef.current.volume = muted ? 0 : 0.5;
       videoRef.current
         .play()
         .then(() => {

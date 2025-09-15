@@ -67,7 +67,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Preload de recursos críticos */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -75,26 +74,16 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-
-        {/* Preload de vídeos críticos */}
         <link rel="preload" as="video" href="/videos/rat_meme1.mp4" />
         <link rel="preload" as="video" href="/videos/rat_meme2.mp4" />
-
-        {/* Preload de imagens críticas */}
         <link rel="preload" as="image" href="/images/logo.png" />
-
-        {/* Meta tags de performance */}
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Phonk Rat" />
-
-        {/* Favicon e ícones */}
         <link rel="icon" href="/images/logo.png" sizes="64x64" />
         <link rel="apple-touch-icon" href="/images/logo-180.png" />
-
-        {/* Preload de CSS crítico */}
         <link rel="preload" href="/globals.css" as="style" />
       </head>
       <body className={`${inter.className} ${pressStart2P.variable}`}>
