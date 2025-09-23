@@ -15,7 +15,7 @@ export default function Home() {
       animationDuration={15}
       interactive={false}
     >
-      <div className="relative z-10">
+      <div className="relative z-10 pt-10">
         <Header />
 
         <HeroSection />

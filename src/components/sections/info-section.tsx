@@ -73,7 +73,7 @@ export function InfoSection() {
   ];
 
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section id="info" className="py-20 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-blue-400 rounded-full blur-3xl animate-pulse"></div>

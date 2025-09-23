@@ -36,7 +36,7 @@ export function HeroSection() {
 
   return (
     <LazyMotion features={domAnimation} strict>
-      <section className="relative py-4 sm:py-6 lg:py-8 min-h-[70vh] sm:min-h-[75vh] lg:min-h-screen flex flex-col items-center justify-center mt-20">
+      <section id="home" className="relative py-4 sm:py-6 lg:py-8 min-h-[70vh] sm:min-h-[75vh] lg:min-h-screen flex flex-col items-center justify-center mt-20">
         {/* Desktop Layout */}
         <div className="hidden md:block items-center justify-center gap-4 sm:gap-6 max-w-screen-sm mx-auto px-4 sm:px-0 w-full">
           <m.div
