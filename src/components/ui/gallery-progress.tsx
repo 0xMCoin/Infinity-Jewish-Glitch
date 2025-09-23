@@ -4,12 +4,10 @@ import { m, LazyMotion, domAnimation } from "framer-motion";
 import { useTokenData } from "@/hooks/useTokenData";
 import { Lock, Unlock, Star } from "lucide-react";
 
-const UNLOCK_THRESHOLDS = [25000, 50000, 75000, 100000, 125000, 150000];
+const UNLOCK_THRESHOLDS = [0, 25000, 50000, 75000, 100000, 500000];
 
 export function GalleryProgress() {
-  const { data: tokenData, loading } = useTokenData();
-  const currentMarketCap = tokenData?.market_cap || 0;
-
+  const currentMarketCap = 25000;
   const unlockedCount = UNLOCK_THRESHOLDS.filter(
     (threshold) => currentMarketCap >= threshold
   ).length;

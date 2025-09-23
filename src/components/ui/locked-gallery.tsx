@@ -62,11 +62,11 @@ const galleryStages: GalleryStage[] = [
 ];
 
 export function LockedGallery() {
-  const { data: tokenData, loading } = useTokenData();
+  const { loading } = useTokenData();
   const [selectedStage, setSelectedStage] = useState<number | null>(null);
   const [showUnlocked, setShowUnlocked] = useState(false);
 
-  const currentMarketCap = tokenData?.market_cap || 0;
+  const currentMarketCap = 25000;
 
   const stageStatus = useMemo(() => {
     return galleryStages.map(stage => ({
