@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   title: "Infinity Jewish Glitch",
   description:
     "The infinite power of Jewish innovation meets crypto revolution!",
-  keywords: ["meme coin", "crypto", "solana", "jewish", "infinity", "glitch", "innovation"],
+  keywords: ["meme coin", "crypto", "solana", "jewish", "infinity", "glitch", "innovation"],  
   authors: [{ name: "Infinity Jewish Glitch Team" }],
   creator: "Infinity Jewish Glitch",
   publisher: "INFINITY JEWISH GLITCH",
@@ -118,10 +118,26 @@ export default function RootLayout({
                 }
               });
               
-              // Otimizações de performance inline
+              // Limpar caches existentes e desabilitar service worker durante desenvolvimento
               if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/sw.js');
+                // Limpar todos os caches existentes
+                caches.keys().then(function(cacheNames) {
+                  return Promise.all(
+                    cacheNames.map(function(cacheName) {
+                      console.log('Removendo cache:', cacheName);
+                      return caches.delete(cacheName);
+                    })
+                  );
+                }).then(function() {
+                  console.log('Todos os caches foram limpos');
+                });
+
+                // Desregistrar service workers existentes
+                navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                  for (let registration of registrations) {
+                    console.log('Removendo service worker:', registration);
+                    registration.unregister();
+                  }
                 });
               }
               

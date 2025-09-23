@@ -39,9 +39,9 @@ export function HeroSection() {
     <LazyMotion features={domAnimation} strict>
       <section className="relative py-4 sm:py-6 lg:py-8 min-h-[70vh] sm:min-h-[75vh] lg:min-h-screen flex flex-col items-center justify-center mt-20">
         {/* Desktop Layout */}
-        <div className="hidden md:block items-center justify-center gap-4 sm:gap-6 max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="hidden md:block items-center justify-center gap-4 sm:gap-6 max-w-screen-sm mx-auto px-4 sm:px-0 w-full">
           <m.div
-            className="md:col-span-6 lg:col-span-2 mx-auto relative z-20"
+            className="relative z-20 w-full"
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -159,7 +159,7 @@ const BuyCard = React.memo(function BuyCard({
   };
 
   return (
-    <div className="relative group">
+    <div className="relative group w-full">
       <div className="relative bg-black/10 backdrop-blur-md dark:bg-black/20 dark:text-white p-4 sm:p-6 rounded-xl shadow-2xl border border-blue-500/30">
         <div className="text-center mb-4 sm:mb-6">
           <h2 className="text-xl sm:text-2xl font-black text-blue-600 dark:text-blue-400 mb-2 font-arcade text-arcade-shadow">
@@ -271,12 +271,12 @@ const BuyCard = React.memo(function BuyCard({
 
         <div className="flex justify-center items-center gap-2">
           <a
-            href="https://pump.fun/coin/DM7DYeWfUAXMY1dwoNcXMD65n1TzgurHLNCetenJpump"
+            href="https://pump.fun/coin/"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full flex justify-center items-center p-2 sm:p-3 bg-gradient-to-r from-green-500 to-blue-600 text-white font-bold rounded-lg shadow-lg text-xs sm:text-base hover:from-green-600 hover:to-blue-700 transition-all duration-300"
           >
-            CA: DM7DYeWfUAXMY1dwoNcXMD65n1TzgurHLNCetenJpump
+            CA: 
           </a>
 
           <CopyIcon

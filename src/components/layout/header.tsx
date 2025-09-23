@@ -3,29 +3,18 @@
 import { useState } from "react";
 import { FaBars, FaInstagram, FaTiktok, FaTwitter } from "react-icons/fa";
 import { SiSolana } from "react-icons/si";
-import { ThemeToggle } from "../ui/theme-toggle";
 import { motion, AnimatePresence } from "framer-motion";
 
 const dockItems = [
   {
     title: "Twitter",
     icon: <FaTwitter />,
-    href: "https://x.com/PhonkRatSol",
-  },
-  {
-    title: "Instagram",
-    icon: <FaInstagram />,
-    href: "https://www.instagram.com/rodolfotherat",
-  },
-  {
-    title: "Tiktok",
-    icon: <FaTiktok />,
-    href: "https://www.tiktok.com/@rodolfoorato",
+    href: "https://x.com/",
   },
   {
     title: "Contract",
     icon: <SiSolana />,
-    href: "https://pump.fun/coin/DM7DYeWfUAXMY1dwoNcXMD65n1TzgurHLNCetenJpump",
+    href: "https://pump.fun/coin/",
   },
 ];
 
@@ -43,8 +32,12 @@ export function Header() {
             <span className="mx-8">
               INFINITY JEWISH GLITCH BRINGS INFINITE INNOVATION
             </span>
-            <span className="mx-8">DON'T MISS OUT ON THE JEWISH TECH REVOLUTION</span>
-            <span className="mx-8">GET READY FOR THE INFINITE GLITCH EVOLUTION</span>
+            <span className="mx-8">
+              DON'T MISS OUT ON THE JEWISH TECH REVOLUTION
+            </span>
+            <span className="mx-8">
+              GET READY FOR THE INFINITE GLITCH EVOLUTION
+            </span>
           </div>
         </div>
       </div>

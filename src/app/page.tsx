@@ -1,7 +1,7 @@
 "use client";
 import { BackgroundLines } from "@/components/ui/background-lines";
 import { Header } from "@/components/layout";
-import { HeroSection, GallerySection } from "@/components/sections";
+import { HeroSection, InfoSection, GallerySection } from "@/components/sections";
 import { CallToAction } from "@/components/ui/call-to-action";
 import { Footer } from "@/components/ui/floating-dock";
 import { LazySection } from "@/components/ui/lazy-section";
@@ -20,7 +20,9 @@ export default function Home() {
 
         <HeroSection />
 
-       {/*  <GalleryProgress /> */}
+        <LazySection>
+          <InfoSection />
+        </LazySection>
 
         <LazySection>
           <GallerySection />

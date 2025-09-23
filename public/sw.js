@@ -1,25 +1,16 @@
-// Service Worker para otimizações de performance e cache
-const CACHE_NAME = 'cyber-wolf-v1';
-const STATIC_CACHE = 'cyber-wolf-static-v1';
-const DYNAMIC_CACHE = 'cyber-wolf-dynamic-v1';
+// Service Worker simplificado para desenvolvimento
+const CACHE_NAME = 'ijg-v2';
+const STATIC_CACHE = 'ijg-static-v2';
+const DYNAMIC_CACHE = 'ijg-dynamic-v2';
 
-// Recursos para cache estático
+// Apenas recursos essenciais para cache (reduzido para desenvolvimento)
 const STATIC_ASSETS = [
-  '/',
-  '/globals.css',
   '/images/logo.png',
-  '/images/logo-192.png',
-  '/images/logo-512.png',
-  '/videos/rat_meme1.mp4',
-  '/videos/rat_meme2.mp4',
   '/manifest.json'
 ];
 
-// Recursos para cache dinâmico (removidas URLs externas para evitar CORS)
-const DYNAMIC_ASSETS = [
-  '/api/',
-  '/_next/static/'
-];
+// Cache apenas para recursos pesados
+const CACHEABLE_EXTENSIONS = ['.mp4', '.jpg', '.jpeg', '.png', '.gif', '.webp'];
 
 // Instalação do Service Worker
 self.addEventListener('install', (event) => {
@@ -54,75 +45,37 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Interceptação de requisições
+// Interceptação de requisições - estratégia network-first para desenvolvimento
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Estratégia de cache para diferentes tipos de recursos
+  // Pular cache em desenvolvimento para localhost
+  if (url.hostname === 'localhost' || url.hostname === '127.0.0.1') {
+    return; // Sempre busca da rede em desenvolvimento
+  }
+
+  // Cache apenas para recursos pesados (imagens, vídeos)
   if (request.method === 'GET') {
-    // Cache para recursos estáticos
-    if (STATIC_ASSETS.some(asset => url.pathname === asset)) {
+    const hasExtension = CACHEABLE_EXTENSIONS.some(ext => url.pathname.includes(ext));
+    
+    if (hasExtension || STATIC_ASSETS.some(asset => url.pathname === asset)) {
       event.respondWith(
-        caches.match(request).then((response) => {
-          return response || fetch(request).then((fetchResponse) => {
-            return caches.open(STATIC_CACHE).then((cache) => {
-              cache.put(request, fetchResponse.clone());
-              return fetchResponse;
-            });
-          });
-        })
-      );
-      return;
-    }
-
-    // Cache para recursos dinâmicos
-    if (DYNAMIC_ASSETS.some(asset => url.href.startsWith(asset))) {
-      event.respondWith(
-        caches.match(request).then((response) => {
-          return response || fetch(request).then((fetchResponse) => {
-            return caches.open(DYNAMIC_CACHE).then((cache) => {
-              cache.put(request, fetchResponse.clone());
-              return fetchResponse;
-            });
-          });
-        })
-      );
-      return;
-    }
-
-    // Estratégia network-first para APIs
-    if (url.pathname.startsWith('/api/')) {
-      event.respondWith(
+        // Network-first: sempre tenta da rede primeiro
         fetch(request).then((response) => {
           if (response.ok) {
-            return caches.open(DYNAMIC_CACHE).then((cache) => {
+            // Só cacheia se a resposta for bem-sucedida
+            caches.open(STATIC_CACHE).then((cache) => {
               cache.put(request, response.clone());
-              return response;
             });
           }
           return response;
         }).catch(() => {
+          // Se falhar, tenta do cache
           return caches.match(request);
         })
       );
-      return;
     }
-
-    // Estratégia cache-first para outros recursos
-    event.respondWith(
-      caches.match(request).then((response) => {
-        return response || fetch(request).then((fetchResponse) => {
-          if (fetchResponse.ok) {
-            return caches.open(DYNAMIC_CACHE).then((cache) => {
-              cache.put(request, fetchResponse.clone());
-              return fetchResponse;
-            });
-          }
-          return fetchResponse;
-        });
-      })
-    );
   }
 });
 
@@ -137,29 +90,11 @@ self.addEventListener('message', (event) => {
       caches.keys().then((cacheNames) => {
         return Promise.all(
           cacheNames.map((cacheName) => {
-            if (cacheName !== STATIC_CACHE && cacheName !== DYNAMIC_CACHE) {
-              return caches.delete(cacheName);
-            }
+            // Limpa todos os caches antigos
+            return caches.delete(cacheName);
           })
         );
       })
     );
   }
 });
-
-// Otimizações de performance
-self.addEventListener('fetch', (event) => {
-  // Prefetch de recursos críticos
-  if (event.request.destination === 'video' || event.request.destination === 'image') {
-    event.waitUntil(
-      caches.open(DYNAMIC_CACHE).then((cache) => {
-        return fetch(event.request).then((response) => {
-          if (response.ok) {
-            cache.put(event.request, response.clone());
-          }
-          return response;
-        });
-      })
-    );
-  }
-}); 

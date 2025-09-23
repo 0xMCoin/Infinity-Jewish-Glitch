@@ -11,10 +11,7 @@ export function CallToAction({ className }: CallToActionProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleBuy = () => {
-    window.open(
-      "https://pump.fun/coin/DM7DYeWfUAXMY1dwoNcXMD65n1TzgurHLNCetenJpump",
-      "_blank"
-    );
+    window.open("https://pump.fun/coin/", "_blank");
   };
 
   return (
@@ -51,8 +48,9 @@ export function CallToAction({ className }: CallToActionProps) {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Don't miss out on the infinite Jewish glitch revolution! Join the 
-            community where tradition meets innovation in the ultimate crypto adventure.
+            Don't miss out on the infinite Jewish glitch revolution! Join the
+            community where tradition meets innovation in the ultimate crypto
+            adventure.
           </motion.p>
         </motion.div>
 

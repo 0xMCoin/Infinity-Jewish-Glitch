@@ -26,22 +26,12 @@ export function Footer() {
     {
       title: "Twitter",
       icon: <FaTwitter />,
-      href: "https://x.com/InfinityJewishGlitch",
-    },
-    {
-      title: "Instagram",
-      icon: <FaInstagram />,
-      href: "https://www.instagram.com/infinityjewishglitch",
-    },
-    {
-      title: "Tiktok",
-      icon: <FaTiktok />,
-      href: "https://www.tiktok.com/@infinityjewishglitch",
+      href: "https://x.com/",
     },
     {
       title: "Contract",
       icon: <SiSolana />,
-      href: "https://pump.fun/coin/DM7DYeWfUAXMY1dwoNcXMD65n1TzgurHLNCetenJpump",
+      href: "https://pump.fun/coin/",
     },
   ];
 
