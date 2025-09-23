@@ -34,7 +34,6 @@ export function HeroSection() {
     });
   }, [tokenData?.price, usdAmount]);
 
-
   return (
     <LazyMotion features={domAnimation} strict>
       <section className="relative py-4 sm:py-6 lg:py-8 min-h-[70vh] sm:min-h-[75vh] lg:min-h-screen flex flex-col items-center justify-center mt-20">
@@ -276,14 +275,12 @@ const BuyCard = React.memo(function BuyCard({
             rel="noopener noreferrer"
             className="w-full flex justify-center items-center p-2 sm:p-3 bg-gradient-to-r from-green-500 to-blue-600 text-white font-bold rounded-lg shadow-lg text-xs sm:text-base hover:from-green-600 hover:to-blue-700 transition-all duration-300"
           >
-            CA: 
+            CA:
           </a>
 
           <CopyIcon
             onClick={() => {
-              navigator.clipboard.writeText(
-                "DM7DYeWfUAXMY1dwoNcXMD65n1TzgurHLNCetenJpump"
-              );
+              navigator.clipboard.writeText("");
               toast.success("Copied to clipboard");
             }}
             className="w-6 h-6 cursor-pointer"
