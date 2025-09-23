@@ -34,38 +34,35 @@ export function Header() {
 
   return (
     <div className="fixed top-0 left-0 z-50 w-full">
-      <div className="bg-gradient-to-r from-emerald-600 to-green-600 text-white py-2 overflow-hidden relative z-20 shadow-lg">
+      <div className="bg-gradient-to-r from-blue-600 to-green-600 text-white py-2 overflow-hidden relative z-20 shadow-lg">
         <div className="relative">
           <div className="animate-marquee whitespace-nowrap text-sm font-bold font-arcade">
             <span className="mx-8">
-              PHONK RAT IS THE NEXT BIG THING IN CRYPTO
+              INFINITY JEWISH GLITCH IS THE NEXT BIG THING IN CRYPTO
             </span>
             <span className="mx-8">
-              PHONK RAT IS HERE TO RULE THE MEME WORLD
+              INFINITY JEWISH GLITCH BRINGS INFINITE INNOVATION
             </span>
-            <span className="mx-8">DON'T MISS OUT ON THE FUN AND REWARDS</span>
-            <span className="mx-8">GET READY FOR THE RODOLFO REVOLUTION</span>
+            <span className="mx-8">DON'T MISS OUT ON THE JEWISH TECH REVOLUTION</span>
+            <span className="mx-8">GET READY FOR THE INFINITE GLITCH EVOLUTION</span>
           </div>
         </div>
       </div>
 
-      <header className="relative bg-gradient-to-r from-emerald-500 to-green-500 dark:from-emerald-600 dark:to-green-600 px-4 py-1 flex items-center justify-between shadow-xl z-20 transition-all duration-300 overflow-hidden">
+      <header className="relative bg-gradient-to-r from-blue-500 to-green-500 dark:from-blue-600 dark:to-green-600 px-4 py-1 flex items-center justify-between shadow-xl z-20 transition-all duration-300 overflow-hidden">
         <div className="relative z-10 flex items-center justify-between w-full">
           <motion.button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-white hover:text-emerald-200 dark:hover:text-emerald-200 transition-colors hover:scale-110 transform duration-200 relative group"
+            className="text-white hover:text-blue-200 dark:hover:text-blue-200 transition-colors hover:scale-110 transform duration-200 relative group"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <div className="relative bg-black/20 backdrop-blur-sm px-3 py-1 rounded-lg border border-white/20 hover:border-emerald-400/50 transition-all duration-300">
+            <div className="relative bg-black/20 backdrop-blur-sm px-3 py-1 rounded-lg border border-white/20 hover:border-blue-400/50 transition-all duration-300">
               <FaBars size={24} />
             </div>
           </motion.button>
 
           <div className="flex items-center space-x-4">
-            <ThemeToggle />
-
-            {/* Social Links with Enhanced Hover Effects */}
             <div className="flex items-center space-x-3">
               {dockItems.map((item) => (
                 <motion.a
@@ -77,7 +74,7 @@ export function Header() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <div className="relative bg-black/20 backdrop-blur-sm px-3 py-1 rounded-lg border border-white/20 text-white hover:text-emerald-200 dark:hover:text-emerald-200 transition-all duration-300 hover:border-emerald-400/50 hover:bg-black/30">
+                  <div className="relative bg-black/20 backdrop-blur-sm px-3 py-1 rounded-lg border border-white/20 text-white hover:text-blue-200 dark:hover:text-blue-200 transition-all duration-300 hover:border-blue-400/50 hover:bg-black/30">
                     {item.icon}
                   </div>
                 </motion.a>
@@ -96,10 +93,10 @@ export function Header() {
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="absolute top-24 left-0 w-64 z-50"
           >
-            <div className="relative bg-gray-900/95 dark:bg-gray-800/95 text-white p-4 rounded-br-lg shadow-2xl border border-emerald-500/30 backdrop-blur-md overflow-hidden">
+            <div className="relative bg-gray-900/95 dark:bg-gray-800/95 text-white p-4 rounded-br-lg shadow-2xl border border-blue-500/30 backdrop-blur-md overflow-hidden">
               <nav className="relative z-10 space-y-4">
                 {[
-                  { href: "#about", label: "About Rodolfo" },
+                  { href: "#about", label: "About IJG" },
                   { href: "#gallery", label: "Video Gallery" },
                   { href: "#buy", label: "Buy Now" },
                 ].map((item, index) => (
@@ -113,7 +110,7 @@ export function Header() {
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ x: 10 }}
                   >
-                    <div className="relative px-3 py-1 rounded-lg border border-transparent group-hover:border-emerald-500/50 transition-all duration-300 hover:text-emerald-400 hover:bg-emerald-500/10">
+                    <div className="relative px-3 py-1 rounded-lg border border-transparent group-hover:border-blue-500/50 transition-all duration-300 hover:text-blue-400 hover:bg-blue-500/10">
                       {item.label}
                     </div>
                   </motion.a>

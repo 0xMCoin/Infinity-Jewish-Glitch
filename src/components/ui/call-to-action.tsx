@@ -21,9 +21,9 @@ export function CallToAction({ className }: CallToActionProps) {
     <section className={`py-20 relative overflow-hidden ${className}`}>
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-emerald-400 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-400 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-24 h-24 bg-green-500 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 w-40 h-40 bg-emerald-400 rounded-full blur-3xl animate-pulse delay-500"></div>
+        <div className="absolute top-1/2 left-1/2 w-40 h-40 bg-blue-400 rounded-full blur-3xl animate-pulse delay-500"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
@@ -42,7 +42,7 @@ export function CallToAction({ className }: CallToActionProps) {
             transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
             viewport={{ once: true }}
           >
-            READY TO JOIN THE PARTY?
+            READY FOR INFINITE INNOVATION?
           </motion.h2>
           <motion.p
             className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto"
@@ -51,8 +51,8 @@ export function CallToAction({ className }: CallToActionProps) {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Don't miss out on the next big meme coin sensation! Join thousands
-            of rats in the ultimate dance party and financial adventure.
+            Don't miss out on the infinite Jewish glitch revolution! Join the 
+            community where tradition meets innovation in the ultimate crypto adventure.
           </motion.p>
         </motion.div>
 
@@ -66,16 +66,16 @@ export function CallToAction({ className }: CallToActionProps) {
         >
           <motion.button
             onClick={handleBuy}
-            className="relative group px-8 py-4 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold text-lg rounded-xl shadow-2xl overflow-hidden hover:from-emerald-600 hover:to-green-700 transition-all duration-300"
+            className="relative group px-8 py-4 bg-gradient-to-r from-green-500 to-blue-600 text-white font-bold text-lg rounded-xl shadow-2xl overflow-hidden hover:from-green-600 hover:to-blue-700 transition-all duration-300"
             whileHover={{ scale: 1.05, rotateY: 5 }}
             whileTap={{ scale: 0.95 }}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
           >
-            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-400 via-green-500 to-emerald-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-green-400 via-blue-500 to-green-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="relative flex items-center space-x-3">
               <FaCoins className="w-5 h-5" />
-              <span>BUY $PHONKRAT NOW</span>
+              <span>BUY $IJG NOW</span>
             </div>
           </motion.button>
         </motion.div>

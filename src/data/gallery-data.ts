@@ -12,26 +12,26 @@ export const placeholderVideos: GalleryVideo[] = [
   {
     id: 1,
     src: "/videos/rat_meme1.mp4",
-    alt: "Dancing Rat 1",
-    title: "Rodolfo Dance 1",
-    description: "Rodolfo slides in disco groove.",
-    category: "dance",
+    alt: "Jewish Glitch 1",
+    title: "IJG Genesis 1",
+    description: "Jewish innovation meets infinite possibilities.",
+    category: "hunt",
   },
   {
     id: 2,
     src: "/videos/rat_meme2.mp4",
-    alt: "Dancing Rat 2",
-    title: "Rodolfo Dance 2",
-    description: "This is the Funky Rat now.",
-    category: "dance",
+    alt: "Jewish Glitch 2",
+    title: "IJG Innovation 2",
+    description: "Infinite innovation through Jewish wisdom.",
+    category: "hunt",
   },
   {
     id: 3,
     src: "/videos/rat_meme3.mp4",
-    alt: "Dancing Rat 3",
-    title: "Rodolfo Dance 3",
-    description: "Rodolfo @ Disco Tour Dance.",
-    category: "party",
+    alt: "Jewish Glitch 3",
+    title: "IJG Infinity 3",
+    description: "Glitch transcends digital boundaries.",
+    category: "tech",
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ export const placeholderVideos: GalleryVideo[] = [
     alt: "Dancing Rat 4",
     title: "Rodolfo Dance 4",
     description: "Rodolfo makes sassy moves!",
-    category: "memes",
+    category: "cyber",
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ export const placeholderVideos: GalleryVideo[] = [
     alt: "Dancing Rat 5",
     title: "Rodolfo Dance 5",
     description: "The Rat own the Dancefloor!",
-    category: "party",
+    category: "tech",
   },
   {
     id: 6,
@@ -55,7 +55,7 @@ export const placeholderVideos: GalleryVideo[] = [
     alt: "Dancing Rat 6",
     title: "Rodolfo Dance 6",
     description: "Rodolfo with a party hat.",
-    category: "party",
+    category: "tech",
   },
   {
     id: 7,
@@ -63,7 +63,7 @@ export const placeholderVideos: GalleryVideo[] = [
     alt: "Dancing Rat 7",
     title: "Rodolfo Dance 7",
     description: "Rodolfo doing the worm dance.",
-    category: "dance",
+    category: "hunt",
   },
   {
     id: 8,
@@ -71,7 +71,7 @@ export const placeholderVideos: GalleryVideo[] = [
     alt: "Dancing Rat 8",
     title: "Rodolfo Dance 8",
     description: "Rodolfo with robot moves.",
-    category: "dance",
+    category: "hunt",
   },
   {
     id: 9,
@@ -79,7 +79,7 @@ export const placeholderVideos: GalleryVideo[] = [
     alt: "Rat with funny hat",
     title: "Hat Rat",
     description: "Fashion forward rat with the latest trends!",
-    category: "memes",
+    category: "cyber",
   },
   {
     id: 10,
@@ -87,7 +87,7 @@ export const placeholderVideos: GalleryVideo[] = [
     alt: "Rat with funny hat",
     title: "Hat Rat",
     description: "Fashion forward rat with the latest trends!",
-    category: "memes",
+    category: "cyber",
   },
   {
     id: 11,
@@ -95,7 +95,7 @@ export const placeholderVideos: GalleryVideo[] = [
     alt: "Rat with funny hat",
     title: "Hat Rat",
     description: "Fashion forward rat with the latest trends!",
-    category: "memes",
+    category: "cyber",
   },
   {
     id: 12,
@@ -103,6 +103,6 @@ export const placeholderVideos: GalleryVideo[] = [
     alt: "Rat with funny hat",
     title: "Hat Rat",
     description: "Fashion forward rat with the latest trends!",
-    category: "memes",
+    category: "cyber",
   },
 ];

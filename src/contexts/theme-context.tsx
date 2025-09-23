@@ -27,10 +27,10 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   // Renderizar um fallback simples durante a hidratação
   if (!mounted) {
     return (
-      <ThemeContext.Provider value={{ theme: "light", toggleTheme: () => {}, mounted: false }}>
-        <div className="min-h-screen bg-gray-50">
-          {children}
-        </div>
+      <ThemeContext.Provider
+        value={{ theme: "dark", toggleTheme: () => {}, mounted: false }}
+      >
+        <div className="min-h-screen bg-gray-50">{children}</div>
       </ThemeContext.Provider>
     );
   }

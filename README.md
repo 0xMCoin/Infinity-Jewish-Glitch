@@ -1,8 +1,8 @@
-# 🐀 PHONK RAT - Memecoin Website
+# ✡️ INFINITY JEWISH GLITCH - Memecoin Website
 
 ## 🏗️ **Estrutura de Componentes Refatorada**
 
-O site foi completamente componentizado para melhor organização e manutenibilidade.
+O site foi completamente rebrandizado para INFINITY JEWISH GLITCH e componentizado para melhor organização e manutenibilidade.
 
 ### 📁 **Estrutura de Pastas:**
 
@@ -68,7 +68,7 @@ src/
 
 ### 🎨 **Características de Design:**
 
-- **Paleta de Cores:** Esquema emerald/green consistente
+- **Paleta de Cores:** Esquema judaico azul/branco + verde PumpFun consistente
 - **Tipografia:** `Press Start 2P` para títulos, `Inter` para texto
 - **Efeitos:** `text-arcade-shadow` em todos os títulos principais
 - **Animações:** Framer Motion para transições suaves

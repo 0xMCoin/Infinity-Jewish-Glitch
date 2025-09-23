@@ -1,7 +1,7 @@
 // Service Worker para otimizações de performance e cache
-const CACHE_NAME = 'rodolfo-rat-v1';
-const STATIC_CACHE = 'rodolfo-rat-static-v1';
-const DYNAMIC_CACHE = 'rodolfo-rat-dynamic-v1';
+const CACHE_NAME = 'cyber-wolf-v1';
+const STATIC_CACHE = 'cyber-wolf-static-v1';
+const DYNAMIC_CACHE = 'cyber-wolf-dynamic-v1';
 
 // Recursos para cache estático
 const STATIC_ASSETS = [
@@ -15,12 +15,10 @@ const STATIC_ASSETS = [
   '/manifest.json'
 ];
 
-// Recursos para cache dinâmico
+// Recursos para cache dinâmico (removidas URLs externas para evitar CORS)
 const DYNAMIC_ASSETS = [
   '/api/',
-  '/_next/static/',
-  'https://fonts.googleapis.com/',
-  'https://fonts.gstatic.com/'
+  '/_next/static/'
 ];
 
 // Instalação do Service Worker
@@ -28,11 +26,11 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     Promise.all([
       caches.open(STATIC_CACHE).then((cache) => {
-        return cache.addAll(STATIC_ASSETS);
+        return cache.addAll(STATIC_ASSETS).catch((error) => {
+          console.warn('Falha ao cachear alguns recursos estáticos:', error);
+        });
       }),
-      caches.open(DYNAMIC_CACHE).then((cache) => {
-        return cache.addAll(DYNAMIC_ASSETS);
-      })
+      caches.open(DYNAMIC_CACHE)
     ]).then(() => {
       return self.skipWaiting();
     })

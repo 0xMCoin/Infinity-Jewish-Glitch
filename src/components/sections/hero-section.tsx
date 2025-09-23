@@ -1,23 +1,19 @@
 "use client";
 
-import { useState, useMemo, useCallback, lazy, Suspense } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { m, LazyMotion, domAnimation } from "framer-motion";
-import { FaWallet } from "react-icons/fa";
 import { SiSolana } from "react-icons/si";
 import { toast } from "react-hot-toast";
 import React from "react";
 import { useTokenData } from "@/hooks/useTokenData";
 import { CopyIcon } from "lucide-react";
-
-const VideoPlayer = lazy(() =>
-  import("../ui/video-player").then((mod) => ({ default: mod.VideoPlayer }))
-);
+import { GalleryProgress } from "../ui/gallery-progress";
 
 export function HeroSection() {
   const [usdAmount, setUsdAmount] = useState("100");
   const { data: tokenData, loading: tokenLoading } = useTokenData();
 
-  const goal = 1000000000;
+  const goal = 10000000;
 
   const progress = useMemo(
     () => (tokenData?.market_cap ? (tokenData.market_cap / goal) * 100 : 0),
@@ -38,45 +34,14 @@ export function HeroSection() {
     });
   }, [tokenData?.price, usdAmount]);
 
-  const handleBuy = useCallback(() => {
-    toast.success("🐀 Rat tokens purchased! Welcome to the party!");
-  }, []);
-
-  const videos = useMemo(
-    () => ["/videos/rat_meme3.mp4", "/videos/rat_meme2.mp4"],
-    []
-  );
-
-  const VideoPlayerSkeleton = () => (
-    <div className="w-full h-64 bg-gray-200 dark:bg-gray-800 rounded-lg animate-pulse flex items-center justify-center">
-      <div className="text-gray-500 dark:text-gray-400 text-sm">Loading...</div>
-    </div>
-  );
 
   return (
     <LazyMotion features={domAnimation} strict>
-      <section className="relative py-4 sm:py-6 lg:py-8 min-h-[70vh] sm:min-h-[75vh] lg:min-h-screen flex flex-col items-center justify-center">
+      <section className="relative py-4 sm:py-6 lg:py-8 min-h-[70vh] sm:min-h-[75vh] lg:min-h-screen flex flex-col items-center justify-center mt-20">
         {/* Desktop Layout */}
-        <div className="hidden md:grid w-full grid-cols-12 gap-4 sm:gap-6 items-center max-w-7xl mx-auto px-4 sm:px-6">
-          {/* Left Side - Dancing Rat Video */}
+        <div className="hidden md:block items-center justify-center gap-4 sm:gap-6 max-w-7xl mx-auto px-4 sm:px-6">
           <m.div
-            className="md:col-span-3 lg:col-span-3"
-            initial={{ opacity: 0, x: -100, rotateY: -90 }}
-            animate={{ opacity: 1, x: 0, rotateY: 0 }}
-            transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
-          >
-            <Suspense fallback={<VideoPlayerSkeleton />}>
-              <VideoPlayer
-                videoSrc={videos[0]}
-                label="LIVE DANCE"
-                labelPosition="bottom-right"
-              />
-            </Suspense>
-          </m.div>
-
-          {/* Center - Buy Section */}
-          <m.div
-            className="md:col-span-6 lg:col-span-6 relative z-20"
+            className="md:col-span-6 lg:col-span-2 mx-auto relative z-20"
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -89,48 +54,16 @@ export function HeroSection() {
               usdAmount={usdAmount}
               setUsdAmount={setUsdAmount}
               tokenAmount={tokenAmount}
-              onBuy={handleBuy}
               tokenLoading={tokenLoading}
               tokenData={tokenData}
             />
-          </m.div>
 
-          {/* Right Side - Dancing Rat Video */}
-          <m.div
-            className="md:col-span-3 lg:col-span-3"
-            initial={{ opacity: 0, x: 100, rotateY: 90 }}
-            animate={{ opacity: 1, x: 0, rotateY: 0 }}
-            transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
-          >
-            <Suspense fallback={<VideoPlayerSkeleton />}>
-              <VideoPlayer
-                videoSrc={videos[1]}
-                label="PARTY TIME"
-                labelPosition="bottom-left"
-              />
-            </Suspense>
+            <GalleryProgress />
           </m.div>
         </div>
 
         {/* Mobile Layout */}
         <div className="md:hidden w-full max-w-7xl mx-auto mt-20 px-4 sm:px-6 flex flex-col items-center space-y-6">
-          {/* Mobile Video Section */}
-          <m.div
-            className="w-full max-w-md"
-            initial={{ opacity: 0, y: -50, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <Suspense fallback={<VideoPlayerSkeleton />}>
-              <VideoPlayer
-                videoSrc={videos[0]}
-                label="LIVE DANCE"
-                labelPosition="bottom-right"
-              />
-            </Suspense>
-          </m.div>
-
-          {/* Mobile Buy Section */}
           <m.div
             className="w-full max-w-md"
             initial={{ opacity: 0, y: 30, scale: 0.9 }}
@@ -145,24 +78,26 @@ export function HeroSection() {
               usdAmount={usdAmount}
               setUsdAmount={setUsdAmount}
               tokenAmount={tokenAmount}
-              onBuy={handleBuy}
               tokenLoading={tokenLoading}
               tokenData={tokenData}
             />
+
+            {/* Gallery Progress */}
+            <GalleryProgress />
           </m.div>
         </div>
 
         {/* Bottom Large Text - Desktop Only */}
-        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 hidden lg:flex w-full justify-center items-center">
-          <h1 className="text-6xl lg:text-8xl font-black tracking-wider text-gray-900 dark:text-white opacity-90 select-none transition-colors duration-300 font-arcade text-arcade-shadow">
-            PHONK RAT
+        <div className="absolute bottom-[40%] left-1/2 transform -translate-x-1/2 hidden lg:flex w-full justify-center items-center">
+          <h1 className="text-6xl lg:text-8xl text-center font-black tracking-wider text-gray-900 dark:text-white opacity-90 select-none transition-colors duration-300 font-arcade text-arcade-shadow">
+            INFINITY JEWISH GLITCH
           </h1>
         </div>
 
         {/* Mobile Bottom Text */}
         <div className="lg:hidden text-center mt-6 sm:mt-8">
           <h1 className="text-6xl sm:text-4xl font-black tracking-wider text-gray-900 dark:text-white opacity-90 transition-colors duration-300 font-arcade text-arcade-shadow">
-            PHONK RAT
+            INFINITY JEWISH GLITCH
           </h1>
         </div>
       </section>
@@ -178,7 +113,6 @@ interface BuyCardProps {
   usdAmount: string;
   setUsdAmount: (value: string) => void;
   tokenAmount: string;
-  onBuy: () => void;
   tokenLoading: boolean;
   tokenData: any;
 }
@@ -191,7 +125,6 @@ const BuyCard = React.memo(function BuyCard({
   usdAmount,
   setUsdAmount,
   tokenAmount,
-  onBuy,
   tokenLoading,
   tokenData,
 }: BuyCardProps) {
@@ -227,30 +160,30 @@ const BuyCard = React.memo(function BuyCard({
 
   return (
     <div className="relative group">
-      <div className="relative bg-black/10 backdrop-blur-md dark:bg-black/20 dark:text-white p-4 sm:p-6 rounded-xl shadow-2xl border border-emerald-500/30">
+      <div className="relative bg-black/10 backdrop-blur-md dark:bg-black/20 dark:text-white p-4 sm:p-6 rounded-xl shadow-2xl border border-blue-500/30">
         <div className="text-center mb-4 sm:mb-6">
-          <h2 className="text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400 mb-2 font-arcade text-arcade-shadow">
-            BUY $PHONKRAT NOW!
+          <h2 className="text-xl sm:text-2xl font-black text-blue-600 dark:text-blue-400 mb-2 font-arcade text-arcade-shadow">
+            BUY $IJG NOW!
           </h2>
         </div>
 
         <div className="mb-4 sm:mb-6">
           <div className="text-center mb-3">
-            <p className="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400 font-arcade text-arcade-shadow">
+            <p className="text-2xl sm:text-3xl font-black text-blue-600 dark:text-blue-400 font-arcade text-arcade-shadow">
               ${formatNumber(totalRaised)}
             </p>
             <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm mt-2">
-              Goal Market Cap: 1 Billion
+              Goal Market Cap: 10 Million
             </p>
           </div>
 
           <div className="w-full bg-gray-300 dark:bg-gray-600 rounded-full h-2 mb-2">
             <div
-              className="h-2 rounded-full bg-gradient-to-r from-emerald-500 to-green-600 transition-all duration-1000"
+              className="h-2 rounded-full bg-gradient-to-r from-green-500 to-blue-600 transition-all duration-1000"
               style={{ width: `${progress}%` }}
             />
           </div>
-          <p className="text-center text-emerald-600 dark:text-emerald-400 font-bold text-xs sm:text-sm">
+          <p className="text-center text-blue-600 dark:text-blue-400 font-bold text-xs sm:text-sm">
             {progress.toFixed(4)}%
           </p>
         </div>
@@ -260,7 +193,7 @@ const BuyCard = React.memo(function BuyCard({
             <p className="text-gray-700 dark:text-gray-300 text-xs mb-1">
               CURRENT PRICE
             </p>
-            <p className="text-emerald-600 dark:text-emerald-400 font-bold text-sm sm:text-base">
+            <p className="text-blue-600 dark:text-blue-400 font-bold text-sm sm:text-base">
               $
               {tokenLoading
                 ? "..."
@@ -273,7 +206,7 @@ const BuyCard = React.memo(function BuyCard({
             <p className="text-gray-700 dark:text-gray-300 text-xs mb-1">
               MARKET CAP
             </p>
-            <p className="text-emerald-600 dark:text-emerald-400 font-bold text-sm sm:text-base">
+            <p className="text-blue-600 dark:text-blue-400 font-bold text-sm sm:text-base">
               $
               {tokenLoading
                 ? "..."
@@ -287,7 +220,7 @@ const BuyCard = React.memo(function BuyCard({
         {/* Network Selection */}
         <div className="mb-4 sm:mb-6">
           <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
-            <button className="flex-1 p-2 sm:p-3 bg-emerald-100 dark:bg-emerald-600/20 border border-emerald-300 dark:border-emerald-500/50 rounded-lg text-emerald-700 dark:text-emerald-400 text-xs sm:text-sm font-medium hover:bg-emerald-200 dark:hover:bg-emerald-600/30 transition-colors">
+            <button className="flex-1 p-2 sm:p-3 bg-blue-100 dark:bg-blue-600/20 border border-blue-300 dark:border-blue-500/50 rounded-lg text-blue-700 dark:text-blue-400 text-xs sm:text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-600/30 transition-colors">
               <SiSolana className="inline mr-2" />
               SOLANA
             </button>
@@ -308,7 +241,7 @@ const BuyCard = React.memo(function BuyCard({
                 onChange={handleUsdAmount}
                 className="flex-1 bg-transparent text-gray-900 dark:text-white text-base sm:text-lg font-bold outline-none"
               />
-              <span className="text-emerald-600 dark:text-emerald-400 text-xs sm:text-sm">
+              <span className="text-blue-600 dark:text-blue-400 text-xs sm:text-sm">
                 USD
               </span>
             </div>
@@ -322,8 +255,8 @@ const BuyCard = React.memo(function BuyCard({
               <span className="flex-1 text-gray-900 dark:text-white text-base sm:text-lg font-bold">
                 {tokenAmount}
               </span>
-              <span className="text-emerald-600 dark:text-emerald-400 text-xs sm:text-sm">
-                $PHONKRAT
+              <span className="text-blue-600 dark:text-blue-400 text-xs sm:text-sm">
+                $IJG
               </span>
             </div>
             <p className="text-gray-500 dark:text-gray-400 text-xs mt-1">
@@ -341,7 +274,7 @@ const BuyCard = React.memo(function BuyCard({
             href="https://pump.fun/coin/DM7DYeWfUAXMY1dwoNcXMD65n1TzgurHLNCetenJpump"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full flex justify-center items-center p-2 sm:p-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold rounded-lg shadow-lg text-xs sm:text-base hover:from-emerald-600 hover:to-green-700 transition-all duration-300"
+            className="w-full flex justify-center items-center p-2 sm:p-3 bg-gradient-to-r from-green-500 to-blue-600 text-white font-bold rounded-lg shadow-lg text-xs sm:text-base hover:from-green-600 hover:to-blue-700 transition-all duration-300"
           >
             CA: DM7DYeWfUAXMY1dwoNcXMD65n1TzgurHLNCetenJpump
           </a>
@@ -357,7 +290,7 @@ const BuyCard = React.memo(function BuyCard({
           />
         </div>
 
-        <div className="absolute top-3 right-3 w-2 h-2 bg-emerald-500 dark:bg-emerald-400 rounded-full animate-pulse"></div>
+        <div className="absolute top-3 right-3 w-2 h-2 bg-blue-500 dark:bg-blue-400 rounded-full animate-pulse"></div>
         <div className="absolute bottom-3 left-3 w-1.5 h-1.5 bg-green-600 dark:bg-green-500 rounded-full animate-pulse"></div>
       </div>
     </div>

@@ -7,28 +7,28 @@ import { Lens } from "../ui/lens";
 export function AboutSection() {
   const features = [
     {
-      title: "Community Driven",
+      title: "Pack Leader",
       description:
-        "Built by the community, for the community. Every rat has a voice!",
+        "Leading the digital pack with strength and unity. Every wolf matters!",
       features: [
-        "CTO Governance",
-        "Community Voting",
-        "Transparent Development",
+        "Alpha Leadership",
+        "Pack Consensus",
+        "Open Source Evolution",
       ],
     },
     {
-      title: "Entertainment First",
-      description: "Forget boring memes. We're pumping vibes, & dance moves!",
-      features: ["Community Airdrops", "Dance Challenges", "Viral Marketing"],
+      title: "Technology First",
+      description: "Cutting-edge blockchain tech meets fierce determination!",
+      features: ["Smart Contracts", "DeFi Integration", "AI-Powered Features"],
     },
     {
-      title: "Moon Mission",
+      title: "Digital Dominance",
       description:
-        "One tiny step for a rat, one giant dance move for memecoins!",
+        "One howl from the pack, one giant leap for crypto evolution!",
       features: [
-        "Strategic Partnerships",
-        "Exchange Listings",
-        "Mass Adoption",
+        "Tech Alliances",
+        "Global Exchanges",
+        "Worldwide Adoption",
       ],
     },
   ];
@@ -43,18 +43,18 @@ export function AboutSection() {
           viewport={{ once: true }}
         >
           <motion.h2
-            className="text-5xl md:text-8xl font-black text-emerald-600 dark:text-emerald-500 mb-8 font-arcade text-arcade-shadow"
+            className="text-5xl md:text-8xl font-black text-blue-600 dark:text-blue-500 mb-8 font-arcade text-arcade-shadow"
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
             viewport={{ once: true }}
             whileHover={{
               scale: 1.05,
-              textShadow: "0 0 30px rgba(16, 185, 129, 0.8)",
+              textShadow: "0 0 30px rgba(34, 197, 94, 0.8)",
               transition: { duration: 0.3 },
             }}
           >
-            ABOUT RODOLFO
+            ABOUT IJG
           </motion.h2>
           <motion.p
             className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed"
@@ -63,7 +63,7 @@ export function AboutSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            TikTok was too small! <br /> Now the king of dance rules memecoins!
+            Innovation without limits! <br /> Jewish wisdom meets infinite possibilities!
           </motion.p>
         </motion.div>
 
@@ -77,13 +77,13 @@ export function AboutSection() {
           >
             <div className="text-center">
               <motion.h3
-                className="text-3xl font-bold text-emerald-600 dark:text-emerald-500 mb-4 font-arcade text-arcade-shadow"
+                className="text-3xl font-bold text-green-600 dark:text-green-500 mb-4 font-arcade text-arcade-shadow"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                WANNA SEE THE MOVES?
+                READY FOR THE INFINITE GLITCH?
               </motion.h3>
               <motion.p
                 className="text-gray-600 dark:text-gray-400"
@@ -92,7 +92,7 @@ export function AboutSection() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                Hover like a degen and watch the dance pop!
+                Hover and witness the infinite glitch power!
               </motion.p>
             </div>
 
@@ -130,13 +130,13 @@ export function AboutSection() {
             viewport={{ once: true }}
           >
             <motion.h3
-              className="text-4xl font-bold text-emerald-600 dark:text-emerald-500 mb-8 font-arcade text-arcade-shadow"
+              className="text-4xl font-bold text-green-600 dark:text-green-500 mb-8 font-arcade text-arcade-shadow"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              Why $PHONKRAT?
+              Why $IJG?
             </motion.h3>
 
             <div className="space-y-8">
@@ -157,9 +157,9 @@ export function AboutSection() {
                   <div className="flex items-start space-x-4">
                     <div className="flex-1">
                       <motion.h4
-                        className="font-bold text-gray-900 dark:text-white text-xl mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-500 transition-colors duration-300"
+                        className="font-bold text-gray-900 dark:text-white text-xl mb-2 group-hover:text-green-600 dark:group-hover:text-green-500 transition-colors duration-300"
                         whileHover={{
-                          textShadow: "0 0 10px rgba(16, 185, 129, 0.5)",
+                          textShadow: "0 0 10px rgba(34, 197, 94, 0.5)",
                           transition: { duration: 0.3 },
                         }}
                       >
@@ -181,7 +181,7 @@ export function AboutSection() {
                             }}
                             viewport={{ once: true }}
                           >
-                            <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                             <span>{feature}</span>
                           </motion.div>
                         ))}

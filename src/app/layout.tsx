@@ -23,29 +23,27 @@ const pressStart2P = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  title: "Phonk Rat - Meme Coin",
+  title: "Infinity Jewish Glitch",
   description:
-    "The next big thing in crypto - Phonk Rat is here to rule the meme world!",
-  keywords: ["meme coin", "crypto", "solana", "rat", "rodolfo"],
-  authors: [{ name: "Phonk Rat Team" }],
-  creator: "Phonk Rat",
-  publisher: "PHONK RAT",
+    "The infinite power of Jewish innovation meets crypto revolution!",
+  keywords: ["meme coin", "crypto", "solana", "jewish", "infinity", "glitch", "innovation"],
+  authors: [{ name: "Infinity Jewish Glitch Team" }],
+  creator: "Infinity Jewish Glitch",
+  publisher: "INFINITY JEWISH GLITCH",
   robots: "index, follow",
   openGraph: {
-    title: "Phonk Rat - Meme Coin",
+    title: "Infinity Jewish Glitch",
     description:
-      "The next big thing in crypto - Phonk Rat is here to rule the meme world!",
+      "The infinite power of Jewish innovation meets crypto revolution!",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Phonk Rat - Meme Coin",
+    title: "Infinity Jewish Glitch",
     description:
-      "The next big thing in crypto - Phonk Rat is here to rule the meme world!",
+      "The infinite power of Jewish innovation meets crypto revolution!",
   },
-  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
-  themeColor: "#10b981",
   icons: {
     icon: [
       { url: "/images/logo.png", sizes: "64x64", type: "image/png" },
@@ -54,9 +52,7 @@ export const metadata: Metadata = {
     ],
     apple: [{ url: "/images/logo.png", sizes: "180x180", type: "image/png" }],
   },
-  other: {
-    "msapplication-TileColor": "#10b981",
-  },
+  other: { "msapplication-TileColor": "#0066cc" },
 };
 
 export default function RootLayout({
@@ -74,14 +70,12 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="preload" as="video" href="/videos/rat_meme1.mp4" />
-        <link rel="preload" as="video" href="/videos/rat_meme2.mp4" />
         <link rel="preload" as="image" href="/images/logo.png" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Phonk Rat" />
+        <meta name="apple-mobile-web-app-title" content="Infinity Jewish Glitch" />
         <link rel="icon" href="/images/logo.png" sizes="64x64" />
         <link rel="apple-touch-icon" href="/images/logo-180.png" />
         <link rel="preload" href="/globals.css" as="style" />
@@ -96,7 +90,7 @@ export default function RootLayout({
               style: {
                 background: "#000",
                 color: "#fff",
-                border: "2px solid rgb(16, 185, 129)",
+                border: "2px solid rgb(0, 102, 204)",
               },
             }}
           />
@@ -104,10 +98,26 @@ export default function RootLayout({
           <ForceScrollTop />
         </ThemeProvider>
 
-        {/* Script de otimizações de performance */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
+              // Tratamento de erros globais
+              window.addEventListener('error', function(e) {
+                // Ignorar erros de extensões/scripts externos
+                if (e.filename && (e.filename.includes('extension://') || e.filename.includes('solanaActionsContentScript'))) {
+                  e.preventDefault();
+                  return false;
+                }
+              });
+              
+              window.addEventListener('unhandledrejection', function(e) {
+                // Ignorar promises rejeitadas de extensões
+                if (e.reason && e.reason.toString().includes('solanaActionsContentScript')) {
+                  e.preventDefault();
+                  return false;
+                }
+              });
+              
               // Otimizações de performance inline
               if ('serviceWorker' in navigator) {
                 window.addEventListener('load', function() {
@@ -115,22 +125,6 @@ export default function RootLayout({
                 });
               }
               
-              // Preload de recursos críticos
-              const preloadResources = () => {
-                const resources = [
-                  { href: '/videos/rat_meme1.mp4', as: 'video' },
-                  { href: '/videos/rat_meme2.mp4', as: 'video' },
-                  { href: '/images/logo.png', as: 'image' }
-                ];
-                
-                resources.forEach(resource => {
-                  const link = document.createElement('link');
-                  link.rel = 'preload';
-                  link.as = resource.as;
-                  link.href = resource.href;
-                  document.head.appendChild(link);
-                });
-              };
               
               // Controle de scroll para prevenir scroll automático
               const controlScroll = () => {

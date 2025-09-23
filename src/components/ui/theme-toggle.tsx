@@ -10,7 +10,7 @@ export const ThemeToggle = () => {
   return (
     <motion.button
       onClick={toggleTheme}
-      className="relative p-2 rounded-full bg-emerald-500 dark:bg-emerald-600 text-white hover:bg-emerald-600 dark:hover:bg-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+      className="relative p-2 rounded-full bg-gradient-to-r from-green-500 to-blue-500 dark:from-green-600 dark:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
@@ -30,7 +30,7 @@ export const ThemeToggle = () => {
 
       {/* Efeito de brilho */}
       <motion.div
-        className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-400 to-green-500 opacity-0"
+        className="absolute inset-0 rounded-full bg-gradient-to-r from-green-400 to-blue-500 opacity-0"
         animate={{
           opacity: theme === "light" ? [0, 0.3, 0] : 0,
         }}

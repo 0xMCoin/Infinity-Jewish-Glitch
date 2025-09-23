@@ -26,17 +26,17 @@ export function Footer() {
     {
       title: "Twitter",
       icon: <FaTwitter />,
-      href: "https://x.com/PhonkRatSol",
+      href: "https://x.com/InfinityJewishGlitch",
     },
     {
       title: "Instagram",
       icon: <FaInstagram />,
-      href: "https://www.instagram.com/rodolfotherat",
+      href: "https://www.instagram.com/infinityjewishglitch",
     },
     {
       title: "Tiktok",
       icon: <FaTiktok />,
-      href: "https://www.tiktok.com/@rodolfoorato",
+      href: "https://www.tiktok.com/@infinityjewishglitch",
     },
     {
       title: "Contract",
@@ -58,7 +58,7 @@ export function Footer() {
 
         <div className="text-center">
           <p className="text-sm sm:text-base text-gray-700 dark:text-gray-200 mb-3 sm:mb-4">
-            © {currentYear} Phonk Rat. All rights reserved.
+            © {currentYear} Infinity Jewish Glitch. All rights reserved.
           </p>
           <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-2 sm:px-0">
             <p className="mb-2 sm:mb-3">
@@ -135,7 +135,7 @@ const FloatingDockMobile = ({
                 <a
                   href={item.href}
                   key={item.title}
-                  className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-50/80 dark:bg-gray-700 backdrop-blur-sm border border-[#ace4bb]/20 text-gray-700 dark:text-[#ace4bb] hover:text-[#3c885c] transition-colors"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-50/80 dark:bg-gray-700 backdrop-blur-sm border border-green-500/20 text-gray-700 dark:text-green-400 hover:text-blue-600 transition-colors"
                 >
                   <div className="h-5 w-5">{item.icon}</div>
                 </a>
@@ -146,7 +146,7 @@ const FloatingDockMobile = ({
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-50/80 dark:bg-gray-700 backdrop-blur-sm border border-[#ace4bb]/20 text-gray-700 dark:text-[#ace4bb] hover:text-[#3c885c] transition-colors"
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-50/80 dark:bg-gray-700 backdrop-blur-sm border border-green-500/20 text-gray-700 dark:text-green-400 hover:text-blue-600 transition-colors"
       >
         <FaBars className="h-6 w-6" />
       </button>
@@ -167,7 +167,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-gray-50/80 dark:bg-gray-800 backdrop-blur-sm border border-[#ace4bb]/20 px-4 pb-3 md:flex",
+        "mx-auto hidden h-16 items-end gap-4 rounded-2xl bg-gray-50/80 dark:bg-gray-800 backdrop-blur-sm border border-green-500/20 px-4 pb-3 md:flex",
         className
       )}
     >
@@ -242,7 +242,7 @@ function IconContainer({
         style={{ width, height }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="relative flex aspect-square items-center justify-center rounded-full bg-gray-200/80 dark:bg-gray-700 backdrop-blur-sm border border-[#ace4bb]/30 hover:border-[#ace4bb]/60 transition-colors"
+        className="relative flex aspect-square items-center justify-center rounded-full bg-gray-200/80 dark:bg-gray-700 backdrop-blur-sm border border-green-500/30 hover:border-green-500/60 transition-colors"
       >
         <AnimatePresence>
           {hovered && (
@@ -250,7 +250,7 @@ function IconContainer({
               initial={{ opacity: 0, y: 10, x: "-50%" }}
               animate={{ opacity: 1, y: 0, x: "-50%" }}
               exit={{ opacity: 0, y: 2, x: "-50%" }}
-              className="absolute -top-8 left-1/2 w-fit rounded-md border border-[#ace4bb]/20 bg-[#ace4bb]/15 backdrop-blur-sm px-2 py-0.5 text-xs whitespace-pre text-gray-700 dark:text-gray-200"
+              className="absolute -top-8 left-1/2 w-fit rounded-md border border-green-500/20 bg-green-500/15 backdrop-blur-sm px-2 py-0.5 text-xs whitespace-pre text-gray-700 dark:text-gray-200"
             >
               {title}
             </motion.div>
@@ -258,7 +258,7 @@ function IconContainer({
         </AnimatePresence>
         <motion.div
           style={{ width: widthIcon, height: heightIcon }}
-          className="flex items-center justify-center text-gray-700 dark:text-[#ace4bb] hover:text-[#3c885c] transition-colors"
+          className="flex items-center justify-center text-gray-700 dark:text-green-400 hover:text-blue-600 transition-colors"
         >
           {icon}
         </motion.div>
