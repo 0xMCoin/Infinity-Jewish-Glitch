@@ -36,7 +36,10 @@ export function HeroSection() {
 
   return (
     <LazyMotion features={domAnimation} strict>
-      <section id="home" className="relative py-4 sm:py-6 lg:py-8 min-h-[70vh] sm:min-h-[75vh] lg:min-h-screen flex flex-col items-center justify-center mt-20">
+      <section
+        id="home"
+        className="relative py-4 sm:py-6 lg:py-8 min-h-[70vh] sm:min-h-[75vh] lg:min-h-screen flex flex-col items-center justify-center mt-20"
+      >
         {/* Desktop Layout */}
         <div className="hidden md:block items-center justify-center gap-4 sm:gap-6 max-w-screen-sm mx-auto px-4 sm:px-0 w-full">
           <m.div
@@ -270,17 +273,19 @@ const BuyCard = React.memo(function BuyCard({
 
         <div className="flex justify-center items-center gap-2">
           <a
-            href="https://pump.fun/coin/"
+            href="https://pump.fun/coin/4xVsawMYeSK7dPo9acp62bDFaDmrsCrSVXmEEBZrpump"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full flex justify-center items-center p-2 sm:p-3 bg-gradient-to-r from-green-500 to-blue-600 text-white font-bold rounded-lg shadow-lg text-xs sm:text-base hover:from-green-600 hover:to-blue-700 transition-all duration-300"
           >
-            CA:
+            CA: 4xVsawMYeSK7dPo9acp62bDFaDmrsCrSVXmEEBZrpump
           </a>
 
           <CopyIcon
             onClick={() => {
-              navigator.clipboard.writeText("");
+              navigator.clipboard.writeText(
+                "4xVsawMYeSK7dPo9acp62bDFaDmrsCrSVXmEEBZrpump"
+              );
               toast.success("Copied to clipboard");
             }}
             className="w-6 h-6 cursor-pointer"

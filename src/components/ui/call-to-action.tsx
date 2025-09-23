@@ -11,7 +11,7 @@ export function CallToAction({ className }: CallToActionProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleBuy = () => {
-    window.open("https://pump.fun/coin/", "_blank");
+    window.open("https://pump.fun/coin/4xVsawMYeSK7dPo9acp62bDFaDmrsCrSVXmEEBZrpump", "_blank");
   };
 
   return (

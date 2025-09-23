@@ -26,12 +26,12 @@ export function Footer() {
     {
       title: "Twitter",
       icon: <FaTwitter />,
-      href: "https://x.com/",
+      href: "https://x.com/JewishGlitchSol",
     },
     {
       title: "Contract",
       icon: <SiSolana />,
-      href: "https://pump.fun/coin/",
+      href: "https://pump.fun/coin/4xVsawMYeSK7dPo9acp62bDFaDmrsCrSVXmEEBZrpump",
     },
   ];
 

@@ -12,7 +12,7 @@ export function useTokenData() {
         setLoading(true);
         setError(null);
 
-        const response = await fetch("/api/price?mint=");
+        const response = await fetch("/api/price?mint=4xVsawMYeSK7dPo9acp62bDFaDmrsCrSVXmEEBZrpump");
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
