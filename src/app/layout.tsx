@@ -23,26 +23,26 @@ const pressStart2P = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  title: "Infinity Jewish Glitch",
+  title: "אינפיניטי ג'ואיש גליטץ",
   description:
-    "The infinite power of Jewish innovation meets crypto revolution!",
-  keywords: ["meme coin", "crypto", "solana", "jewish", "infinity", "glitch", "innovation"],  
-  authors: [{ name: "Infinity Jewish Glitch Team" }],
-  creator: "Infinity Jewish Glitch",
-  publisher: "INFINITY JEWISH GLITCH",
+    "הכוח האינסופי של החדשנות היהודית פוגש את המהפכה הקריפטו!",
+  keywords: ["מם קוין", "קריפטו", "סולנה", "יהודי", "אינפיניטי", "גליטץ", "חדשנות"],
+  authors: [{ name: "צוות אינפיניטי ג'ואיש גליטץ" }],
+  creator: "אינפיניטי ג'ואיש גליטץ",
+  publisher: "אינפיניטי ג'ואיש גליטץ",
   robots: "index, follow",
   openGraph: {
-    title: "Infinity Jewish Glitch",
+    title: "אינפיניטי ג'ואיש גליטץ",
     description:
-      "The infinite power of Jewish innovation meets crypto revolution!",
+      "הכוח האינסופי של החדשנות היהודית פוגש את המהפכה הקריפטו!",
     type: "website",
-    locale: "en_US",
+    locale: "he_IL",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Infinity Jewish Glitch",
+    title: "אינפיניטי ג'ואיש גליטץ",
     description:
-      "The infinite power of Jewish innovation meets crypto revolution!",
+      "הכוח האינסופי של החדשנות היהודית פוגש את המהפכה הקריפטו!",
   },
   icons: {
     icon: [
@@ -61,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="he">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -75,7 +75,7 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Infinity Jewish Glitch" />
+        <meta name="apple-mobile-web-app-title" content="אינפיניטי ג'ואיש גליטץ" />
         <link rel="icon" href="/images/logo.png" sizes="64x64" />
         <link rel="apple-touch-icon" href="/images/logo-180.png" />
         <link rel="preload" href="/globals.css" as="style" />
