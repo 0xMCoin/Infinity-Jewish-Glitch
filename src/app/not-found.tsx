@@ -6,16 +6,16 @@ export default function NotFound() {
           404
         </h1>
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-          Page Not Found
+          עמוד לא נמצא
         </h2>
         <p className="text-gray-600 dark:text-gray-400 mb-8">
-          The infinite glitch couldn't find this page.
+          הגליטץ האינסופי לא הצליח למצוא את העמוד הזה.
         </p>
         <a
           href="/"
           className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500 to-blue-500 text-white font-bold rounded-lg hover:from-green-600 hover:to-blue-600 transition-all duration-300"
         >
-          Return to IJG
+          חזור לתקלה בכסף יהודי אינסופי
         </a>
       </div>
     </div>

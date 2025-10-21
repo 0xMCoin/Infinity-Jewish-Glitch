@@ -13,24 +13,24 @@ export const placeholderVideos: GalleryVideo[] = [
     id: 1,
     src: "/videos/rat_meme1.mp4",
     alt: "Jewish Glitch 1",
-    title: "IJG Genesis 1",
-    description: "Jewish innovation meets infinite possibilities.",
+    title: "יְהוּדִי Genesis 1",
+    description: "חדשנות יהודית פוגשת אפשרויות אינסופיות.",
     category: "hunt",
   },
   {
     id: 2,
     src: "/videos/rat_meme2.mp4",
     alt: "Jewish Glitch 2",
-    title: "IJG Innovation 2",
-    description: "Infinite innovation through Jewish wisdom.",
+    title: "יְהוּדִי Innovation 2",
+    description: "חדשנות אינסופית דרך חכמת ישראל.",
     category: "hunt",
   },
   {
     id: 3,
     src: "/videos/rat_meme3.mp4",
     alt: "Jewish Glitch 3",
-    title: "IJG Infinity 3",
-    description: "Glitch transcends digital boundaries.",
+    title: "יְהוּדִי Infinity 3",
+    description: "גליטץ חוצה גבולות דיגיטליים.",
     category: "tech",
   },
   {
@@ -38,7 +38,7 @@ export const placeholderVideos: GalleryVideo[] = [
     src: "/videos/rat_meme4.mp4",
     alt: "Dancing Rat 4",
     title: "Rodolfo Dance 4",
-    description: "Rodolfo makes sassy moves!",
+    description: "רודולפו עושה תנועות חצופות!",
     category: "cyber",
   },
   {
@@ -46,7 +46,7 @@ export const placeholderVideos: GalleryVideo[] = [
     src: "/videos/rat_meme5.mp4",
     alt: "Dancing Rat 5",
     title: "Rodolfo Dance 5",
-    description: "The Rat own the Dancefloor!",
+    description: "העכבר שולט ברחבת הריקודים!",
     category: "tech",
   },
   {
@@ -54,7 +54,7 @@ export const placeholderVideos: GalleryVideo[] = [
     src: "/videos/rat_meme6.mp4",
     alt: "Dancing Rat 6",
     title: "Rodolfo Dance 6",
-    description: "Rodolfo with a party hat.",
+    description: "רודולפו עם כובע מסיבה.",
     category: "tech",
   },
   {
@@ -62,7 +62,7 @@ export const placeholderVideos: GalleryVideo[] = [
     src: "/videos/rat_meme7.mp4",
     alt: "Dancing Rat 7",
     title: "Rodolfo Dance 7",
-    description: "Rodolfo doing the worm dance.",
+    description: "רודולפו עושה את ריקוד התולעת.",
     category: "hunt",
   },
   {
@@ -70,7 +70,7 @@ export const placeholderVideos: GalleryVideo[] = [
     src: "/videos/rat_meme8.mp4",
     alt: "Dancing Rat 8",
     title: "Rodolfo Dance 8",
-    description: "Rodolfo with robot moves.",
+    description: "רודולפו עם תנועות רובוט.",
     category: "hunt",
   },
   {
@@ -78,7 +78,7 @@ export const placeholderVideos: GalleryVideo[] = [
     src: "/videos/rat_meme9.mp4",
     alt: "Rat with funny hat",
     title: "Hat Rat",
-    description: "Fashion forward rat with the latest trends!",
+    description: "עכבר חדשני עם הטרנדים האחרונים!",
     category: "cyber",
   },
   {
@@ -86,7 +86,7 @@ export const placeholderVideos: GalleryVideo[] = [
     src: "/videos/rat_meme10.mp4",
     alt: "Rat with funny hat",
     title: "Hat Rat",
-    description: "Fashion forward rat with the latest trends!",
+    description: "עכבר חדשני עם הטרנדים האחרונים!",
     category: "cyber",
   },
   {
@@ -94,7 +94,7 @@ export const placeholderVideos: GalleryVideo[] = [
     src: "/videos/rat_meme11.mp4",
     alt: "Rat with funny hat",
     title: "Hat Rat",
-    description: "Fashion forward rat with the latest trends!",
+    description: "עכבר חדשני עם הטרנדים האחרונים!",
     category: "cyber",
   },
   {
@@ -102,7 +102,7 @@ export const placeholderVideos: GalleryVideo[] = [
     src: "/videos/rat_meme12.mp4",
     alt: "Rat with funny hat",
     title: "Hat Rat",
-    description: "Fashion forward rat with the latest trends!",
+    description: "עכבר חדשני עם הטרנדים האחרונים!",
     category: "cyber",
   },
 ];

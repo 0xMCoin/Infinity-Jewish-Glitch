@@ -54,20 +54,20 @@ export function InfoSection() {
   const features = [
     {
       icon: <MdAutorenew className="w-8 h-8" />,
-      title: "Auto-Buyback Mechanism",
-      description: "All creator fees automatically reinvested into the token",
+      title: "מנגנון אוטו-בייבק",
+      description: "כל עמלות היוצר מושקעות אוטומטית בחזרה בטוקן",
       color: "text-green-500",
     },
     {
       icon: <FaLock className="w-8 h-8" />,
-      title: "Lock System",
-      description: "Ensures constant buy pressure and long-term sustainability",
+      title: "מערכת נעילה",
+      description: "מבטיחה לחץ קנייה קבוע וקיימות לטווח ארוך",
       color: "text-blue-500",
     },
     {
       icon: <FaInfinity className="w-8 h-8" />,
-      title: "Self-Sustaining",
-      description: "Token strength increases the longer it exists",
+      title: "מתקיים בעצמו",
+      description: "חוזק הטוקן גדל ככל שהוא קיים זמן רב יותר",
       color: "text-purple-500",
     },
   ];
@@ -98,7 +98,7 @@ export function InfoSection() {
             viewport={{ once: true }}
           >
             <span className="bg-gradient-to-r from-blue-600 via-green-500 to-purple-600 bg-clip-text text-transparent">
-              THE INFINITE REVOLUTION
+              המהפכה האינסופית
             </span>
           </motion.h2>
           <motion.div
@@ -109,7 +109,7 @@ export function InfoSection() {
             viewport={{ once: true }}
           >
             <FaInfinity className="w-4 h-4 animate-spin" />
-            Next-Generation Auto-Buyback Token
+            טוקן אוטו-בייבק דור הבא
           </motion.div>
         </motion.div>
 
@@ -124,43 +124,42 @@ export function InfoSection() {
           <div className="bg-black/10 backdrop-blur-md dark:bg-black/20 rounded-2xl p-8 border border-blue-500/20 shadow-2xl">
             <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
               <strong className="text-blue-600 dark:text-blue-400">
-                Infinity Jewish Glitch (IJG)
+                תקלה בכסף יהודי אינסופי (יְהוּדִי)
               </strong>{" "}
-              is a next-generation token designed with an innovative
+              הוא טוקן דור הבא המעוצב עם
               <span className="text-green-600 dark:text-green-400 font-semibold">
                 {" "}
-                auto-buyback and lock mechanism
+                מנגנון אוטו-בייבק ותיקוף חדשני
               </span>
-              . Unlike traditional tokens, all creator fees are automatically
-              collected and reinvested into the token itself, ensuring{" "}
+              . בניגוד לטוקנים מסורתיים, כל עמלות היוצר נאספות ונשקעות אוטומטית בחזרה בטוקן עצמו, תוך הבטחת{" "}
               <span className="text-purple-600 dark:text-purple-400 font-semibold">
-                constant buy pressure and long-term sustainability
+                לחץ קנייה קבוע וקיימות לטווח ארוך
               </span>
               .
             </p>
 
             <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
-              The project is built around the journey of{" "}
-              <strong className="text-blue-600 dark:text-blue-400">Alon</strong>
-              , its founder, who began his career in blockchain development and
-              now channels his vision into IJG. As the market cap grows, Alon
-              and the token advance through{" "}
+              הפרויקט בנוי סביב המסע של{" "}
+              <strong className="text-blue-600 dark:text-blue-400">אלון</strong>
+              , מייסדו, שהחל את הקריירה שלו בפיתוח בלוקצ'יין
+              ועכשיו מפנה את החזון שלו ל-יְהוּדִי. ככל ששווי השוק גדל, אלון
+              והטוקן מתקדמים דרך{" "}
               <span className="text-green-600 dark:text-green-400 font-semibold">
-                six milestone levels
+                שישה רמות ציון דרך
               </span>
               .
             </p>
 
             <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
               <strong className="text-purple-600 dark:text-purple-400">
-                Infinity Jewish Glitch
+                תקלה בכסף יהודי אינסופי
               </strong>{" "}
-              aims to create a
+              שואף ליצור
               <span className="text-green-600 dark:text-green-400 font-semibold">
                 {" "}
-                self-sustaining, community-driven asset
+                נכס קהילתי מתקיים בעצמו
               </span>{" "}
-              where the token's strength increases the longer it exists.
+              שבו חוזק הטוקן גדל ככל שהוא קיים זמן רב יותר.
             </p>
           </div>
         </motion.div>

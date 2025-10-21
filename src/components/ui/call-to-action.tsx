@@ -11,7 +11,7 @@ export function CallToAction({ className }: CallToActionProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleBuy = () => {
-    window.open("https://pump.fun/coin/4xVsawMYeSK7dPo9acp62bDFaDmrsCrSVXmEEBZrpump", "_blank");
+    window.open("https://pump.fun/coin/", "_blank");
   };
 
   return (
@@ -39,7 +39,7 @@ export function CallToAction({ className }: CallToActionProps) {
             transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
             viewport={{ once: true }}
           >
-            READY FOR INFINITE INNOVATION?
+            מוכן לחדשנות אינסופית?
           </motion.h2>
           <motion.p
             className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto"
@@ -48,9 +48,8 @@ export function CallToAction({ className }: CallToActionProps) {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Don't miss out on the infinite Jewish glitch revolution! Join the
-            community where tradition meets innovation in the ultimate crypto
-            adventure.
+            אל תפספס את המהפכה האינסופית של ג'ואיש גליטץ! הצטרף לקהילה
+            שבה מסורת פוגשת חדשנות בהרפתקת הקריפטו האולטימטיבית.
           </motion.p>
         </motion.div>
 
@@ -73,7 +72,7 @@ export function CallToAction({ className }: CallToActionProps) {
             <div className="absolute -inset-1 bg-gradient-to-r from-green-400 via-blue-500 to-green-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="relative flex items-center space-x-3">
               <FaCoins className="w-5 h-5" />
-              <span>BUY $IJG NOW</span>
+              <span>קנה $יְהוּדִי עכשיו</span>
             </div>
           </motion.button>
         </motion.div>

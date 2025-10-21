@@ -166,7 +166,7 @@ export function VideoPlayer({
       {hasError && (
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 rounded-lg text-white">
           <div className="text-red-400 mb-2">⚠️</div>
-          <div className="text-sm text-center px-4">Error to load video</div>
+          <div className="text-sm text-center px-4">שגיאה בטעינת וידאו</div>
           <button
             onClick={() => {
               setHasError(false);
@@ -177,7 +177,7 @@ export function VideoPlayer({
             }}
             className="mt-2 px-3 py-1 bg-emerald-500 hover:bg-emerald-600 rounded text-xs transition-colors"
           >
-            Try again
+            נסה שוב
           </button>
         </div>
       )}
@@ -201,7 +201,7 @@ export function VideoPlayer({
         <button
           onClick={handleMuteToggle}
           className="w-8 h-8 flex items-center justify-center text-white hover:text-emerald-400 transition-colors duration-200"
-          title={isMuted ? "Unmute Video" : "Mute Video"}
+          title={isMuted ? "בטל השתקת וידאו" : "השתק וידאו"}
         >
           {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
         </button>

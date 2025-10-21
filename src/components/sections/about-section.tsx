@@ -7,28 +7,28 @@ import { Lens } from "../ui/lens";
 export function AboutSection() {
   const features = [
     {
-      title: "Pack Leader",
+      title: "מנהיג החבילה",
       description:
-        "Leading the digital pack with strength and unity. Every wolf matters!",
+        "מנהיג החבילה הדיגיטלית עם כוח ואחדות. כל זאב חשוב!",
       features: [
-        "Alpha Leadership",
-        "Pack Consensus",
-        "Open Source Evolution",
+        "מנהיגות אלפא",
+        "הסכמה של החבילה",
+        "אבולוציית קוד פתוח",
       ],
     },
     {
-      title: "Technology First",
-      description: "Cutting-edge blockchain tech meets fierce determination!",
-      features: ["Smart Contracts", "DeFi Integration", "AI-Powered Features"],
+      title: "טכנולוגיה קודם",
+      description: "טכנולוגיית בלוקצ'יין מתקדמת פוגשת נחישות עזה!",
+      features: ["חוזים חכמים", "אינטגרציית DeFi", "תכונות מופעלות AI"],
     },
     {
-      title: "Digital Dominance",
+      title: "דומיננטיות דיגיטלית",
       description:
-        "One howl from the pack, one giant leap for crypto evolution!",
+        "יבבה אחת מהחבילה, קפיצה ענקית אחת לאבולוציית הקריפטו!",
       features: [
-        "Tech Alliances",
-        "Global Exchanges",
-        "Worldwide Adoption",
+        "בריתות טכנולוגיות",
+        "בורסות גלובליות",
+        "אימוץ עולמי",
       ],
     },
   ];
@@ -54,7 +54,7 @@ export function AboutSection() {
               transition: { duration: 0.3 },
             }}
           >
-            ABOUT IJG
+            אודות אינפיניטי ג'ואיש גליטץ
           </motion.h2>
           <motion.p
             className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed"
@@ -63,7 +63,7 @@ export function AboutSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Innovation without limits! <br /> Jewish wisdom meets infinite possibilities!
+            חדשנות ללא גבולות! <br /> חכמת ישראל פוגשת אפשרויות אינסופיות!
           </motion.p>
         </motion.div>
 
@@ -83,7 +83,7 @@ export function AboutSection() {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                READY FOR THE INFINITE GLITCH?
+                מוכן לגליטץ האינסופי?
               </motion.h3>
               <motion.p
                 className="text-gray-600 dark:text-gray-400"
@@ -92,7 +92,7 @@ export function AboutSection() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                Hover and witness the infinite glitch power!
+                רחף וראה את כוח הגליטץ האינסופי!
               </motion.p>
             </div>
 
@@ -136,7 +136,7 @@ export function AboutSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              Why $IJG?
+              למה אינפיניטי ג'ואיש גליטץ?
             </motion.h3>
 
             <div className="space-y-8">

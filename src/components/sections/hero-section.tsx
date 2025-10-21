@@ -92,14 +92,14 @@ export function HeroSection() {
         {/* Bottom Large Text - Desktop Only */}
         <div className="absolute bottom-[40%] left-1/2 transform -translate-x-1/2 hidden lg:flex w-full justify-center items-center">
           <h1 className="text-6xl lg:text-8xl text-center font-black tracking-wider text-gray-900 dark:text-white opacity-90 select-none transition-colors duration-300 font-arcade text-arcade-shadow">
-            INFINITY JEWISH GLITCH
+            תקלה בכסף יהודי אינסופי
           </h1>
         </div>
 
         {/* Mobile Bottom Text */}
         <div className="lg:hidden text-center mt-6 sm:mt-8">
           <h1 className="text-6xl sm:text-4xl font-black tracking-wider text-gray-900 dark:text-white opacity-90 transition-colors duration-300 font-arcade text-arcade-shadow">
-            INFINITY JEWISH GLITCH
+            תקלה בכסף יהודי אינסופי
           </h1>
         </div>
       </section>
@@ -165,7 +165,7 @@ const BuyCard = React.memo(function BuyCard({
       <div className="relative bg-black/10 backdrop-blur-md dark:bg-black/20 dark:text-white p-4 sm:p-6 rounded-xl shadow-2xl border border-blue-500/30">
         <div className="text-center mb-4 sm:mb-6">
           <h2 className="text-xl sm:text-2xl font-black text-blue-600 dark:text-blue-400 mb-2 font-arcade text-arcade-shadow">
-            BUY $IJG NOW!
+            קנה $ יְהוּדִי עכשיו!
           </h2>
         </div>
 
@@ -175,7 +175,7 @@ const BuyCard = React.memo(function BuyCard({
               ${formatNumber(totalRaised)}
             </p>
             <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm mt-2">
-              Goal Market Cap: 10 Million
+              יעד שווי שוק: 10 מיליון
             </p>
           </div>
 
@@ -193,7 +193,7 @@ const BuyCard = React.memo(function BuyCard({
         <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
           <div className="text-center p-2 sm:p-3 bg-gray-100 dark:bg-gray-800/70 rounded-lg border border-gray-300 dark:border-gray-700">
             <p className="text-gray-700 dark:text-gray-300 text-xs mb-1">
-              CURRENT PRICE
+              מחיר נוכחי
             </p>
             <p className="text-blue-600 dark:text-blue-400 font-bold text-sm sm:text-base">
               $
@@ -206,7 +206,7 @@ const BuyCard = React.memo(function BuyCard({
           </div>
           <div className="text-center p-2 sm:p-3 bg-gray-100 dark:bg-gray-800/70 rounded-lg border border-gray-300 dark:border-gray-700">
             <p className="text-gray-700 dark:text-gray-300 text-xs mb-1">
-              MARKET CAP
+              שווי שוק
             </p>
             <p className="text-blue-600 dark:text-blue-400 font-bold text-sm sm:text-base">
               $
@@ -224,7 +224,7 @@ const BuyCard = React.memo(function BuyCard({
           <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
             <button className="flex-1 p-2 sm:p-3 bg-blue-100 dark:bg-blue-600/20 border border-blue-300 dark:border-blue-500/50 rounded-lg text-blue-700 dark:text-blue-400 text-xs sm:text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-600/30 transition-colors">
               <SiSolana className="inline mr-2" />
-              SOLANA
+              סולנה
             </button>
           </div>
         </div>
@@ -233,7 +233,7 @@ const BuyCard = React.memo(function BuyCard({
         <div className="space-y-3 mb-4 sm:mb-6">
           <div className="p-2 sm:p-3 bg-gray-100 dark:bg-gray-800/70 rounded-lg border border-gray-300 dark:border-gray-700">
             <label className="text-gray-700 dark:text-gray-300 text-xs block mb-1">
-              YOU PAY
+              אתה משלם
             </label>
             <div className="flex items-center space-x-2">
               <input
@@ -244,21 +244,21 @@ const BuyCard = React.memo(function BuyCard({
                 className="flex-1 bg-transparent text-gray-900 dark:text-white text-base sm:text-lg font-bold outline-none"
               />
               <span className="text-blue-600 dark:text-blue-400 text-xs sm:text-sm">
-                USD
+                דולר
               </span>
             </div>
           </div>
 
           <div className="p-2 sm:p-3 bg-gray-100 dark:bg-gray-800/70 rounded-lg border border-gray-300 dark:border-gray-700">
             <label className="text-gray-700 dark:text-gray-300 text-xs block mb-1">
-              YOU RECEIVE
+              אתה מקבל
             </label>
             <div className="flex items-center space-x-2">
               <span className="flex-1 text-gray-900 dark:text-white text-base sm:text-lg font-bold">
                 {tokenAmount}
               </span>
               <span className="text-blue-600 dark:text-blue-400 text-xs sm:text-sm">
-                $IJG
+                $יְהוּדִי
               </span>
             </div>
             <p className="text-gray-500 dark:text-gray-400 text-xs mt-1">
@@ -266,26 +266,24 @@ const BuyCard = React.memo(function BuyCard({
               {(
                 Number(tokenAmount.replace(/,/g, "")) * (tokenData?.price || 0)
               ).toFixed(2)}{" "}
-              USD
+              דולר
             </p>
           </div>
         </div>
 
         <div className="flex justify-center items-center gap-2">
           <a
-            href="https://pump.fun/coin/4xVsawMYeSK7dPo9acp62bDFaDmrsCrSVXmEEBZrpump"
+            href="https://pump.fun/coin/"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full flex justify-center items-center p-2 sm:p-3 bg-gradient-to-r from-green-500 to-blue-600 text-white font-bold rounded-lg shadow-lg text-xs sm:text-base hover:from-green-600 hover:to-blue-700 transition-all duration-300"
           >
-            CA: 4xVsawMYeSK7dPo9acp62bDFaDmrsCrSVXmEEBZrpump
+            CA: ""
           </a>
 
           <CopyIcon
             onClick={() => {
-              navigator.clipboard.writeText(
-                "4xVsawMYeSK7dPo9acp62bDFaDmrsCrSVXmEEBZrpump"
-              );
+              navigator.clipboard.writeText("https://pump.fun/coin/");
               toast.success("Copied to clipboard");
             }}
             className="w-6 h-6 cursor-pointer"
@@ -298,3 +296,4 @@ const BuyCard = React.memo(function BuyCard({
     </div>
   );
 });
+

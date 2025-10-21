@@ -24,14 +24,9 @@ export function Footer() {
 
   const dockItems = [
     {
-      title: "Twitter",
-      icon: <FaTwitter />,
-      href: "https://x.com/JewishGlitchSol",
-    },
-    {
       title: "Contract",
       icon: <SiSolana />,
-      href: "https://pump.fun/coin/4xVsawMYeSK7dPo9acp62bDFaDmrsCrSVXmEEBZrpump",
+      href: "https://pump.fun/coin/",
     },
   ];
 
@@ -48,22 +43,21 @@ export function Footer() {
 
         <div className="text-center">
           <p className="text-sm sm:text-base text-gray-700 dark:text-gray-200 mb-3 sm:mb-4">
-            © {currentYear} Infinity Jewish Glitch. All rights reserved.
+            © {currentYear} תקלה בכסף יהודי אינסופי. כל הזכויות שמורות.
           </p>
           <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-2 sm:px-0">
             <p className="mb-2 sm:mb-3">
               <strong className="text-gray-800 dark:text-white">
-                DISCLAIMER:
+                כתב ויתור:
               </strong>{" "}
-              This is a meme coin created for entertainment purposes only.
+              זהו מם קוין שנוצר למטרות בידור בלבד.
             </p>
             <p className="mb-2 sm:mb-3">
-              Cryptocurrency investments carry significant risks. Never invest
-              more than you can afford to lose.
+              השקעות בקריפטו כוללות סיכונים משמעותיים. לעולם אל תשקיע יותר ממה
+              שאתה יכול להרשות לעצמך להפסיד.
             </p>
             <p>
-              This project is not financial advice. DYOR (Do Your Own Research)
-              and trade responsibly.
+              פרויקט זה אינו ייעוץ פיננסי. DYOR (עשה מחקר משלך) וסחר באחריות.
             </p>
           </div>
         </div>
@@ -256,3 +250,4 @@ function IconContainer({
     </a>
   );
 }
+

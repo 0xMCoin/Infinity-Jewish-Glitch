@@ -7,7 +7,7 @@ import { Lock, Unlock, Star } from "lucide-react";
 const UNLOCK_THRESHOLDS = [0, 25000, 50000, 75000, 100000, 500000];
 
 export function GalleryProgress() {
-  const currentMarketCap = 25000;
+  const currentMarketCap = 0;
   const unlockedCount = UNLOCK_THRESHOLDS.filter(
     (threshold) => currentMarketCap >= threshold
   ).length;
@@ -38,10 +38,10 @@ export function GalleryProgress() {
         {/* Header */}
         <div className="text-center mb-4">
            <h3 className="text-lg sm:text-xl font-bold text-blue-400 mb-2 font-arcade">
-            GALLERY EVOLUTION
+            אבולוציית הגלריה
           </h3>
           <p className="text-sm text-gray-300">
-            Unlock exclusive artwork as market cap grows
+            שחרר אומנות בלעדית ככל ששווי השוק גדל
           </p>
         </div>
 
@@ -51,13 +51,13 @@ export function GalleryProgress() {
             <div className="text-2xl font-bold text-green-400 mb-1">
               {unlockedCount}/6
             </div>
-            <div className="text-xs text-gray-400">Unlocked</div>
+            <div className="text-xs text-gray-400">נפתח</div>
           </div>
           <div className="text-center">
             <div className="text-2xl font-bold text-blue-400 mb-1">
               {nextThreshold ? `$${formatNumber(nextThreshold)}` : "MAX"}
             </div>
-            <div className="text-xs text-gray-400">Next Unlock</div>
+            <div className="text-xs text-gray-400">פתיחה הבאה</div>
           </div>
         </div>
 
@@ -77,7 +77,7 @@ export function GalleryProgress() {
               />
             </div>
             <div className="text-center text-xs text-blue-400 mt-1">
-              {progressToNext.toFixed(1)}% to next unlock
+              {progressToNext.toFixed(1)}% לפתיחה הבאה
             </div>
           </div>
         )}
@@ -127,7 +127,7 @@ export function GalleryProgress() {
             href="#gallery"
             className="inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors"
           >
-            <span>View Gallery</span>
+            <span>צפה בגלריה</span>
             <m.span
               animate={{ x: [0, 4, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}

@@ -15,14 +15,9 @@ import Image from "next/image";
 
 const dockItems = [
   {
-    title: "Twitter",
-    icon: <FaTwitter />,
-    href: "https://x.com/JewishGlitchSol",
-  },
-  {
-    title: "Contract",
+    title: "חוזה",
     icon: <SiSolana />,
-    href: "https://pump.fun/coin/4xVsawMYeSK7dPo9acp62bDFaDmrsCrSVXmEEBZrpump",
+    href: "https://pump.fun/coin/",
   },
 ];
 
@@ -35,17 +30,13 @@ export function Header() {
         <div className="relative">
           <div className="animate-marquee whitespace-nowrap text-sm font-bold font-arcade">
             <span className="mx-8">
-              INFINITY JEWISH GLITCH IS THE NEXT BIG THING IN CRYPTO
+              תקלה בכסף יהודי אינסופי הוא הדבר הגדול הבא בקריפטו
             </span>
             <span className="mx-8">
-              INFINITY JEWISH GLITCH BRINGS INFINITE INNOVATION
+              תקלה בכסף יהודי אינסופי מביא חדשנות אינסופית
             </span>
-            <span className="mx-8">
-              DON'T MISS OUT ON THE JEWISH TECH REVOLUTION
-            </span>
-            <span className="mx-8">
-              GET READY FOR THE INFINITE GLITCH EVOLUTION
-            </span>
+            <span className="mx-8">אל תפספס את המהפכה הטכנולוגית היהודית</span>
+            <span className="mx-8">התכונן לאבולוציית הגליטץ האינסופית</span>
           </div>
         </div>
       </div>
@@ -77,7 +68,7 @@ export function Header() {
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 <span className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
-                  INFINITY JEWISH GLITCH
+                  תקלה בכסף יהודי אינסופי
                 </span>
               </motion.h1>
               <motion.p
@@ -86,27 +77,27 @@ export function Header() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                Next-Gen Auto-Buyback Token
+                טוקן אוטו-בייבק דור הבא
               </motion.p>
             </div>
           </motion.div>
 
           <nav className="hidden lg:flex items-center space-x-6">
             {[
-              { href: "#home", label: "Home", icon: <FaHome size={16} /> },
+              { href: "#home", label: "בית", icon: <FaHome size={16} /> },
               {
                 href: "#info",
-                label: "Info",
+                label: "מידע",
                 icon: <FaInfoCircle size={16} />,
               },
               {
                 href: "#gallery",
-                label: "Gallery",
+                label: "גלריה",
                 icon: <FaImages size={16} />,
               },
               {
                 href: "#buy",
-                label: "Buy $IJG",
+                label: "קנה $יְהוּדִי",
                 icon: <FaRocket size={16} />,
                 special: true,
               },
@@ -196,7 +187,7 @@ export function Header() {
                 <div className="flex items-center space-x-3">
                   <Image
                     src="/images/logo.png"
-                    alt="IJG Logo"
+                    alt="יְהוּדִי Logo"
                     width={32}
                     height={32}
                     className="rounded-lg"
@@ -215,27 +206,27 @@ export function Header() {
                 {[
                   {
                     href: "#home",
-                    label: "Home",
+                    label: "בית",
                     icon: <FaHome size={18} />,
-                    description: "Back to top",
+                    description: "חזרה למעלה",
                   },
                   {
                     href: "#info",
-                    label: "Token Info",
+                    label: "מידע על טוקן",
                     icon: <FaInfoCircle size={18} />,
-                    description: "Learn about IJG",
+                    description: "למד על יְהוּדִי",
                   },
                   {
                     href: "#gallery",
-                    label: "Evolution Gallery",
+                    label: "גלריית אבולוציה",
                     icon: <FaImages size={18} />,
-                    description: "View milestone art",
+                    description: "צפה באומנות ציוני דרך",
                   },
                   {
                     href: "#buy",
-                    label: "Buy $IJG Now",
+                    label: "קנה $יְהוּדִי עכשיו",
                     icon: <FaRocket size={18} />,
-                    description: "Get tokens",
+                    description: "קבל טוקנים",
                     special: true,
                   },
                 ].map((item, index) => (
@@ -322,3 +313,4 @@ export function Header() {
     </div>
   );
 }
+

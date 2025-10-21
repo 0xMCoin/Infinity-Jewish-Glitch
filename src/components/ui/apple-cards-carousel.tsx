@@ -188,7 +188,7 @@ export function AppleCardsCarousel({
           <button
             onClick={handleMuteToggle}
             className="w-8 h-8 flex items-center justify-center text-white hover:text-emerald-400 transition-colors duration-200"
-            title={isMuted ? "Unmute Video" : "Mute Video"}
+            title={isMuted ? "בטל השתקת וידאו" : "השתק וידאו"}
           >
             {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
           </button>

@@ -25,7 +25,7 @@ export function GalleryShowcase({ videos, className }: GalleryShowcaseProps) {
                 : "text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
             }`}
           >
-            Carousel View
+            תצוגת קרוסלה
           </button>
           <button
             onClick={() => setViewMode("grid")}
@@ -35,7 +35,7 @@ export function GalleryShowcase({ videos, className }: GalleryShowcaseProps) {
                 : "text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200"
             }`}
           >
-            Grid View
+            תצוגת רשת
           </button>
         </div>
       </div>

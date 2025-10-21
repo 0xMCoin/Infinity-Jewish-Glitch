@@ -18,44 +18,44 @@ const galleryStages: GalleryStage[] = [
   {
     id: 1,
     image: "/images/stage_1.jpg",
-    title: "Genesis Pack",
-    description: "The first wolves emerge from the digital realm",
+    title: "חבילת ג'נסיס",
+    description: "הזאבים הראשונים צצים מהתחום הדיגיטלי",
     unlockThreshold: 0,
   },
   {
     id: 2,
     image: "/images/stage_2.png", 
-    title: "Alpha Formation",
-    description: "The pack begins to form under cyber leadership",
+    title: "יצירת אלפא",
+    description: "החבילה מתחילה להיווצר תחת מנהיגות סייבר",
     unlockThreshold: 25000,
   },
   {
     id: 3,
     image: "/images/stage_3.png",
-    title: "Digital Hunt",
-    description: "Wolves master the art of cyber hunting",
+    title: "ציד דיגיטלי",
+    description: "זאבים שולטים באומנות הציד הסייבר",
     unlockThreshold: 50000,
   },
   {
     id: 4,
     image: "/images/stage_4.png",
-    title: "Tech Evolution",
-    description: "Advanced cybernetic enhancements activated",
+    title: "אבולוציית טכנולוגיה",
+    description: "שיפורים סייברנטיים מתקדמים מופעלים",
     unlockThreshold: 75000,
     isSpecial: true,
   },
   {
     id: 5,
     image: "/images/stage_5.png",
-    title: "Pack Dominance",
-    description: "The cyber wolves rule the digital landscape",
+    title: "דומיננטיות חבילה",
+    description: "הזאבים הסייבר שולטים בנוף הדיגיטלי",
     unlockThreshold: 100000,
   },
   {
     id: 6,
     image: "/images/stage_6.jpg",
-    title: "Ultimate Form",
-    description: "The ultimate infinite Jewish glitch form",
+    title: "צורה אולטימטיבית",
+    description: "הצורה האולטימטיבית של אינפיניטי ג'ואיש גליטץ",
     unlockThreshold: 500000,
     isSpecial: true,
   },
@@ -66,7 +66,7 @@ export function LockedGallery() {
   const [selectedStage, setSelectedStage] = useState<number | null>(null);
   const [showUnlocked, setShowUnlocked] = useState(false);
 
-  const currentMarketCap = 25000;
+  const currentMarketCap = 0;
 
   const stageStatus = useMemo(() => {
     return galleryStages.map(stage => ({
@@ -105,7 +105,7 @@ export function LockedGallery() {
             <div className="text-2xl font-bold text-blue-400 mb-1">
               {loading ? "..." : `$${formatNumber(currentMarketCap)}`}
             </div>
-            <div className="text-sm text-gray-400">Current Market Cap</div>
+            <div className="text-sm text-gray-400">שווי שוק נוכחי</div>
           </m.div>
 
           <m.div 
@@ -115,7 +115,7 @@ export function LockedGallery() {
             <div className="text-2xl font-bold text-green-400 mb-1">
               {unlockedCount}/6
             </div>
-            <div className="text-sm text-gray-400">Images Unlocked</div>
+            <div className="text-sm text-gray-400">תמונות שנפתחו</div>
           </m.div>
 
           <m.div 
@@ -125,7 +125,7 @@ export function LockedGallery() {
             <div className="text-2xl font-bold text-purple-400 mb-1">
               {nextUnlock ? `$${formatNumber(nextUnlock.unlockThreshold)}` : "MAX"}
             </div>
-            <div className="text-sm text-gray-400">Next Unlock</div>
+            <div className="text-sm text-gray-400">פתיחה הבאה</div>
           </m.div>
         </div>
 
@@ -137,7 +137,7 @@ export function LockedGallery() {
           whileTap={{ scale: 0.95 }}
         >
           {showUnlocked ? <Eye size={16} /> : <EyeOff size={16} />}
-          {showUnlocked ? "Show All" : "Show Unlocked Only"}
+          {showUnlocked ? "הצג הכל" : "הצג רק פתוחים"}
         </m.button>
       </div>
 
@@ -178,7 +178,7 @@ export function LockedGallery() {
                     <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
                       <div className="text-center">
                         <Lock size={48} className="text-gray-500 mx-auto mb-4" />
-                        <div className="text-gray-400 text-sm mb-2">Locked</div>
+                        <div className="text-gray-400 text-sm mb-2">נעול</div>
                         <div className="text-green-400 font-bold">
                           ${formatNumber(stage.unlockThreshold)}
                         </div>
@@ -198,7 +198,7 @@ export function LockedGallery() {
                   {/* Special Badge */}
                   {stage.isSpecial && stage.isUnlocked && (
                     <div className="absolute top-3 left-3 px-2 py-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-bold rounded-full">
-                      RARE
+                      נדיר
                     </div>
                   )}
 
@@ -261,7 +261,7 @@ export function LockedGallery() {
                       <h2 className="text-2xl font-bold text-white mb-2">{stage.title}</h2>
                       <p className="text-gray-300">{stage.description}</p>
                       <div className="mt-4 text-green-400">
-                        Unlocked at ${formatNumber(stage.unlockThreshold)} market cap
+                        נפתח ב-${formatNumber(stage.unlockThreshold)} שווי שוק
                       </div>
                     </div>
                   </>

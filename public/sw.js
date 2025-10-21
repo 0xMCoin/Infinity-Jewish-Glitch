@@ -1,7 +1,7 @@
 // Service Worker simplificado para desenvolvimento
-const CACHE_NAME = 'ijg-v2';
-const STATIC_CACHE = 'ijg-static-v2';
-const DYNAMIC_CACHE = 'ijg-dynamic-v2';
+const CACHE_NAME = 'יְהוּדִי-v2';
+const STATIC_CACHE = 'יְהוּדִי-static-v2';
+const DYNAMIC_CACHE = 'יְהוּדִי-dynamic-v2';
 
 // Apenas recursos essenciais para cache (reduzido para desenvolvimento)
 const STATIC_ASSETS = [

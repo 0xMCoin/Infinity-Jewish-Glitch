@@ -16,7 +16,7 @@ export function GallerySection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            IJG EVOLUTION
+            אבולוציית יְהוּדִי
           </motion.h2>
           <motion.p
             className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto"
@@ -25,7 +25,7 @@ export function GallerySection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Unlock exclusive Jewish Glitch artwork as our market cap grows! Each milestone reveals new stages of infinite evolution.
+            שחרר אומנות בלעדית של ג'ואיש גליטץ ככל ששווי השוק שלנו גדל! כל ציון דרך חושף שלבים חדשים של אבולוציה אינסופית.
           </motion.p>
           
           <motion.div
@@ -36,7 +36,7 @@ export function GallerySection() {
             viewport={{ once: true }}
           >
             <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-            New images unlock every $25K market cap
+            תמונות חדשות נפתחות כל $25K שווי שוק
           </motion.div>
         </div>
 

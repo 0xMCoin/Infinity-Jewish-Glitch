@@ -13,7 +13,7 @@ export const ThemeToggle = () => {
       className="relative p-2 rounded-full bg-gradient-to-r from-green-500 to-blue-500 dark:from-green-600 dark:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+      title={`עבור למצב ${theme === "light" ? "כהה" : "בהיר"}`}
     >
       <motion.div
         initial={false}
